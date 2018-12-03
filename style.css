@@ -6,7 +6,8 @@ html, body {
 }
 .header{
   display: flex;
-  max-height: 150px
+  max-height: 150px;
+  margin: 50px auto;
 }
 .header img {
   max-height: 50px;
