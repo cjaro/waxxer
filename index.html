@@ -38,32 +38,32 @@
       <label>Temperature:</label>
       <br>
       <div class="flex-form">
-        <input class="form-control" type="text" name="temp input" style="width: 25%">º
+        <input class="form-control" type="text" name="temp input">
         <select class="form-control" name="">
           <option name="tempF" value="fahrenheit" checked>Fahrenheit</option>
           <option name="tempC" value="celcius">Celcius</option>
-          <option name="tempK"> Kelvin (really?)</option>
+          <option name="tempK" value="option-kelvin"> Kelvin (really?)</option>
         </select>
       </div>
 
       </div>
       <div class="form-group">
-      <label>Humidity:</label>
+      <label>Humidity %:</label>
       <br>
       <div class="flex-form">
-      <input class="form-control" type="text" name="humidity" value="" placeholder="">%
+      <input class="form-control" type="text" name="humidity" value="" placeholder="">
       </div>
     </div>
     <div class="form-group">
       <label>Snow Type:</label>
       <br>
       <select class="form-control" name="">
-        <option class="dropdown-item" href="#">New snow</option>
-        <option class="dropdown-item" href="#">Old snow</option>
-        <option class="dropdown-item" href="#">Slushy snow</option>
-        <option class="dropdown-item" href="#">Icy snow</option>
-        <option class="dropdown-item" href="#">Manmade snow</option>
-        <option class="dropdown-item" href="#">Dirt</option>
+        <option class="dropdown-item" value="newsnow">New snow</option>
+        <option class="dropdown-item" value="oldsnow">Old snow</option>
+        <option class="dropdown-item" value="slushy">Slushy snow</option>
+        <option class="dropdown-item" value="icysnow">Icy snow</option>
+        <option class="dropdown-item" value="manmade">Manmade snow</option>
+        <option class="dropdown-item" value="option-dirt">Dirt</option>
       </select>
     </div>
     <div class="form-group">
@@ -71,9 +71,9 @@
       <br>
       <select class="form-control">
         <option value="recreation">Recreation</option>
-        <option value="racing">Racing - budget</option>
-        <option value="racing">Racing - $$$$$</option>
-        <option value="sport">Olympics</option>
+        <option value="racing-cheap">Racing on a budget</option>
+        <option value="racing-pricey">Racing with gift cards</option>
+        <option value="option-olympics">Olympics</option>
       </select>
     </div>
     <div class="form-group">
@@ -85,20 +85,18 @@
       </select>
     </div>
     <div class="form-group">
-      <button class="btn btn-success button-div" type="submit">Find wax!</button>
+      <button class="btn btn-success button-div" type="submit">Show me the wax!</button>
       </div>
     </form>
   </div>
+
   <div class="wrapper">
     <div class="push"></div>
   </div>
   <div class="footer">
-      <div class="img" style="background-image:url('https://fasterskier.com/wp-content/blogs.dir/1/files/2008/11/toko-logo.jpg');"></div>
-      <div class="img" style="background-image:url('https://logos-download.com/wp-content/uploads/2016/03/Swix_logo.png');"></div>
-      <div class="img" style="background-image:url('http://xctimosport.ca/uploads/3/4/6/8/34680002/1415239352.jpg');"></div>
-      <div class="img" style="background-image:url('http://static1.squarespace.com/static/53d57640e4b03aa3450336c2/t/53d583d1e4b039a3a018603c/1521149486883/');"></div>
-      <div class="img" style="background-image:url('http://www.euro-sports.ca/wp-content/uploads/2014/12/Rode_skiwax-Logo.png');"></div>
-      <div class="img" style="background-image:url('http://www.nordicskiracer.com/images/brands/Fast-Wax-ski-wax-263x150.gif');"></div>
+    <h4>2018 Paw Print Web Dev</h4>
+  </div>
+
   </div>
 </body>
 </html>
