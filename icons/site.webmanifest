@@ -1,8 +1,7 @@
 {
-    "name": "WaxWizard",
-    "short_name": "WaxWizard",
-    "icons": [
-        {
+    "name": "Waxxer",
+    "short_name": "Waxxer",
+    "icons": [{
             "src": "/android-chrome-36x36.png",
             "sizes": "36x36",
             "type": "image/png"

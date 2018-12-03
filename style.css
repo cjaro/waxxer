@@ -1,38 +1,52 @@
 * {
     margin: 0;
 }
-html, body {
+
+html,
+body {
     height: 100%;
+    font-family: "Roboto", sans-serif;
 }
-.header{
-  display: flex;
-  max-height: 150px;
-  margin: 50px auto;
+
+.header {
+    display: flex;
+    max-height: 150px;
+    margin: 50px auto;
 }
+
 .header img {
-  max-height: 50px;
-  max-width: 50px
+    max-height: 50px;
+    max-width: 50px
 }
-.button-div{
-  margin-top: 25px
+
+.button-div {
+    margin-top: 25px
 }
-.waxxer-form{
-  max-width: 500px !important
+
+.waxxer-form {
+    max-width: 500px !important
 }
-.flex-form{
-  display: flex;
+
+.flex-form {
+    display: flex;
 }
+
 .wrapper img {
-  max-width: 100%;
-  position: absolute;
-  -webkit-mask-image:-webkit-gradient(linear, left bottom, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
-      mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+    max-width: 100%;
+    position: absolute;
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
+
 .wrapper {
     height: auto !important;
     height: 100%;
-    margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
+    margin: 0 auto -142px;
+    /* the bottom margin is the negative value of the footer's height */
 }
-.footer, .push {
-    height: 142px; /* .push must be the same height as .footer */
+
+.footer,
+.push {
+    height: 142px;
+    /* .push must be the same height as .footer */
 }

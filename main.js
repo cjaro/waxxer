@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var $fahrenheit = $('.option-fahrenheit');
+    var $celsius = $('.option-celsius')
     var $kelvin = $('.option-kelvin');
     var $olympics = $('.option-olypmics').hide();
     var $dirt = $(.)
@@ -6,7 +8,7 @@ $(document).ready(function() {
     $('.wpp_search_select_field_location').change(function() {
         var selectedValue = $(this).val();
 
-        if(selectedValue  === 'Kelvin') {
+        if (selectedValue === 'Kelvin') {
             $value1.show();
             $value2.hide();
         } else if (selectedValue === 'Costa Del Sol West') {
