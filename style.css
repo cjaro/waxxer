@@ -4,7 +4,14 @@
 html, body {
     height: 100%;
 }
-
+.header{
+  display: flex;
+  max-height: 150px
+}
+.header img {
+  max-height: 50px;
+  max-width: 50px
+}
 .button-div{
   margin-top: 25px
 }
@@ -14,17 +21,13 @@ html, body {
 .flex-form{
   display: flex;
 }
-.img {
-    position: relative;
-    float: left;
-    width:  300px;
-    height: 100px;
-    background-position: 50% 50%;
-    background-repeat:   no-repeat;
-  }
-
+.wrapper img {
+  max-width: 100%;
+  position: absolute;
+  -webkit-mask-image:-webkit-gradient(linear, left bottom, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+      mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+}
 .wrapper {
-    min-height: 100%;
     height: auto !important;
     height: 100%;
     margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
