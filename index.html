@@ -39,40 +39,24 @@
     </div>
     <div class="container">
         <div class="col-md-12 waxxer-form">
-            <form class="" action="index.html" method="post">
+            <form class="">
                 <div class="form-group">
-                    <label>Temperature:</label>
+                    <label for="fahrenheit">Temperature (Fahrenheit):</label>
                     <br>
                     <div class="flex-form">
-                        <!-- <input class="form-control" type="text" > -->
                         <div id="fahrenheit-input">
-                            <label for="fahrenheit">Fahrenheit</label>
                             <input id="inputFahrenheit" class="form-control" type="number" placeholder="" oninput="convertFtoC(this.value)" onchange="convertFtoC(this.value)" name="temp input">
-                            <sub>Celcius: <span id="outputCelsius"></span></sub>
+                            <sub><span id="outputCelsius"></span> C</sub>
                         </div>
-                        <br>
-                        <!-- <div id="celsius-input">
-                            <label for="celsius">Celsius</label>
-                            <input id="outputCelsius" class="form-control" type="number" placeholder="" oninput="convertCtoF(this.value)" onchange="convertCtoF(this.value)">
-                            <sub>Fahrenheit: <span id="outputFahrenheit"></span></sub>
-                        </div> -->
-
-                        <!--<select id="temp-FC-select" class="form-control" name="">
-                          <option name="tempF" value="0" checked>Fahrenheit</option>
-                          <option name="tempC" value="1">Celsius</option>
-                       <option name="tempK" value="option-kelvin">Kelvin</option>
-                        </select> -->
                     </div>
-
-
                 </div>
-                <!-- <div class="form-group">
+                <!-- <div class="form-group">  action="index.html" method="post"
                     <label>Humidity %:</label>
                     <br>
                     <div class="flex-form">
                         <input class="form-control" type="text" name="humidity" value="" placeholder="">
                     </div>
-                </div> -->
+                </div> 
                 <div class="form-group">
                     <label>Snow Type:</label>
                     <br>
@@ -89,24 +73,25 @@
                     <label>Activity Level:</label>
                     <br>
                     <select class="form-control">
-            <option value="recreation">Recreation</option>
-            <option value="racing-cheap">Racing on a budget</option>
-            <option value="racing-pricey">Racing with gift cards</option>
-            <option value="option-olympics">Olympics</option>
-          </select>
+                      <option value="recreation">Recreation</option>
+                      <option value="racing-cheap">Racing on a budget</option>
+                      <option value="racing-pricey">Racing with gift cards</option>
+                      <option value="option-olympics">Olympics</option>
+                      </select>
                 </div>
                 <div class="form-group">
                     <label>Ski Technique:</label>
                     <br>
                     <select class="form-control">
-            <option value="classic">Classic</option>
-            <option value="skate">Skate/Freestyle</option>
-          </select>
-                </div>
+                      <option value="classic">Classic</option>
+                      <option value="skate">Skate/Freestyle</option>
+                    </select>
+                </div>-->
                 <div class="form-group">
-                    <button class="btn btn-primary button-div" type="submit">Show me the wax!</button>
+                    <button class="btn btn-primary button-div" onclick="returnWaxColor()">Show me the wax!</button>
                 </div>
             </form>
+            <div>Waxcolor: <span id="wax-color-div"></span> </div>
         </div>
     </div>
     <div class="wrapper">

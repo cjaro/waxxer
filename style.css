@@ -28,14 +28,14 @@ body {
 }
 
 .flex-form {
-    display: flex;
+    /* display: flex; */
 }
 
 .wrapper img {
     max-width: 100%;
     position: absolute;
     -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
-    mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    -moz-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
 .wrapper {
