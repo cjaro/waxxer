@@ -15,7 +15,6 @@
     <meta name="application-name" content="Waxxer">
     <meta name="msapplication-TileColor" content="#2685ff">
     <meta name="theme-color" content="#2685ff">
-    <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -23,10 +22,12 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
     <title>Waxxer</title>
 </head>
 <div class="under-construction" style="top: 0; position: absolute; width: 100%; background-color: #dc3545; color: #fff; text-align: center">
-    <h2>UNDER CONSTRUCTION</h2>
+    <p style="margin: 0;">UNDER CONSTRUCTION</p>
 </div>
 
 <a class="github-fork-ribbon" href="https://github.com/cjaro/waxxer" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
@@ -43,33 +44,46 @@
                     <label>Temperature:</label>
                     <br>
                     <div class="flex-form">
-                        <input class="form-control" type="text" name="temp input">
-                        <select class="form-control" name="">
-              <option name="tempF" value="fahrenheit" checked>Fahrenheit</option>
-              <option name="tempC" value="celcius">Celcius</option>
-              <option name="tempK" value="option-kelvin">Kelvin</option>
-            </select>
+                        <!-- <input class="form-control" type="text" > -->
+                        <div id="fahrenheit-input">
+                            <label for="fahrenheit">Fahrenheit</label>
+                            <input id="inputFahrenheit" class="form-control" type="number" placeholder="" oninput="convertFtoC(this.value)" onchange="convertFtoC(this.value)" name="temp input">
+                            <sub>Celcius: <span id="outputCelsius"></span></sub>
+                        </div>
+                        <br>
+                        <!-- <div id="celsius-input">
+                            <label for="celsius">Celsius</label>
+                            <input id="outputCelsius" class="form-control" type="number" placeholder="" oninput="convertCtoF(this.value)" onchange="convertCtoF(this.value)">
+                            <sub>Fahrenheit: <span id="outputFahrenheit"></span></sub>
+                        </div> -->
+
+                        <!--<select id="temp-FC-select" class="form-control" name="">
+                          <option name="tempF" value="0" checked>Fahrenheit</option>
+                          <option name="tempC" value="1">Celsius</option>
+                       <option name="tempK" value="option-kelvin">Kelvin</option>
+                        </select> -->
                     </div>
 
+
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>Humidity %:</label>
                     <br>
                     <div class="flex-form">
                         <input class="form-control" type="text" name="humidity" value="" placeholder="">
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label>Snow Type:</label>
                     <br>
                     <select class="form-control" name="">
-            <option class="dropdown-item" value="newsnow">New snow</option>
-            <option class="dropdown-item" value="oldsnow">Old snow</option>
-            <option class="dropdown-item" value="slushy">Slushy/warm snow</option>
-            <option class="dropdown-item" value="icysnow">Icy/cold snow</option>
-            <option class="dropdown-item" value="manmade">Manmade snow</option>
-            <option class="dropdown-item" value="option-dirt">Dirt</option>
-          </select>
+                      <option class="dropdown-item" value="newsnow">New snow</option>
+                      <option class="dropdown-item" value="oldsnow">Old snow</option>
+                      <option class="dropdown-item" value="slushy">Slushy/warm snow</option>
+                      <option class="dropdown-item" value="icysnow">Icy/cold snow</option>
+                      <option class="dropdown-item" value="manmade">Manmade snow</option>
+                      <option class="dropdown-item" value="option-dirt">Dirt</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Activity Level:</label>
@@ -90,7 +104,7 @@
           </select>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-success button-div" type="submit">Show me the wax!</button>
+                    <button class="btn btn-primary button-div" type="submit">Show me the wax!</button>
                 </div>
             </form>
         </div>

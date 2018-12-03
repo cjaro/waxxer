@@ -50,3 +50,7 @@ body {
     height: 142px;
     /* .push must be the same height as .footer */
 }
+
+.github-fork-ribbon:before {
+    background-color: #007bff!important;
+}
