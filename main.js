@@ -26,7 +26,7 @@ function returnWaxColor() {
         document.getElementById("wax-color-div").innerHTML = "polar";
         console.log(wax, "polar");
     };
-    break returnWaxColor;
+    // break returnWaxColor;
 }
 
 
