@@ -10,7 +10,10 @@ function convertCtoF(valNum) {
 
 function returnWaxColor() {
     var wax = document.getElementById('inputFahrenheit').value;
-    if (wax > 34 && wax < 70) {
+    if (wax > 61) {
+        document.getElementById("wax-color-div").innerHTML = "waterskis";
+        console.log(wax, "waterskis")
+    } else if (wax > 34 && wax < 60) {
         document.getElementById("wax-color-div").innerHTML = "red";
         console.log(wax, "red");
     } else if (wax > 30 && wax < 33) {
