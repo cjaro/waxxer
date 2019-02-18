@@ -32,16 +32,6 @@ function returnWaxColor() {
     // break returnWaxColor;
 }
 
-
-
-
-
-
-
-
-
-
-
 // $(document).getElementById('temp-FC-select').addEventListener('change', function() {
 //     var style = this.value == 1 ? 'block' : 'none';
 //     document.getElementById('celsius-input').style.display = style;
