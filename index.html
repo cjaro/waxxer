@@ -4,24 +4,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="194x194" href="icons/favicon-194x194.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="icons/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-    <link rel="manifest" href="icons/site.webmanifest">
-    <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#2685ff">
-    <meta name="apple-mobile-web-app-title" content="Waxxer">
-    <meta name="application-name" content="Waxxer">
-    <meta name="msapplication-TileColor" content="#2685ff">
-    <meta name="theme-color" content="#2685ff">
+    <!-- Bootstrap 4, jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> -->
+    <!-- GitHub 'fork me' Banner -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+    <!-- Font - Roboto -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <!-- AerisWeather API Challenge -->
+    <script src="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.css">
+    <!-- styles and scripts -->
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
     <title>Waxxer</title>
@@ -30,73 +26,106 @@
     <p style="margin: 0;">UNDER CONSTRUCTION</p>
 </div>
 
-<a class="github-fork-ribbon" href="https://github.com/cjaro/waxxer" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
+<a class="github-fork-ribbon" href="https://github.com/cjaro/waxxer" data-ribbon="Make Tracks to GitHub" title="FSki to GitHub">Make Tracks to GitHub</a>
 
 <body>
     <div class="container header">
         <img src="icons/favicon-194x194.png" alt="">
         <h1>Waxxer</h1>
     </div>
+
     <div class="container">
         <div class="col-md-12 waxxer-form">
+            <div class="waxxer-intro">
+                <p>Hello, I'm Waxxer, a helpful calculator for the nordic skier who's wondering how to pick the right ski wax when taking in variables like temperature, humidity, and snow type. I'm a work in progress, so please come back for future improvements.</p>
+            </div>
+
             <div class="wax-sub">
                 <div class="form-group">
-                    <label for="fahrenheit">Temperature (Fahrenheit):</label>
+                    <!-- temperature conversion from F to C for proper wax color return -->
+                    <!-- <label for="fahrenheit">Temperature (Fahrenheit):</label>
                     <br>
                     <div class="flex-form">
                         <div id="fahrenheit-input">
                             <input id="inputFahrenheit" class="form-control" type="number" placeholder="" oninput="convertFtoC(this.value)" onchange="convertFtoC(this.value)" name="temp input">
-                            <sub><span id="outputCelsius"></span> C</sub>
+                            <p id="outputCelsius">Celsius</p>
+                        </div> -->
+                    <!-- Area for user-defined zipcode for API call later -->
+                    <div class="aeris-zip-code">
+                        <label for="location-zip-code">Location:</label>
+                        <br>
+                        <div class="form-group form-inline">
+                            <input id="zipcode" class="form-control input-zip" placeholder="ZIP Code" name="location input" type="text">
+                            <!-- <div id="zipcode">55406</div> -->
+                            <button class="btn btn-primary" type="submit" onclick="returnConditions();">check weather for skiing</button>
                         </div>
+
                     </div>
                 </div>
+
+                <div>
+                    <!-- <h4>Conditions:</h4> -->
+                    <div id="conditions"></div>
+                </div>
+                <div>
+                    <p>On a scale of 1-5, how good will ski conditions be?</p>
+                    <p id="tempforski"></p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    </div>
+    <!-- <div class="wrapper">
+        <img src="assets/cross-country-skiing-mountains.jpg" alt="">
+    </div> -->
+
+
+    <div class="hideUnderConstruction">
+        <div class="form container">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label>Humidity %:</label>
                     <br>
                     <div class="flex-form">
                         <input class="form-control" type="text" name="humidity" value="" placeholder="" disabled>
                     </div>
-                </div> 
+                </div>
                 <div class="form-group">
                     <label>Snow Type:</label>
                     <br>
                     <select class="form-control" name="" disabled>
-                      <option class="dropdown-item" value="newsnow">New snow</option>
-                      <option class="dropdown-item" value="oldsnow">Old snow</option>
-                      <option class="dropdown-item" value="slushy">Slushy/warm snow</option>
-                      <option class="dropdown-item" value="icysnow">Icy/cold snow</option>
-                      <option class="dropdown-item" value="manmade">Manmade snow</option>
-                      <option class="dropdown-item" value="option-dirt">Dirt</option>
-                    </select>
+                  <option class="dropdown-item" value="newsnow">New snow</option>
+                  <option class="dropdown-item" value="oldsnow">Old snow</option>
+                  <option class="dropdown-item" value="slushy">Slushy/warm snow</option>
+                  <option class="dropdown-item" value="icysnow">Icy/cold snow</option>
+                  <option class="dropdown-item" value="manmade">Manmade snow</option>
+                  <option class="dropdown-item" value="option-dirt">Dirt</option>
+                </select>
                 </div>
                 <div class="form-group">
                     <label>Activity Level:</label>
                     <br>
                     <select class="form-control" disabled>
-                      <option value="recreation">Recreation</option>
-                      <option value="racing-cheap">Racing on a budget</option>
-                      <option value="racing-pricey">Racing with gift cards</option>
-                      <option value="option-olympics">Olympics</option>
-                      </select>
+                  <option value="recreation">Recreation</option>
+                  <option value="racing-cheap">Racing on a budget</option>
+                  <option value="racing-pricey">Racing with gift cards</option>
+                  <option value="option-olympics">Olympics</option>
+                  </select>
                 </div>
                 <div class="form-group">
                     <label>Ski Technique:</label>
                     <br>
                     <select class="form-control" disabled>
-                      <option value="classic">Classic</option>
-                      <option value="skate">Skate/Freestyle</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary button-div" type="button" onclick="returnWaxColor();">Show me the wax!</button>
+                  <option value="classic">Classic</option>
+                  <option value="skate">Skate/Freestyle</option>
+                </select>
                 </div>
             </div>
-            <div>Waxcolor: <span id="wax-color-div"></span> </div>
         </div>
     </div>
-    <!-- <div class="wrapper">
-        <img src="assets/cross-country-skiing-mountains.jpg" alt="">
-    </div> -->
 </body>
 
 </html>

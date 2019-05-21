@@ -24,7 +24,7 @@ body {
 }
 
 .waxxer-form {
-    max-width: 500px !important
+    max-width: 700px !important
 }
 
 .flex-form {
@@ -53,4 +53,87 @@ body {
 
 .github-fork-ribbon:before {
     background-color: #007bff!important;
+}
+
+.hideUnderConstruction {
+    display: none;
+}
+
+.zipcode {
+    width: 150px
+}
+
+.tempsFandC {
+    display: flex;
+}
+
+
+/* AERIS API CHALLENGE CSS */
+
+#conditions {
+    font-family: 'Roboto', sans-serif;
+    margin: 30px auto;
+    /* padding: 15px; */
+    width: 100%;
+}
+
+#conditions p {
+    margin: 0;
+}
+
+#conditions .cols {
+    display: flex;
+    flex-direction: column;
+}
+
+#conditions .details .row {
+    display: flex;
+}
+
+#conditions .cols>div {
+    /* flex-basis: 0; */
+    margin: 0 5px;
+}
+
+#conditions .temp,
+.tempC {
+    font-size: 30px;
+    margin: 0 5px;
+}
+
+#conditions .temp span,
+.tempC span {
+    font-size: 30px;
+    font-weight: normal;
+    padding-left: 6px;
+}
+
+#conditions .details {
+    font-size: 14px;
+}
+
+#conditions .details .row>div {
+    flex-basis: 0;
+    flex-grow: 1;
+    margin: 0 5px;
+    width: 100px;
+}
+
+#conditions .details .row {
+    margin: 6px 0;
+}
+
+#conditions .details .row div:last-child {
+    font-size: 16px;
+    /* font-weight: bold; */
+}
+
+#conditions .timestamp {
+    color: #000;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+#conditions .wx {
+    font-size: 16px
 }
