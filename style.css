@@ -10,13 +10,20 @@ body {
 
 .header {
     display: flex;
+    flex-direction: row;
     max-height: 150px;
-    margin: 50px auto;
+    margin: 30px auto;
+    justify-content: space-between;
 }
 
-.header img {
-    max-height: 50px;
-    max-width: 50px
+.icon {
+    height: 50px;
+    width: 50px
+}
+
+.github-icon {
+    height: 55px;
+    width: 65px
 }
 
 .button-div {
@@ -32,9 +39,10 @@ body {
 }
 
 .wrapper img {
-    max-width: 100%;
+    width: 100%;
     bottom: 0;
     position: absolute;
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
     -moz-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     z-index: -99999;
@@ -46,6 +54,10 @@ body {
     margin: 0 auto -142px;
     width: 100%
     /* the bottom margin is the negative value of the footer's height */
+}
+
+.waxxer-intro {
+    margin: 30px auto
 }
 
 .skiMoraleDiv {

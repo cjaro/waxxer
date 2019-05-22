@@ -43,9 +43,9 @@ function returnConditions() {
                         <h3>Conditions in ${result.data.place.name.charAt(0).toUpperCase() + result.data.place.name.slice(1)}, ${result.data.place.state.toUpperCase()}</h3>
                         <p class="timestamp">at ${aeris.utils.dates.format(new Date(result.data.ob.timestamp * 1000), 'h:mm a on D MMM, YYYY')}</p>     
                         <div class="tempsFandC">
-                            <p id="tempF" class="temp">${result.data.ob.tempF}</p><span>&deg;F</span>
-                            <span>&nbsp;</span>
-                            <p id="tempC" class="temp">${result.data.ob.tempC}<p><span>&deg;C</span>
+                            <p id="tempF" class="temp">${result.data.ob.tempF}</p><p class="temp">&deg;F</p>
+                            <p class="temp">&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;</p>
+                            <p id="tempC" class="temp">${result.data.ob.tempC}<p><p class="temp">&deg;C</p>
                         </div>
                     </div>
                     <div class="details">
@@ -79,11 +79,11 @@ function returnConditions() {
 }; // returnConditions();
 
 function moraleAfterSki() {
-    const tempOuter = document.getElementById('tempF');
-    console.log('tempOuter', tempOuter);
+    // const tempOuter = document.getElementById('tempF');
+    // console.log('tempOuter:', tempOuter);
     const temp = document
         .getElementById('tempF').innerText;
-    console.log('tempF', temp);
+    console.log('tempF:', temp);
 
     if (temp >= 51) {
         document
