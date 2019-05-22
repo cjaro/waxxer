@@ -1,25 +1,6 @@
-// NOTE: initially, I couldn't quite wrap my head around selecting the input of a button-click-linked friend 
-// [It should be noted I was quite sick while I was at this point]
-// instead, for now, I've just rendered the inputted zip code to the DOM and selected it as a saved value for early work 
-// since I know once I had data returning correctly I could come back to that part and figure it out
-// my main concern was making the zip code dynamic, which proved a challenge as I was building out this part of the challenge.
-// function saveUserZip() {
-//     const userZip = document
-//         .getElementById('zipcode')
-//         .value;
-//     const printZip = document
-//         .getElementById("tempforski")
-//         .innerHTML = userZip;
-//     return (printZip);
-// }
-// console.log('printZip before returnConditions', printZip);
-
-// NOTE: make API call, deliver temperature and stats, and rating of outdoor activity viability. 
-// checkConditions in theory will check that the temperature is between a certain range I want to make the API request only on .click on the checkConditions so that the API returns the temperature, talks to my functions, and returns the correct condition report.
-
 function returnConditions() {
-    // console.log('returnConditions(printZip)', printZip); const printZip =
-    // document.getElementById("tempforski").innerHTML = userZip;
+    // console.log('returnConditions(printZip)', printZip); 
+    // const printZip = document.getElementById("tempforski").innerHTML = userZip;
     const target = document.getElementById('conditions');
     const targetForecast = document.getElementById('forecast');
     // TODO: abstract to ignored file and export/import for privacy
@@ -33,12 +14,6 @@ function returnConditions() {
         .endpoint('forecasts')
         .place(document.getElementById('zipcode').value)
         .limit(5);
-
-    // NOTE: here I noticed that when I sent this request to Postman I got back a
-    // different object using: http://api.aerisapi.com/observations/55406?client_id=RPWkCaESX2v8UsgEhZSu8ient_secret=NIKctIWAkkEvTHWQsELj51e32qonWWGVS0DZ7OV5 // so that got me curious about where this object with the observation was coming back. 
-    // I realized that the 'ob' object was actually just part of the larger object that gets
-    // returned, ob and place. 
-    // So rather than setting 'ob' as const ob, I just started my query higher up in the object and set result.data as my primary source of truth.
 
     request.get().then((result) => {
         console.log('result.data:', result.data);
@@ -86,7 +61,6 @@ function returnConditions() {
         } // if(result.data) close
     }); //.then close
 
-    // NOTE: Well, knowing the current conditions is all well and dandy, but what if I need to wax skis and travel? I might need to know what the conditions are in Wisconsin, or Oregon, or the Iron Range. My location doesn't help me there, so let's add a forecast so that I can see what the predictions are for the location of my race:
     requestForecast.get().then((result) => {
         const data = result.data;
         const {
@@ -116,10 +90,8 @@ function returnConditions() {
     });
 }; // returnConditions();
 
-// NOTE: So now that I was getting back the information that I wanted and a forecast for any* location of my choosing, now I want to know just how miserable I'll be on my ski. This is an elaborated version of Waxxer 1.0, where I simply passed in a numeric temperature and returned a color based on a number of wax charts I found online from Swix, START, and Toko, three major wax makers.
 function moraleAfterSki() {
-    // const tempOuter = document.getElementById('tempF');
-    // console.log('tempOuter:', tempOuter);
+
     const temp = document.getElementById('tempF').innerText;
     // console.log('tempF:', temp);
 
@@ -148,7 +120,7 @@ function moraleAfterSki() {
             .getElementById("tempforski")
             .innerHTML = "<span class='wax-color'>5: It's a beautiful day for a ski! The conditions are likely beautiful! Happy trails! <span class='wax-green'>Use green wax!</span></span>";
         console.log(temp, "green");
-    } else if (temp >= -20 && temp <= 9) {
+    } else if (temp <= 9) {
         document
             .getElementById("tempforski")
             .innerHTML = "<span class='wax-color'>6: The temperature is between 0&deg;F and -20&deg;F - it's very cold! Bundle up and watch out for frostbite! <span class='wax-polar'>Use polar wax.</span></span>";
