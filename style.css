@@ -8,12 +8,33 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+html {
+    background-color: #3bb8ff;
+}
+
+body {}
+
+main {
+    background-color: #3bb8ff;
+}
+
+.waxxer-body {
+    background-color: #fff;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
 .header {
     display: flex;
     flex-direction: row;
     max-height: 150px;
     margin: 30px auto;
     justify-content: space-between;
+}
+
+.container {
+    max-width: 1000px;
 }
 
 .icon {
@@ -31,7 +52,8 @@ body {
 }
 
 .waxxer-form {
-    max-width: 700px !important
+    /* max-width: 700px !important */
+    margin: 0 auto
 }
 
 .flex-form {
@@ -91,6 +113,9 @@ body {
 
 
 /* AERIS API CHALLENGE CSS */
+
+
+/* I: CONDITIONS */
 
 #conditions {
     font-family: 'Roboto', sans-serif;
@@ -159,4 +184,62 @@ body {
 
 #conditions .wx {
     font-size: 16px
+}
+
+
+/* II: FORECAST */
+
+#forecast {
+    color: #222;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-family: 'Roboto', sans-serif;
+    margin: 10px auto;
+    /* width: 600px; */
+}
+
+#forecast p {
+    margin: 0;
+}
+
+#forecast .card {
+    flex-basis: 0;
+    flex-grow: 1;
+    margin: 0 5px;
+}
+
+#forecast .card-body {
+    background: #fff;
+    border: 1px solid #999;
+    /* box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1); */
+    padding: 10px;
+    text-align: center;
+}
+
+#forecast .card .title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#forecast .card .icon {
+    margin: 10px 0 5px;
+    width: 60px;
+}
+
+#forecast .card .wx {
+    font-size: 12px;
+}
+
+#forecast .card .temps {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#forecast .card .temps span {
+    color: #666;
+    font-size: 12px;
+    font-weight: normal;
+    padding-right: 6px;
 }

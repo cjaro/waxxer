@@ -24,55 +24,63 @@
 </head>
 
 <body>
-    <div class="container header waxxer-header">
-        <a href="waxxer.io">
-            <img class="icon" src="icons/favicon-194x194.png" alt="">
-        </a>
-        <h1>Waxxer</h1>
-        <a href="https://github.com/cjaro/waxxer">
-            <img class="github-icon" src="assets/Octocat.png" alt="github external link">
-        </a>
-    </div>
-
-    <div class="container">
-        <div class="col-md-12 waxxer-form">
-            <div class="waxxer-intro">
-                <p>Hello, I'm Waxxer, a helpful calculator for the nordic skier who's wondering how to pick the right ski wax when taking in variables like temperature, humidity, and snow type. I'm a work in progress, so please come back for future improvements.</p>
+    <main>
+        <div class="waxxer-body">
+            <div class="container header waxxer-header">
+                <a href="waxxer.io">
+                    <img class="icon" src="icons/favicon-194x194.png" alt="">
+                </a>
+                <h1>Waxxer</h1>
+                <a href="https://github.com/cjaro/waxxer">
+                    <img class="github-icon" src="assets/Octocat.png" alt="github external link">
+                </a>
             </div>
-
-            <div class="wax-sub">
-                <div class="form-group">
-
-                    <div class="aeris-zip-code">
-                        <h4 class="location-zip-code">Location:</h4>
-                        <br>
-                        <div class="form-group form-inline">
-                            <input id="zipcode" class="form-control input-zip" placeholder="ZIP Code" name="location input" type="text">
-                            <!-- <div id="zipcode">55406</div> -->
-                            <button class="btn btn-primary" type="submit" onclick="returnConditions();">check weather
-                                for skiing</button>
-                        </div>
+            <div class="container">
+                <div class="col-md-12 waxxer-form">
+                    <div class="waxxer-intro">
+                        <p>Hello, I'm Waxxer, a helpful calculator for the nordic skier who's wondering how to pick the right ski wax when taking in variables like temperature, humidity, and snow type. I'm a work in progress, so please come back for future
+                            improvements.
+                        </p>
                     </div>
-                </div>
-                <div class="skiMoraleDiv">
-                    <div id="conditions"></div>
-                </div>
-                <div>
-                    <button class="btn btn-danger" onclick="moraleAfterSki();">On a scale of 1-5, how good will ski
-                        conditions be?</button>
-                    <div class="skiMoraleDiv">
-                        <h4 id="tempforski"></h4>
+                    <div class="wax-sub">
+                        <div class="form-group">
+                            <div class="aeris-zip-code">
+                                <h4 class="location-zip-code">Location:</h4>
+                                <br>
+                                <div class="form-group form-inline">
+                                    <input id="zipcode" class="form-control input-zip" placeholder="ZIP Code" name="location input" type="text">
+                                    <!-- <div id="zipcode">55406</div> -->
+                                    <button class="btn btn-primary" type="submit" onclick="returnConditions();">check
+                                        weather
+                                        for skiing</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skiMoraleDiv">
+                            <div id="conditions"></div>
+                        </div>
+                        <div>
+                            <h4>On a scale of 1 (awful) to 6 (awesome), how good will ski conditions be?
+                            </h4>
+                            <button class="btn btn-danger" onclick="moraleAfterSki();">Let's find out!</button>
+                            <div class="skiMoraleDiv">
+                                <h4 id="tempforski"></h4>
+                            </div>
+                        </div>
+                        <div class="skiMoraleDiv">
+                            <h4>Do you have a race coming up? Be prepared!</h4>
+                            <div id="forecast"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    <div class="wrapper">
+        <!-- <div class="wrapper">
         <img src="assets/cross-country-skiing-mountains.jpg" alt="">
-    </div>
+    </div> -->
 
-
+        </div>
+    </main>
 </body>
 
 </html>

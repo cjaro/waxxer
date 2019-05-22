@@ -16,11 +16,18 @@ function returnConditions() {
     // console.log('returnConditions(printZip)', printZip); const printZip =
     // document.getElementById("tempforski").innerHTML = userZip;
     const target = document.getElementById('conditions');
+    const targetForecast = document.getElementById('forecast');
+    // TODO: abstract to ignored file and export/import for privacy
     const aeris = new AerisWeather('RPWkCaESX2v8UsgEhZSu8', 'NIKctIWAkkEvTHWQsELj51e32qonWWGVS0DZ7OV5');
     const request = aeris
         .api()
         .endpoint('observations')
         .place(document.getElementById('zipcode').value);
+    const requestForecast = aeris
+        .api()
+        .endpoint('forecasts')
+        .place(document.getElementById('zipcode').value)
+        .limit(7);
 
     // TODO: here I noticed that when I sent this request to Postman I got back a
     // different object using:
@@ -32,57 +39,82 @@ function returnConditions() {
     // started my query higher up in the object and set result.data as my primary
     // source of truth.
 
-    request
-        .get()
-        .then((result) => {
-            console.log('result.data:', result.data);
-            if (result.data) {
-                const html = (`
-                    <div class="cols">
-                        <div>
-                        <h3>Conditions in ${result.data.place.name.charAt(0).toUpperCase() + result.data.place.name.slice(1)}, ${result.data.place.state.toUpperCase()}</h3>
-                        <p class="timestamp">at ${aeris.utils.dates.format(new Date(result.data.ob.timestamp * 1000), 'h:mm a on D MMM, YYYY')}</p>     
-                        <div class="tempsFandC">
-                            <p id="tempF" class="temp">${result.data.ob.tempF}</p><p class="temp">&deg;F</p>
-                            <p class="temp">&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;</p>
-                            <p id="tempC" class="temp">${result.data.ob.tempC}<p><p class="temp">&deg;C</p>
-                        </div>
+    request.get().then((result) => {
+        console.log('result.data:', result.data);
+        if (result.data) {
+            const html = (`
+                <div class="cols">
+                    <div>
+                    <h3>Conditions in ${result.data.place.name.charAt(0).toUpperCase() + result.data.place.name.slice(1)}, ${result.data.place.state.toUpperCase()}</h3>
+                    <p class="timestamp">at ${aeris.utils.dates.format(new Date(result.data.ob.timestamp * 1000), 'h:mm a on D MMM, YYYY')}</p>     
+                    <div class="tempsFandC">
+                        <p id="tempF" class="temp">${result.data.ob.tempF}</p><p class="temp">&deg;F</p>
+                        <p class="temp">&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;</p>
+                        <p id="tempC" class="temp">${result.data.ob.tempC}<p><p class="temp">&deg;C</p>
                     </div>
-                    <div class="details">
+                </div>
+                <div class="details">
+                    <div class="row">
+                        <div>Humidity</div>
+                        <div>${result.data.ob.humidity || 'N/A'}%</div>
+                    </div>
+                    <div class="row">                                
+                        <div>Windchill</div>
+                            <div>${result.data.ob.windchillF}<span>&deg;F</span></div>
+                        </div>
                         <div class="row">
-                            <div>Humidity</div>
-                            <div>${result.data.ob.humidity || 'N/A'}%</div>
+                            <div>Winds</div>
+                            <div>${result.data.ob.windSpeedMPH}</div>
                         </div>
-                        <div class="row">                                
-                            <div>Windchill</div>
-                                <div>${result.data.ob.windchillF}<span>&deg;F</span></div>
-                            </div>
-                            <div class="row">
-                                <div>Winds</div>
-                                <div>${result.data.ob.windSpeedMPH}</div>
-                            </div>
-                            <div class="row">
-                                <div>Sunrise</div>
-                                <div>${aeris.utils.dates.format(new Date(result.data.ob.sunriseISO), 'HH:mm')}</div>
-                            </div>
-                            <div class="row">
-                                <div>Sunset</div>
-                                <div>${aeris.utils.dates.format(new Date(result.data.ob.sunsetISO), 'HH:mm')}</div>
-                            </div>
-                        </div>    
-                    </div>
+                        <div class="row">
+                            <div>Sunrise</div>
+                            <div>${aeris.utils.dates.format(new Date(result.data.ob.sunriseISO), 'HH:mm')}</div>
+                        </div>
+                        <div class="row">
+                            <div>Sunset</div>
+                            <div>${aeris.utils.dates.format(new Date(result.data.ob.sunsetISO), 'HH:mm')}</div>
+                        </div>
+                    </div>    
+                </div>
                `);
-                target.innerHTML = html;
-            }
-            // }; // checkConditions();  
-        }); //.then close
+            target.innerHTML = html;
+        }
+        // }; // checkConditions();  
+    }); //.then close
+    requestForecast.get().then((result) => {
+        const data = result.data;
+        const {
+            periods
+        } = data[0];
+        if (periods) {
+            periods.reverse().forEach(period => {
+                const date = new Date(period.dateTimeISO);
+                const icon = `https://cdn.aerisapi.com/wxblox/icons/${period.icon || 'na.png'}`;
+                const maxTempF = period.maxTempF || 'N/A';
+                const minTempF = period.minTempF || 'N/A';
+                const weather = period.weatherPrimary || 'N/A';
+
+                const html = (`
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="title">${aeris.utils.dates.format(date, 'dddd')}</p>
+                            <p><img class="icon" src="${icon}"></p>
+                            <p class="wx">${weather}</p>
+                            <p class="temps"><span>High:</span>${maxTempF} <span>Low:</span>${minTempF}</p>
+                            <p class="quick-predict">Quick Predict:</p>
+                        </div>
+                    </div>
+                `);
+                targetForecast.insertAdjacentHTML('afterbegin', html);
+            });
+        }
+    });
 }; // returnConditions();
 
 function moraleAfterSki() {
     // const tempOuter = document.getElementById('tempF');
     // console.log('tempOuter:', tempOuter);
-    const temp = document
-        .getElementById('tempF').innerText;
+    const temp = document.getElementById('tempF').innerText;
     console.log('tempF:', temp);
 
     if (temp >= 51) {
@@ -117,7 +149,6 @@ function moraleAfterSki() {
         console.log(temp, " polar ");
     };
 }
-
 
 // TODO: original wax color function - big ol if/else!
 // function returnWaxColor() {
