@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
     <!-- Bootstrap 4, jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
     <!-- GitHub 'fork me' Banner -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
     <!-- Font - Roboto -->
@@ -22,11 +22,6 @@
     <script src="main.js"></script>
     <title>Waxxer</title>
 </head>
-<div class="under-construction" style="top: 0; position: absolute; width: 100%; background-color: #dc3545; color: #fff; text-align: center">
-    <p style="margin: 0;">UNDER CONSTRUCTION</p>
-</div>
-
-<a class="github-fork-ribbon" href="https://github.com/cjaro/waxxer" data-ribbon="Make Tracks to GitHub" title="FSki to GitHub">Make Tracks to GitHub</a>
 
 <body>
     <div class="container header">
@@ -42,45 +37,35 @@
 
             <div class="wax-sub">
                 <div class="form-group">
-                    <!-- temperature conversion from F to C for proper wax color return -->
-                    <!-- <label for="fahrenheit">Temperature (Fahrenheit):</label>
-                    <br>
-                    <div class="flex-form">
-                        <div id="fahrenheit-input">
-                            <input id="inputFahrenheit" class="form-control" type="number" placeholder="" oninput="convertFtoC(this.value)" onchange="convertFtoC(this.value)" name="temp input">
-                            <p id="outputCelsius">Celsius</p>
-                        </div> -->
-                    <!-- Area for user-defined zipcode for API call later -->
+
                     <div class="aeris-zip-code">
-                        <label for="location-zip-code">Location:</label>
+                        <h4 class="location-zip-code">Location:</h4>
                         <br>
                         <div class="form-group form-inline">
                             <input id="zipcode" class="form-control input-zip" placeholder="ZIP Code" name="location input" type="text">
                             <!-- <div id="zipcode">55406</div> -->
-                            <button class="btn btn-primary" type="submit" onclick="returnConditions();">check weather for skiing</button>
+                            <button class="btn btn-primary" type="submit" onclick="returnConditions();">check weather
+                                for skiing</button>
                         </div>
-
                     </div>
                 </div>
-
-                <div>
-                    <!-- <h4>Conditions:</h4> -->
+                <div class="skiMoraleDiv">
                     <div id="conditions"></div>
                 </div>
                 <div>
-                    <p>On a scale of 1-5, how good will ski conditions be?</p>
-                    <p id="tempforski"></p>
+                    <button class="btn btn-danger" onclick="moraleAfterSki();">On a scale of 1-5, how good will ski
+                        conditions be?</button>
+                    <div class="skiMoraleDiv">
+                        <h4 id="tempforski"></h4>
+                    </div>
                 </div>
             </div>
-
         </div>
-
-
     </div>
     </div>
-    <!-- <div class="wrapper">
+    <div class="wrapper">
         <img src="assets/cross-country-skiing-mountains.jpg" alt="">
-    </div> -->
+    </div>
 
 
     <div class="hideUnderConstruction">
@@ -97,31 +82,31 @@
                     <label>Snow Type:</label>
                     <br>
                     <select class="form-control" name="" disabled>
-                  <option class="dropdown-item" value="newsnow">New snow</option>
-                  <option class="dropdown-item" value="oldsnow">Old snow</option>
-                  <option class="dropdown-item" value="slushy">Slushy/warm snow</option>
-                  <option class="dropdown-item" value="icysnow">Icy/cold snow</option>
-                  <option class="dropdown-item" value="manmade">Manmade snow</option>
-                  <option class="dropdown-item" value="option-dirt">Dirt</option>
-                </select>
+                        <option class="dropdown-item" value="newsnow">New snow</option>
+                        <option class="dropdown-item" value="oldsnow">Old snow</option>
+                        <option class="dropdown-item" value="slushy">Slushy/warm snow</option>
+                        <option class="dropdown-item" value="icysnow">Icy/cold snow</option>
+                        <option class="dropdown-item" value="manmade">Manmade snow</option>
+                        <option class="dropdown-item" value="option-dirt">Dirt</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Activity Level:</label>
                     <br>
                     <select class="form-control" disabled>
-                  <option value="recreation">Recreation</option>
-                  <option value="racing-cheap">Racing on a budget</option>
-                  <option value="racing-pricey">Racing with gift cards</option>
-                  <option value="option-olympics">Olympics</option>
-                  </select>
+                        <option value="recreation">Recreation</option>
+                        <option value="racing-cheap">Racing on a budget</option>
+                        <option value="racing-pricey">Racing with gift cards</option>
+                        <option value="option-olympics">Olympics</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Ski Technique:</label>
                     <br>
                     <select class="form-control" disabled>
-                  <option value="classic">Classic</option>
-                  <option value="skate">Skate/Freestyle</option>
-                </select>
+                        <option value="classic">Classic</option>
+                        <option value="skate">Skate/Freestyle</option>
+                    </select>
                 </div>
             </div>
         </div>
