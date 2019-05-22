@@ -43,4 +43,4 @@ const tempOuter = document.getElementById('tempF');
 ```
 
 ## Closing Thoughts
-All in all, this challenge was the kick in the pants I needed to bring this project to the next level
+All in all, this challenge was the kick in the pants I needed to bring this project to the next level. I had some time to chew on this and challenge myself to figure out how to best intertwine this API with my existing project. I feel like a strong developer and I absolutely have a strong understanding of API usage and technology  overall.
