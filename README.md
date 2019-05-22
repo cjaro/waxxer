@@ -4,4 +4,4 @@ As a Nordic (cross country) skier, it can be frustrating and confusing to prepar
 
 Say hello to Waxxer! While talking with my partner and ski buddy this winter, I had the idea to create a wax-where-you-are type application to give the best, most accurate weather conditions using AerisWeather's powerful and accessible API. I developed this over the course of a few months, building out features and discussing the process with my partner, who is more knowledgeable about ski wax needs than I am, so during those discussions and rounds of feedback, this little input-output calculator became more than just that! I work on this one constantly and am looking forward to where I can take it next.
 
-[https://waxxer.io]
+[Waxxer (Live)](https://waxxer.io)
