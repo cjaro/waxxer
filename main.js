@@ -1,6 +1,8 @@
-// TODO: make API call, deliver temperature and stats, and rating of outdoor activity viability. checkConditions in theory will check that the temperature is between a certain range I want to make the API request only on .click on the checkConditions so that the API returns the temperature, talks to my functions, and returns the correct condition report.
-
-// TODO: initially, I couldn't quite wrap my head around selecting the input of a button-click-linked friend, so I just rendered the inputted zip code to the DOM and selected it as a saved value for early work since I know once I had data returning correctly I could come back to that part and figure it out as my main concern was making the zip code dynamic, which proved a challenge as I was building out this part of the challenge.
+// NOTE: initially, I couldn't quite wrap my head around selecting the input of a button-click-linked friend 
+// [It should be noted I was quite sick while I was at this point]
+// instead, for now, I've just rendered the inputted zip code to the DOM and selected it as a saved value for early work 
+// since I know once I had data returning correctly I could come back to that part and figure it out
+// my main concern was making the zip code dynamic, which proved a challenge as I was building out this part of the challenge.
 // function saveUserZip() {
 //     const userZip = document
 //         .getElementById('zipcode')
@@ -11,6 +13,9 @@
 //     return (printZip);
 // }
 // console.log('printZip before returnConditions', printZip);
+
+// NOTE: make API call, deliver temperature and stats, and rating of outdoor activity viability. 
+// checkConditions in theory will check that the temperature is between a certain range I want to make the API request only on .click on the checkConditions so that the API returns the temperature, talks to my functions, and returns the correct condition report.
 
 function returnConditions() {
     // console.log('returnConditions(printZip)', printZip); const printZip =
@@ -27,17 +32,13 @@ function returnConditions() {
         .api()
         .endpoint('forecasts')
         .place(document.getElementById('zipcode').value)
-        .limit(7);
+        .limit(5);
 
-    // TODO: here I noticed that when I sent this request to Postman I got back a
-    // different object using:
-    // http://api.aerisapi.com/observations/55406?client_id=RPWkCaESX2v8UsgEhZSu8&cl
-    // ient_secret=NIKctIWAkkEvTHWQsELj51e32qonWWGVS0DZ7OV5 so that got me curious
-    // about where this object with the observation was coming back. I realized that
-    // the 'ob' object was actually just part of the larger object that gets
-    // returned, ob and place. So rather than setting 'ob' as const ob, I just
-    // started my query higher up in the object and set result.data as my primary
-    // source of truth.
+    // NOTE: here I noticed that when I sent this request to Postman I got back a
+    // different object using: http://api.aerisapi.com/observations/55406?client_id=RPWkCaESX2v8UsgEhZSu8ient_secret=NIKctIWAkkEvTHWQsELj51e32qonWWGVS0DZ7OV5 // so that got me curious about where this object with the observation was coming back. 
+    // I realized that the 'ob' object was actually just part of the larger object that gets
+    // returned, ob and place. 
+    // So rather than setting 'ob' as const ob, I just started my query higher up in the object and set result.data as my primary source of truth.
 
     request.get().then((result) => {
         console.log('result.data:', result.data);
@@ -47,6 +48,10 @@ function returnConditions() {
                     <div>
                     <h3>Conditions in ${result.data.place.name.charAt(0).toUpperCase() + result.data.place.name.slice(1)}, ${result.data.place.state.toUpperCase()}</h3>
                     <p class="timestamp">at ${aeris.utils.dates.format(new Date(result.data.ob.timestamp * 1000), 'h:mm a on D MMM, YYYY')}</p>     
+                    <div>
+                            <img class="icon" src="https://cdn.aerisapi.com/wxblox/icons/${result.data.ob.icon || 'na.png'}">
+                        </div>
+                        <p class="wx">${result.data.ob.weatherPrimary}</p>
                     <div class="tempsFandC">
                         <p id="tempF" class="temp">${result.data.ob.tempF}</p><p class="temp">&deg;F</p>
                         <p class="temp">&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;</p>
@@ -78,9 +83,10 @@ function returnConditions() {
                 </div>
                `);
             target.innerHTML = html;
-        }
-        // }; // checkConditions();  
+        } // if(result.data) close
     }); //.then close
+
+    // NOTE: Well, knowing the current conditions is all well and dandy, but what if I need to wax skis and travel? I might need to know what the conditions are in Wisconsin, or Oregon, or the Iron Range. My location doesn't help me there, so let's add a forecast so that I can see what the predictions are for the location of my race:
     requestForecast.get().then((result) => {
         const data = result.data;
         const {
@@ -101,7 +107,6 @@ function returnConditions() {
                             <p><img class="icon" src="${icon}"></p>
                             <p class="wx">${weather}</p>
                             <p class="temps"><span>High:</span>${maxTempF} <span>Low:</span>${minTempF}</p>
-                            <p class="quick-predict">Quick Predict:</p>
                         </div>
                     </div>
                 `);
@@ -111,46 +116,47 @@ function returnConditions() {
     });
 }; // returnConditions();
 
+// NOTE: So now that I was getting back the information that I wanted and a forecast for any* location of my choosing, now I want to know just how miserable I'll be on my ski. This is an elaborated version of Waxxer 1.0, where I simply passed in a numeric temperature and returned a color based on a number of wax charts I found online from Swix, START, and Toko, three major wax makers.
 function moraleAfterSki() {
     // const tempOuter = document.getElementById('tempF');
     // console.log('tempOuter:', tempOuter);
     const temp = document.getElementById('tempF').innerText;
-    console.log('tempF:', temp);
+    // console.log('tempF:', temp);
 
     if (temp >= 51) {
         document
             .getElementById("tempforski")
-            .innerHTML = "1: At this point, you'll have better luck putting on your water skis than your nordic skis.";
+            .innerHTML = "<span class='wax-color'>1: At this point, you'll have better luck putting on your <span class='wax-waterskis'>water skis</span> than your nordic skis.</span>";
         console.log(temp, "waterskis")
     } else if (temp >= 40 && temp <= 50) {
         document
             .getElementById("tempforski")
-            .innerHTML = "2: It's unlikely you'll have a good time in temperatures this warm, but you do you. Use red wax!";
+            .innerHTML = "<span class='wax-color'>2: It's unlikely you'll have a good time in temperatures this warm, but you do you. <span class='wax-red'>Use red wax!</span></span>";
         console.log(temp, "red");
-    } else if (temp >= 30 && temp <= 39) {
+    } else if (temp >= 33 && temp <= 39) {
         document
             .getElementById("tempforski")
-            .innerHTML = "3: It's on the warmer side, but if it's cloudy or has been pretty cold the last few days it's probably fine. Use violet wax!";
+            .innerHTML = "<span class='wax-color'>3: It's on the warmer side, but if it's cloudy or has been snowing it's probably fine. <span class='wax-violet'>Use violet wax!</span></span>";
         console.log(temp, " violet ");
-    } else if (temp >= 19 && temp <= 29) {
+    } else if (temp >= 26 && temp <= 32) {
         document
             .getElementById("tempforski")
-            .innerHTML = "4: It's probably perfect conditions, not so cold as to make the snow slow, but not so war, as to make it slow. Use blue wax!";
+            .innerHTML = "<span class='wax-color'>4: It's probably near-perfect conditions, not so cold as to make the snow slow, but not so war, as to make it slow. <span class='wax-blue'>Use blue wax!</span></span>";
         console.log(temp, "blue");
-    } else if (temp >= 1 && temp <= 18) {
+    } else if (temp >= 10 && temp <= 25) {
         document
             .getElementById("tempforski")
-            .innerHTML = "5: It's between 1&deg;F and 18&def;F and the conditions are likely beautiful! Happy trails! Use green wax!";
+            .innerHTML = "<span class='wax-color'>5: It's a beautiful day for a ski! The conditions are likely beautiful! Happy trails! <span class='wax-green'>Use green wax!</span></span>";
         console.log(temp, "green");
-    } else if (temp >= -20 && temp <= 0) {
+    } else if (temp >= -20 && temp <= 9) {
         document
             .getElementById("tempforski")
-            .innerHTML = "6: The temperature is between 0&deg;F and -20&deg;F - it's very cold! Bundle up and watch out for frostbite! Use polar wax.";
+            .innerHTML = "<span class='wax-color'>6: The temperature is between 0&deg;F and -20&deg;F - it's very cold! Bundle up and watch out for frostbite! <span class='wax-polar'>Use polar wax.</span></span>";
         console.log(temp, " polar ");
     };
-}
+} // moraleAfterSki() close
 
-// TODO: original wax color function - big ol if/else!
+// HERE: original wax color function - big ol if/else!
 // function returnWaxColor() {
 //     var wax = document.getElementById('zipcode').value;
 //     if (wax > 61) {
@@ -176,4 +182,6 @@ function moraleAfterSki() {
 //         document
 //             .getElementById("wax-color-div").innerHTML = "polar";
 //         console.log(wax, "polar");
-//     }; // break returnWaxColor; } }; //request
+//     };
+//    returnWaxColor; 
+//  }

@@ -18,19 +18,25 @@ main {
     background-color: #3bb8ff;
 }
 
-.waxxer-body {
-    background-color: #fff;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 60px 0;
-}
-
 .header {
     display: flex;
     flex-direction: row;
     max-height: 150px;
     margin: 30px auto;
     justify-content: space-between;
+    width: 90%
+}
+
+.waxxer-intro {
+    margin: 30px auto;
+    font-size: 18px
+}
+
+.waxxer-body {
+    background-color: #fff;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 0;
 }
 
 .container {
@@ -78,10 +84,6 @@ main {
     /* the bottom margin is the negative value of the footer's height */
 }
 
-.waxxer-intro {
-    margin: 30px auto
-}
-
 .skiMoraleDiv {
     /* border: 1px solid #aaa; */
     padding: 5px;
@@ -109,6 +111,34 @@ main {
 
 .tempsFandC {
     display: flex;
+}
+
+span.wax-color {
+    font-size: 20px;
+}
+
+span.wax-waterskis {
+    color:
+}
+
+span.wax-red {
+    color: red;
+}
+
+span.wax-violet {
+    color: indigo;
+}
+
+span.wax-blue {
+    color: dodgerblue;
+}
+
+span.wax-green {
+    color: forestgreen;
+}
+
+span.wax-polar {
+    color: darkslategrey;
 }
 
 
@@ -184,6 +214,19 @@ main {
 
 #conditions .wx {
     font-size: 16px
+}
+
+#obs .icon {
+    margin: 0 20px;
+    width: 100px;
+}
+
+#obs .wx {
+    border-top: 2px solid #ddd;
+    font-size: 18px;
+    margin-top: 8px;
+    padding-top: 10px;
+    width: 150px;
 }
 
 
