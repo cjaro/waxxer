@@ -1,19 +1,7 @@
 # The Challenge
-We would like you to complete a small coding challenge as part of your interview process here at AerisWeather. This is an at-home challenge to avoid the pitfalls of having to use a whiteboard or live code in a potentially stressful situation in our office. Ideally the challenge is enjoyable and doesn’t take too long (just a few hours, max) as we want to be respectful of your time.
+We would like you to complete a small coding challenge as part of your interview process. This is an at-home challenge to avoid the pitfalls of having to use a whiteboard or live code in a potentially stressful situation in our office. Ideally the challenge is enjoyable and doesn’t take too long (just a few hours, max) as we want to be respectful of your time.
 
-We request you implement a program to create a “weather index” for an outdoor hobby of your choosing. Your program will need to accept a user’s location and return a 1-5 rating of whether it would be terrible or great for doing your activity presently. We already have several weather indices in our AerisWeather API that you may reference in our documentation. There is no need for your program to support all of the features (actions, parameters, filters, etc.) that our API supports, but do reference that documentation page to see how a user’s request for an index may get turned into a response.
-
-## Your program mainly needs to:
-* Accept user input for a location
-* Fetch the current conditions for the provided location from our AerisWeather API (A free developer account is available here: [https://www.aerisweather.com/signup/developer/])
-* Use a rule set you design to determine how conducive those current conditions are for the hobby of your choice.
-* Output the result of your rule checking as a 1-5 scale
-* Feel free to use a language and tools of your choice
-Rules:
-* Bring your source code with you to the followup interview - we’ll have you give a mini demo and have you show off your program and talk through why you did things the way you did
-* Don’t go overboard trying to implement other features, we want to be respectful of your time and don’t want you spending an entire weekend on this
-
-Please feel free to ask any questions. It's a little vague on purpose, as we want you to decide what works best and to use tools you enjoy.
+We request you implement a program to create a “weather index” for an outdoor hobby of your choosing. Your program will need to accept a user’s location and return a 1-5 rating of whether it would be terrible or great for doing your activity presently. We already have several weather indices in our API that you may reference in our documentation. There is no need for your program to support all of the features (actions, parameters, filters, etc.) that our API supports, but do reference that documentation page to see how a user’s request for an index may get turned into a response.
 
 # CJ's Documentation:
 * I started by reading through the ‘Getting Started’ for the JavaScript SDK for implementation into Waxxer, a tool I built over the winter when conditions for Nordic skiing were unpredictable. Temperature, humidity, snow type, and forecast all factor into choosing a wax for the bottom of your skis, so I thought it would be nice.
