@@ -26,7 +26,7 @@
         <div class="waxxer-body">
             <div class="container header waxxer-header">
                 <a href="waxxer.io">
-                    <img class="icon" src="icons/favicon-194x194.png" alt="">
+                    <img class="waxxer-icon" src="icons/favicon-194x194.png" alt="">
                 </a>
                 <h1>Waxxer</h1>
                 <a href="https://github.com/cjaro/waxxer">
@@ -48,30 +48,22 @@
                                 <div class="form-group form-inline">
                                     <input id="zipcode" class="form-control input-zip" placeholder="ZIP Code" name="location input" type="text">
                                     <!-- <div id="zipcode">55406</div> -->
-                                    <button class="btn btn-primary" type="submit" onclick="returnConditions();">check
-                                        weather
-                                        for skiing</button>
+                                    <button class="btn" type="submit" onclick="returnConditions();">
+                                        check weather for skiing
+                                    </button>
                                 </div>
                             </div>
                         </div>
                         <div class="skiMoraleDiv">
                             <div id="conditions"></div>
                         </div>
-                        <div>
-                            <h4>On a scale of 1 (awful) to 6 (awesome), how good will ski conditions be?
-                            </h4>
-                            <button class="btn btn-danger" onclick="moraleAfterSki();">Let's find out!</button>
-                            <div class="skiMoraleDiv">
-                                <h4 id="tempforski"></h4>
-                            </div>
-                        </div>
-                        <div class="skiMoraleDiv">
-                            <h4>Do you have a race coming up? Be prepared!</h4>
-                            <div id="forecast"></div>
-                        </div>
+
+
+                        <div id="forecast"></div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <!-- <div class="wrapper">
         <img src="assets/cross-country-skiing-mountains.jpg" alt="">

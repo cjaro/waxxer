@@ -19,6 +19,14 @@ function returnConditions() {
         console.log('result.data:', result.data);
         if (result.data) {
             const html = (`
+            <div class="scale-div">
+            <span class="scale-span">On a scale of 1 (awful) to 6 (awesome), how good will ski conditions be?</span>
+            <br>
+            <button class="btn" onclick="moraleAfterSki();">Let's find out!</button>
+            <div class="skiMoraleDiv">
+                <h4 id="tempforski"></h4>
+            </div>
+        </div>
                 <div class="cols">
                     <div>
                     <h3>Conditions in ${result.data.place.name.charAt(0).toUpperCase() + result.data.place.name.slice(1)}, ${result.data.place.state.toUpperCase()}</h3>
@@ -41,22 +49,26 @@ function returnConditions() {
                     <div class="row">                                
                         <div>Windchill</div>
                             <div>${result.data.ob.windchillF}<span>&deg;F</span></div>
-                        </div>
-                        <div class="row">
-                            <div>Winds</div>
-                            <div>${result.data.ob.windSpeedMPH}</div>
-                        </div>
-                        <div class="row">
-                            <div>Sunrise</div>
-                            <div>${aeris.utils.dates.format(new Date(result.data.ob.sunriseISO), 'HH:mm')}</div>
-                        </div>
-                        <div class="row">
-                            <div>Sunset</div>
-                            <div>${aeris.utils.dates.format(new Date(result.data.ob.sunsetISO), 'HH:mm')}</div>
-                        </div>
-                    </div>    
-                </div>
-               `);
+                    </div>
+                    <div class="row">
+                        <div>Winds</div>
+                        <div>${result.data.ob.windSpeedMPH}</div>
+                    </div>
+                    <div class="row">
+                        <div>Sunrise</div>
+                        <div>${aeris.utils.dates.format(new Date(result.data.ob.sunriseISO), 'HH:mm')}</div>
+                    </div>
+                    <div class="row">
+                        <div>Sunset</div>                            
+                        <div>${aeris.utils.dates.format(new Date(result.data.ob.sunsetISO), 'HH:mm')}</div>
+                    </div>
+                </div>    
+               
+            </div>
+            <div class="skiMoraleDiv">
+                            <h4>Do you have a race coming up? Be prepared!</h4>
+                            
+           `);
             target.innerHTML = html;
         } // if(result.data) close
     }); //.then close
