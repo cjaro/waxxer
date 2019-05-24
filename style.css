@@ -27,16 +27,23 @@ main {
     width: 90%
 }
 
+.waxxer-header {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    margin: 15px auto
+}
+
 .waxxer-intro {
-    margin: 30px auto;
-    font-size: 18px
+    margin: 15px auto;
+    font-size: 14px
 }
 
 .waxxer-body {
     background-color: #fff;
     max-width: 900px;
     margin: 0 auto;
-    padding: 60px 0;
+    padding: 15px 0 60px 0;
 }
 
 .container {
@@ -127,28 +134,65 @@ span.wax-color {
     padding: 5px
 }
 
+.wax-color b {
+    font-size: 18px;
+    padding: 15px;
+    margin: 5px;
+    border: 2px solid #000;
+    background-color: orangered;
+    color: #FFFFFF;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
 span.wax-waterskis {
-    color: #0000FF
+    color: #0000FF;
+    border: 1px solid #0000FF;
+    padding: 5px;
 }
 
 span.wax-red {
     color: red;
+    border: 1px solid red;
+    padding: 5px;
 }
 
 span.wax-violet {
-    color: indigo;
+    color: #a200ff;
+    border: 1px solid #a200ff;
+    padding: 5px;
 }
 
 span.wax-blue {
     color: dodgerblue;
+    border: 1px solid dodgerblue;
+    padding: 5px;
 }
 
 span.wax-green {
     color: forestgreen;
+    border: 1px solid forestgreen;
+    padding: 5px;
 }
 
 span.wax-polar {
     color: darkslategrey;
+    border: 1px solid darkslategrey;
+    padding: 5px;
+}
+
+.btn {
+    background-color: #3bb8ff;
+    border: 1px solid #3bb8ff;
+    color: #000;
+    width: 25%;
+    margin: 15px 0;
+}
+
+.btn,
+#zipcode {
+    width: 25%;
+    margin: 15px 0;
+    height: 45px
 }
 
 
@@ -287,14 +331,15 @@ span.wax-polar {
 }
 
 #forecast .card .temps {
-    font-size: 16px;
+    font-size: 14px;
     /* font-weight: bold; */
     margin-top: 20px;
 }
 
 #forecast .card .temps span {
     /* color: #666; */
-    font-size: 16px;
-    font-weight: normal;
-    padding-right: 6px;
+    font-size: 14px;
+    padding-right: 5px;
 }
+
+;
