@@ -79,7 +79,9 @@ function returnConditions() {
         .get()
         .then((result) => {
             const data = result.data;
-            const { periods } = data[0];
+            const {
+                periods
+            } = data[0];
             if (periods) {
                 periods
                     .reverse()
@@ -88,6 +90,8 @@ function returnConditions() {
                         const icon = `https://cdn.aerisapi.com/wxblox/icons/${period.icon || 'na.png'}`;
                         const maxTempF = period.maxTempF || 'N/A';
                         const minTempF = period.minTempF || 'N/A';
+                        const maxTempC = period.maxTempC || 'N/A';
+                        const minTempC = period.minTempC || 'N/A';
                         const weather = period.weatherPrimary || 'N/A';
 
                         const html = (`
@@ -96,7 +100,7 @@ function returnConditions() {
                             <p class="title">${aeris.utils.dates.format(date, 'dddd')}</p>
                             <p><img class="icon" src="${icon}"></p>
                             <p class="wx">${weather}</p>
-                            <p class="temps"><span>High:</span>${maxTempF} // <span>Low:</span>${minTempF}</p>
+                            <p class="temps"><span>High:</span>${maxTempF}ºF (${maxTempC}ºC)<br> <span>Low:</span>${minTempF}ºF (${minTempC}ºC)</p>
                         </div>
                     </div>
                 `);
@@ -116,59 +120,58 @@ function moraleAfterSki() {
     if (temp >= 51) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<span class='wax-color'><b>1</b> At this point, you'll have better luck putting " +
-            "on your <span class='wax-waterskis'>water skis</span> than your nordic skis.</sp" +
-            "an>";
+            .innerHTML = "<span class='wax-color'><b>1</b><br> At this point, nordic skis won't cut it.</span>" +
+            "<div class='wax-waterskis'>Pull out your water skis!</div>";
         console.log(temp, "waterskis")
     } else if (temp >= 40 && temp <= 50) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<span class='wax-color'><b>2</b> It's unlikely you'll have a good time in temper" +
-            "atures this warm, but you do you. <span class='wax-red'>Use red wax!</span></spa" +
-            "n>";
+            .innerHTML = "<span class='wax-color'><b>2</b><br> It's unlikely you'll have a good time in temper" +
+            "atures this warm, but you do you.</span><br><div class='wax wax-red'>Use red wax" +
+            "!</div></span>";
         console.log(temp, "red");
     } else if (temp >= 33 && temp <= 39) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<span class='wax-color'><b>3</b> It's on the warmer side, but if it's cloudy or " +
-            "has been snowing it's probably fine. <span class='wax-violet'>Use violet wax!</s" +
-            "pan></span>";
+            .innerHTML = "<span class='wax-color'><b>3</b><br> It's on the warmer side, but if it's cloudy or " +
+            "has been snowing it's probably fine. <br><div class='wax wax-violet'>Use violet " +
+            "wax!</div></span>";
         console.log(temp, " violet ");
     } else if (temp >= 26 && temp <= 32) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<span class='wax-color'><b>4</b> It's probably near-perfect conditions, not so c" +
-            "old as to make the snow slow, but not so war, as to make it slow. <span class='w" +
-            "ax-blue'>Use blue wax!</span></span>";
+            .innerHTML = "<span class='wax-color'><b>4</b> <br>It's probably near-perfect conditions, not so c" +
+            "old as to make the snow slow, but not so war, as to make it slow. <br><div class" +
+            "='wax wax-blue'>Use blue wax!</div></span>";
         console.log(temp, "blue");
     } else if (temp >= 10 && temp <= 25) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<span class='wax-color'><b>5</b> It's a beautiful day for a ski! The conditions " +
-            "are likely beautiful! Happy trails! <span class='wax-green'>Use green wax!</span" +
-            "></span>";
+            .innerHTML = "<span class='wax-color'><b>5</b><br> It's a beautiful day for a ski! The conditions " +
+            "are likely beautiful! Happy trails! <br><div class='wax wax-green'>Use green wax" +
+            "!</div></span>";
         console.log(temp, "green");
     } else if (temp <= 9) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<span class='wax-color'><b>6</b> The temperature is between 0&deg;F and -20&deg;" +
-            "F - it's very cold! Bundle up and watch out for frostbite! <span class='wax-pola" +
-            "r'>Use polar wax.</span></span>";
+            .innerHTML = "<span class='wax-color'><b>6</b><br> The temperature is between 0&deg;F and -20&deg;" +
+            "F - it's very cold! Bundle up and watch out for frostbite! <br><div class='wax w" +
+            "ax-polar'>Use polar wax.</div></span>";
         console.log(temp, " polar ");
     };
 } // moraleAfterSki() close
 
 // HERE: original wax color function - big ol if/else! function returnWaxColor()
-// {     var wax = document.getElementById('zipcode').value;     if (wax > 61)
-// {         document.getElementById("wax-color-div").innerHTML = "waterskis";
-//   console.log(wax, "waterskis")     } else if (wax > 34 && wax < 60) {
-//  document.getElementById("wax-color-div").innerHTML =  "red";
-// console.log(wax, "red");     } else if (wax > 30 && wax < 33) {
+// {     var wax = document.getElementById('zipcode').value;     if (wax > 61) {
+//         document.getElementById("wax-color-div").innerHTML = "waterskis";
+// console.log(wax, "waterskis")     } else if (wax > 34 && wax < 60) {
+// document.getElementById("wax-color-div").innerHTML =  "red"; console.log(wax,
+// "red");     } else if (wax > 30 && wax < 33) {
 // document.getElementById("wax-color-div").innerHTML = "violet";
 // console.log(wax, "violet");     } else if (wax > 15 && wax < 29) { document
-//           .getElementById("wax-color-div").innerHTML = "blue";
-// console.log(wax, "blue");     } else if (wax > -3 && wax < 14) { document
-//         .getElementById("wax-color-div").innerHTML = "green";
-// console.log(wax, "green");     } else if (wax > -22 && wax < -4) {   document
-//             .getElementById("wax-color-div").innerHTML = "polar";
-// console.log(wax, "polar");     };    returnWaxColor;  }
+// .getElementById("wax-color-div").innerHTML = "blue"; console.log(wax,
+// "blue");     } else if (wax > -3 && wax < 14) { document
+// .getElementById("wax-color-div").innerHTML = "green"; console.log(wax,
+// "green");     } else if (wax > -22 && wax < -4) {   document
+// .getElementById("wax-color-div").innerHTML = "polar"; console.log(wax,
+// "polar");     };    returnWaxColor;  }
