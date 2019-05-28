@@ -23,12 +23,14 @@ function returnConditions() {
                 const html = (`
             <div class="scale-div">
             <span class="scale-span">On a scale of 1 (awful) to 6 (awesome), how good will ski conditions be?</span>
-            <br>
+<br>
             <button class="btn" onclick="moraleAfterSki();">Let's find out!</button>
+            <br>
             <div class="skiMoraleDiv">
                 <h4 id="tempforski"></h4>
             </div>
         </div>
+        <hr class="waxxer-hr">
                 <div class="cols">
                     <div>
                     <h3>Conditions in ${result.data.place.name.charAt(0).toUpperCase() + result.data.place.name.slice(1)}, ${result.data.place.state.toUpperCase()}</h3>
@@ -120,43 +122,32 @@ function moraleAfterSki() {
     if (temp >= 51) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<span class='wax-color'><b>1</b><br> At this point, nordic skis won't cut it.</span>" +
-            "<div class='wax-waterskis'>Pull out your water skis!</div>";
+            .innerHTML = "<div class='wax-color'><div class='wax-color-waterskis'><b>1</b></div><div class='wax-waterskis'> Pull out your water skis!</div></div><div class='wax-comments'> At this point, nordic skis won't cut it.</div>"
         console.log(temp, "waterskis")
     } else if (temp >= 40 && temp <= 50) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<span class='wax-color'><b>2</b><br> It's unlikely you'll have a good time in temper" +
-            "atures this warm, but you do you.</span><br><div class='wax wax-red'>Use red wax" +
-            "!</div></span>";
+            .innerHTML = "<div class='wax-color'><div class='wax-color-red'><b>2</b></div><div class='wax-red' > Use red wax </div></div><div class='wax-comments'>It 's unlikely you'll have a good time in temperatures this warm, but you do you.</div>";
         console.log(temp, "red");
     } else if (temp >= 33 && temp <= 39) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<span class='wax-color'><b>3</b><br> It's on the warmer side, but if it's cloudy or " +
-            "has been snowing it's probably fine. <br><div class='wax wax-violet'>Use violet " +
-            "wax!</div></span>";
+            .innerHTML = "<div class='wax-color'><div class='wax-color-violet'><b>3</b></div><div class='wax wax-violet'>Use violet wax!</div></div><div class='wax-comments'>It's on the warmer side, but if it's cloudy or has been snowing it's probably fine.</div> ";
         console.log(temp, " violet ");
     } else if (temp >= 26 && temp <= 32) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<span class='wax-color'><b>4</b> <br>It's probably near-perfect conditions, not so c" +
-            "old as to make the snow slow, but not so war, as to make it slow. <br><div class" +
-            "='wax wax-blue'>Use blue wax!</div></span>";
+            .innerHTML = "<div class='wax-color'><div class='wax-color-blue '><b>4</b></div><div class='wax wax-blue '>Use blue wax!</div></div><div class='wax-comments'>It's probably near-perfect conditions, not so c " + "old as to make the snow slow, but not so warm as to make it slow. </div>";
         console.log(temp, "blue");
     } else if (temp >= 10 && temp <= 25) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<span class='wax-color'><b>5</b><br> It's a beautiful day for a ski! The conditions " +
-            "are likely beautiful! Happy trails! <br><div class='wax wax-green'>Use green wax" +
-            "!</div></span>";
+            .innerHTML = "<div class='wax-color'><div class='wax-color-green'><b>5</b></div><div class='wax wax-green'>Use green wax!</div></div><div class='wax-comments'>It's a beautiful day for a ski! The conditions are likely beautiful! Happy trails!</div>";
         console.log(temp, "green");
     } else if (temp <= 9) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<span class='wax-color'><b>6</b><br> The temperature is between 0&deg;F and -20&deg;" +
-            "F - it's very cold! Bundle up and watch out for frostbite! <br><div class='wax w" +
-            "ax-polar'>Use polar wax.</div></span>";
+            .innerHTML = "<div class='wax-color'><div class='wax-color-polar'><b>6</b></div><div class='wax wax-polar'>Use polar wax.</div></div><div class='wax-comments'>The temperature is between 0&deg;F and -20&deg;F - it's very cold! Bundle up and watch out for frostbite!</div>";
         console.log(temp, " polar ");
     };
 } // moraleAfterSki() close

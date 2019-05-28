@@ -48,7 +48,9 @@ const tempOuter = document.getElementById('tempF');
    `beforebegin': Before the element itself`;  
    `afterbegin': Just inside the element, before its first child`;  
    `beforeend': Just inside the element, after its last child.`;  
-   `afterend': After the element itself.`.
+   `afterend': After the element itself.`
+
+* **How to select dynamically from input** - This was a point of issue I'd had with Waxxer up to this point; figuring out how to dynamically pull from the input field was a huge breakthrough in the next steps of this project.
 
 
 ## Closing Thoughts
