@@ -46,8 +46,11 @@ const tempOuter = document.getElementById('tempF');
 * **insertAdjacentHTML()** - This bit of API fun piqued my interest as I dug into more comprehensive API education. As I was going through the examples in Aeris' docs, I saw this as part of the forecast loop. I wanted to understand what I was looking at so the MDN web API docs helped me out here as I leanred a bit more about "a DOMString representing the position relative to the element; must be 
 
    `beforebegin': Before the element itself`; 
+
    `afterbegin': Just inside the element, before its first child`; 
+
    `beforeend': Just inside the element, after its last child.`;
+   
    `afterend': After the element itself.`.
 
 
