@@ -251,72 +251,66 @@ main {
 
 /* AERIS API CHALLENGE CSS */
 
-
-/* I: CONDITIONS */
-
 #conditions {
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
     margin: 15px auto;
-    /* padding: 15px; */
-    width: 100%;
+    width: 100%
 }
 
 #conditions p {
-    margin: 0;
+    margin: 0
 }
 
 #conditions .cols {
     display: flex;
-    flex-direction: column;
+    flex-direction: column
 }
 
 #conditions .details .row {
-    display: flex;
+    display: flex
 }
 
 #conditions .cols>div {
-    /* flex-basis: 0; */
-    margin: 0 5px;
+    margin: 0 5px
 }
 
 #conditions .temp,
 .tempC {
     font-size: 30px;
-    margin: 0 5px;
+    margin: 0 5px
 }
 
 #conditions .temp span,
 .tempC span {
     font-size: 30px;
-    font-weight: normal;
-    padding-left: 6px;
+    font-weight: 400;
+    padding-left: 6px
 }
 
 #conditions .details {
-    font-size: 14px;
+    font-size: 14px
 }
 
 #conditions .details .row>div {
     flex-basis: 0;
     flex-grow: 1;
     margin: 0 5px;
-    width: 100px;
+    width: 100px
 }
 
 #conditions .details .row {
     margin: 6px 0;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid #999
 }
 
 #conditions .details .row div:last-child {
-    font-size: 16px;
-    /* font-weight: bold; */
+    font-size: 16px
 }
 
 #conditions .timestamp {
     color: #000;
     font-size: 14px;
-    margin-bottom: 8px;
+    margin-bottom: 8px
 }
 
 #conditions .wx {
@@ -334,43 +328,37 @@ main {
     font-size: 18px;
     margin-top: 8px;
     padding-top: 10px;
-    width: 150px;
+    width: 150px
 }
-
-
-/* II: FORECAST */
 
 #forecast {
     color: #222;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    font-family: 'Roboto', sans-serif;
-    margin: 10px auto;
-    /* width: 600px; */
+    font-family: Roboto, sans-serif;
+    margin: 10px auto
 }
 
 #forecast p {
-    margin: 0;
+    margin: 0
 }
 
 #forecast .card {
     flex-basis: 0;
     flex-grow: 1;
-    margin: 0 5px;
+    margin: 0 5px
 }
 
 #forecast .card-body {
     background: #fff;
     border: 1px solid #ddd;
-    /* box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1); */
     padding: 10px;
-    text-align: center;
+    text-align: center
 }
 
 #forecast .card .title {
-    font-size: 14px;
-    /* font-weight: bold; */
+    font-size: 14px
 }
 
 #forecast .card .icon {
@@ -380,19 +368,15 @@ main {
 }
 
 #forecast .card .wx {
-    font-size: 12px;
+    font-size: 12px
 }
 
 #forecast .card .temps {
     font-size: 14px;
-    /* font-weight: bold; */
-    margin-top: 20px;
+    margin-top: 20px
 }
 
 #forecast .card .temps span {
-    /* color: #666; */
     font-size: 14px;
-    padding-right: 5px;
+    padding-right: 5px
 }
-
-;

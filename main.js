@@ -23,7 +23,7 @@ function returnConditions() {
                 const html = (`
             <div class="scale-div">
             <span class="scale-span">On a scale of 1 (awful) to 6 (awesome), how good will ski conditions be?</span>
-<br>
+            <br>
             <button class="btn" onclick="moraleAfterSki();">Let's find out!</button>
             <br>
             <div class="skiMoraleDiv">
@@ -81,9 +81,7 @@ function returnConditions() {
         .get()
         .then((result) => {
             const data = result.data;
-            const {
-                periods
-            } = data[0];
+            const { periods } = data[0];
             if (periods) {
                 periods
                     .reverse()
@@ -122,39 +120,53 @@ function moraleAfterSki() {
     if (temp >= 51) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<div class='wax-color'><div class='wax-color-waterskis'><b>1</b></div><div class='wax-waterskis'> Pull out your water skis!</div></div><div class='wax-comments'> At this point, nordic skis won't cut it.</div>"
+            .innerHTML = "<div class='wax-color'><div class='wax-color-waterskis'><b>1</b></div><div class" +
+            "='wax-waterskis'> Pull out your water skis!</div></div><div class='wax-comments'" +
+            "> At this point, nordic skis won't cut it.</div>"
         console.log(temp, "waterskis")
     } else if (temp >= 40 && temp <= 50) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<div class='wax-color'><div class='wax-color-red'><b>2</b></div><div class='wax-red' > Use red wax </div></div><div class='wax-comments'>It 's unlikely you'll have a good time in temperatures this warm, but you do you.</div>";
+            .innerHTML = "<div class='wax-color'><div class='wax-color-red'><b>2</b></div><div class='wax-" +
+            "red' > Use red wax </div></div><div class='wax-comments'>It 's unlikely you'll h" +
+            "ave a good time in temperatures this warm, but you do you.</div>";
         console.log(temp, "red");
     } else if (temp >= 33 && temp <= 39) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<div class='wax-color'><div class='wax-color-violet'><b>3</b></div><div class='wax wax-violet'>Use violet wax!</div></div><div class='wax-comments'>It's on the warmer side, but if it's cloudy or has been snowing it's probably fine.</div> ";
+            .innerHTML = "<div class='wax-color'><div class='wax-color-violet'><b>3</b></div><div class='w" +
+            "ax wax-violet'>Use violet wax!</div></div><div class='wax-comments'>It's on the " +
+            "warmer side, but if it's cloudy or has been snowing it's probably fine.</div> ";
         console.log(temp, " violet ");
     } else if (temp >= 26 && temp <= 32) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<div class='wax-color'><div class='wax-color-blue '><b>4</b></div><div class='wax wax-blue '>Use blue wax!</div></div><div class='wax-comments'>It's probably near-perfect conditions, not so c " + "old as to make the snow slow, but not so warm as to make it slow. </div>";
+            .innerHTML = "<div class='wax-color'><div class='wax-color-blue '><b>4</b></div><div class='wa" +
+            "x wax-blue '>Use blue wax!</div></div><div class='wax-comments'>It's probably ne" +
+            "ar-perfect conditions, not so c old as to make the snow slow, but not so warm as" +
+            " to make it slow. </div>";
         console.log(temp, "blue");
     } else if (temp >= 10 && temp <= 25) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<div class='wax-color'><div class='wax-color-green'><b>5</b></div><div class='wax wax-green'>Use green wax!</div></div><div class='wax-comments'>It's a beautiful day for a ski! The conditions are likely beautiful! Happy trails!</div>";
+            .innerHTML = "<div class='wax-color'><div class='wax-color-green'><b>5</b></div><div class='wa" +
+            "x wax-green'>Use green wax!</div></div><div class='wax-comments'>It's a beautifu" +
+            "l day for a ski! The conditions are likely beautiful! Happy trails!</div>";
         console.log(temp, "green");
     } else if (temp <= 9) {
         document
             .getElementById("tempforski")
-            .innerHTML = "<div class='wax-color'><div class='wax-color-polar'><b>6</b></div><div class='wax wax-polar'>Use polar wax.</div></div><div class='wax-comments'>The temperature is between 0&deg;F and -20&deg;F - it's very cold! Bundle up and watch out for frostbite!</div>";
+            .innerHTML = "<div class='wax-color'><div class='wax-color-polar'><b>6</b></div><div class='wa" +
+            "x wax-polar'>Use polar wax.</div></div><div class='wax-comments'>The temperature" +
+            " is between 0&deg;F and -20&deg;F - it's very cold! Bundle up and watch out for " +
+            "frostbite!</div>";
         console.log(temp, " polar ");
     };
 } // moraleAfterSki() close
 
 // HERE: original wax color function - big ol if/else! function returnWaxColor()
-// {     var wax = document.getElementById('zipcode').value;     if (wax > 61) {
-//         document.getElementById("wax-color-div").innerHTML = "waterskis";
+// {     var wax = document.getElementById('zipcode').value;     if (wax > 61)
+// {         document.getElementById("wax-color-div").innerHTML = "waterskis";
 // console.log(wax, "waterskis")     } else if (wax > 34 && wax < 60) {
 // document.getElementById("wax-color-div").innerHTML =  "red"; console.log(wax,
 // "red");     } else if (wax > 30 && wax < 33) {
