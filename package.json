@@ -4,10 +4,10 @@
   "description": "tool for selecting ski wax in a variety of temperatures, humidities, snow condition, and technique.",
   "main": "main.js",
   "dependencies": {
-    "eslint": "^5.9.0",
-    "github-fork-ribbon-css": "^0.2.1",
-    "npm": "^6.4.1",
-    "vue": "^2.5.17"
+    "eslint": "^5.16.0",
+    "github-fork-ribbon-css": "^0.2.3",
+    "npm": "^6.13.7",
+    "vue": "^2.6.11"
   },
   "devDependencies": {},
   "scripts": {
