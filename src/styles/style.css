@@ -4,10 +4,6 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-main {
-    background-color: #ddd;
-    height: 150%;
-}
 
 .header {
     display: flex;
@@ -26,8 +22,9 @@ main {
 }
 
 .waxxer-intro {
-    margin: 15px auto;
-    font-size: 14px
+    margin: auto;
+    font-size: 16px;
+    text-align: center;
 }
 
 .waxxer-body {
@@ -54,6 +51,7 @@ main {
 .button-div {
     margin-top: 25px
 }
+
 
 .waxxer-form {
     /* max-width: 700px !important */
@@ -95,10 +93,6 @@ main {
     /* .push must be the same height as .footer */
 }
 
-.github-fork-ribbon:before {
-    background-color: #007bff !important;
-}
-
 .hideUnderConstruction {
     display: none;
 }
@@ -127,33 +121,34 @@ main {
 
 .wax-color b {
     font-size: 18px;
-    padding: 5px;
-    /* margin: 15px 0; */
-    border: 1px solid #000;
-    color: #FFFFFF;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    /* line-height: 45px; */
 }
 
 .wax-comments {
-    margin: 15px 0
+    margin: 15px 0;
+    font-size: 18px;
 }
 
 .wax-waterskis {
     color: #0000FF;
-    border: 1px solid #0000FF;
+    padding: 5px;
+}
+.wax-color-waterskis {
     padding: 5px;
 }
 
 .wax-red {
     color: red;
-    border: 1px solid red;
+    padding: 5px;
+}
+.wax-color-red {
     padding: 5px;
 }
 
+.wax-color-violet {
+    padding: 5px;
+}
 .wax-violet {
     color: #a200ff;
-    border: 1px solid #a200ff;
     padding: 5px;
 }
 
@@ -162,70 +157,25 @@ main {
     border: 1px solid dodgerblue;
     padding: 5px;
 }
+.wax-color-blue {
+    padding: 5px;
+}
 
 .wax-green {
     color: forestgreen;
     border: 1px solid forestgreen;
     padding: 5px;
 }
-
-.wax-polar {
-    color: darkslategrey;
-    border: 1px solid darkslategrey;
-    padding: 5px;
-}
-
-.wax-color-waterskis {
-    padding: 5px;
-}
-
-.wax-color-violet {
-    padding: 5px;
-}
-
-.wax-color-red {
-    padding: 5px;
-}
-
-.wax-color-blue {
-    padding: 5px;
-}
-
 .wax-color-green {
     padding: 5px;
 }
 
+
+.wax-polar {
+    color: darkslategrey;
+    border: 1px solid darkslategrey;
+}
 .wax-color-polar {
-    padding: 5px;
-}
-
-.wax-color-waterskis b {
-    background-color: #0000FF;
-    padding: 5px;
-}
-
-.wax-color-violet b {
-    background-color: #a200ff;
-    padding: 5px;
-}
-
-.wax-color-red b {
-    background-color: orangered;
-    padding: 5px;
-}
-
-.wax-color-blue b {
-    background-color: dodgerblue;
-    padding: 5px;
-}
-
-.wax-color-green b {
-    background-color: forestgreen;
-    padding: 5px;
-}
-
-.wax-color-polar b {
-    background-color: darkslategrey;
     padding: 5px;
 }
 
@@ -244,12 +194,13 @@ main {
     height: 45px
 }
 
+.btn-check-weather {
+    font-size: 14px;
+}
+
 .waxxer-hr {
     margin: 30px 0
 }
-
-
-/* AERIS API CHALLENGE CSS */
 
 #conditions {
     font-family: Roboto, sans-serif;
@@ -301,10 +252,6 @@ main {
 #conditions .details .row {
     margin: 6px 0;
     border-bottom: 1px solid #999
-}
-
-#conditions .details .row div:last-child {
-    font-size: 16px
 }
 
 #conditions .timestamp {
