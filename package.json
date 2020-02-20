@@ -5,9 +5,10 @@
   "main": "main.js",
   "dependencies": {
     "eslint": "^5.16.0",
-    "github-fork-ribbon-css": "^0.2.3",
-    "npm": "^6.13.7",
-    "vue": "^2.6.11"
+    "github-fork-ribbon-css": "^0.2.1",
+    "npm": "^6.13.4",
+    "vue": "^2.5.17"
+    "eslint": ,
   },
   "devDependencies": {},
   "scripts": {
