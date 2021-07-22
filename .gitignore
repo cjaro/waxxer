@@ -2,6 +2,8 @@
 .gitignore
 node_modules/
 package-lock.json
+.idea/
+.vscode/
 
 # Logs
 logs

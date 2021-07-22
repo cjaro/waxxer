@@ -4,6 +4,7 @@ function returnConditions() {
   const targetForecast = document.getElementById('forecast');
 
   const aeris = new AerisWeather('RPWkCaESX2v8UsgEhZSu8', 'NIKctIWAkkEvTHWQsELj51e32qonWWGVS0DZ7OV5');
+  const openWeatherMap =
   const request = aeris.api().endpoint('observations').place(document.getElementById('zipcode').value);
   const requestForecast = aeris.api().endpoint('forecasts').place(document.getElementById('zipcode').value).limit(5);
 
