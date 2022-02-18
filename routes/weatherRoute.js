@@ -16,10 +16,9 @@ router.get('/', async function(req, res, next) {
       .get(openWeatherReqUrl)
       .then(result => {
         let weatherJson = result.data;
-        console.log(`Status code: ${result.status}`);
-        console.log(weatherJson);
+        // console.log(weatherJson);
         res.render("weather", {
-          title: "☀️🌧 Weather ❄️🌩",
+          title: "☀️🌧 Weather! ❄️🌩",
           weather: weatherJson
         });
       })
@@ -27,7 +26,11 @@ router.get('/', async function(req, res, next) {
         console.error(error);
       });
   } catch (error) {
-    res.send({error: error.toString()});
+    console.log(error.toString());
+    res.render("error", {
+      title: "Error",
+      error: error.toString()
+    })
   }
 });
 

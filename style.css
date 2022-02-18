@@ -4,6 +4,13 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+.construction-zone {
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: orangered;
+}
+
 
 .header {
     display: flex;
