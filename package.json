@@ -2,23 +2,31 @@
   "name": "waxxer",
   "version": "1.0.0",
   "description": "tool for selecting ski wax in a variety of temperatures, humidities, snow condition, and technique.",
-  "main": "main.js",
+  "main": "src/app.js",
   "dependencies": {
+    "axios": "^0.26.0",
+    "body-parser": "^1.19.1",
+    "dotenv": "^16.0.0",
     "eslint": "^5.16.0",
+    "express": "^4.17.2",
     "github-fork-ribbon-css": "^0.2.1",
     "npm": "^6.13.4",
-    "vue": "^2.5.17"
-    "eslint": ,
+    "prettier": "^2.5.1",
+    "pug": "^2.0.0"
   },
-  "devDependencies": {},
   "scripts": {
+    "start": "nodemon src/app.js",
     "test": "test"
   },
   "keywords": [
-    "skiing",
-    "wax",
-    "calculator"
+    "cross country skiing",
+    "nordic skiing",
+    "ski wax",
+    "calculator",
+    "weather",
+    "forecast"
   ],
   "author": "cjaro",
+  "repository": "git@github.com:cjaro/waxxer.git",
   "license": "ISC"
 }

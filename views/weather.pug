@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    div(class="container")
+        h1= title
+        h2 Weather in !{weather.name}, !{weather.sys.country}
+        h4 !{weather.coord.lat}, !{weather.coord.lon}
+
+        p Weather conditions: !{weather.weather[0].main}
+        p Conditions description: !{weather.weather[0].description}
+
+        p Temp !{weather.main.temp}
+        p Hi !{weather.main.temp_max}
+        p Lo !{weather.main.temp_min}
+        p Feels like !{weather.main.feels_like}
+        p Pressure !{weather.main.temp_min}
+        p Humidity !{weather.main.humidity}
+
+        a(href="/") ← Back
