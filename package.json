@@ -28,5 +28,8 @@
   ],
   "author": "cjaro",
   "repository": "git@github.com:cjaro/waxxer.git",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "14"
+  }
 }
