@@ -1,26 +1,40 @@
 extends layout
 
 block content
-    div(class="construction-zone" style="width: 100%; margin: 0 auto; padding: 5px; background-color: orangered; text-align: center;")
-        h3 Under construction! Check back later for improvements & updates!
+
     div(class="container")
         h1= title
-        h2 Weather in !{weather.name}, !{weather.sys.country} (!{weather.coord.lat}, !{weather.coord.lon})
+        h2 Weather in !{weather.name}, !{weather.country} (!{weather.latitude}, !{weather.longitude}) as of !{weather.currentTime}
+        img(src=`http://openweathermap.org/img/wn/${weather.iconCode}.png`)
 
-        p Current weather condition: !{weather.weather[0].main} (!{weather.weather[0].description})
+        p Current weather condition: !{weather.condition} (!{weather.conditionDescription})
 
-        p Current temperature: !{Math.round(weather.main.temp - 273.15)} C | !{Math.round((weather.main.temp - 273.15) * 9/5 + 32)} F
-        p Hi: !{Math.round(weather.main.temp_max - 273.15)} C | !{Math.round((weather.main.temp_max - 273.15) * 9 / 5 + 32)} F
-        p Lo: !{Math.round(weather.main.temp_min - 273.15)} C | !{Math.round((weather.main.temp_min - 273.15) * 9 / 5 + 32)} F
-        p Feels like: !{Math.round(weather.main.feels_like - 273.15)} C | !{Math.round((weather.main.feels_like - 273.15) * 9 / 5 + 32)} F
-        p Pressure: !{weather.main.pressure}mB
-        p Humidity: !{weather.main.humidity}%
-
-        div(class="get-weather-form")
-            form(action='/get-weather', method='POST')
-                p
-                    | zipcode:
-                    input(type='text', name='zipcode', value='')
-                input(type='submit', value='Get ze Weather!')
-
-        a(href="/") ← Back
+        table(style="width:50%;")
+            tr
+                td(style="border-bottom: 1px solid black;") Sunrise/Sunset
+                td(style="border-bottom: 1px solid black;") !{weather.sunrise}
+                td(style="border-bottom: 1px solid black;") !{weather.sunset}
+            tr
+                td(style="border-bottom: 1px solid black;") Current Temp
+                td(style="border-bottom: 1px solid black;") !{weather.currentTempC}ºC
+                td(style="border-bottom: 1px solid black;") !{weather.currentTempF}ºF
+            tr
+                td(style="border-bottom: 1px solid black;") High
+                td(style="border-bottom: 1px solid black;") !{weather.tempHighC}ºC
+                td(style="border-bottom: 1px solid black;") !{weather.tempHighF}ºF
+            tr
+                td(style="border-bottom: 1px solid black;") Low
+                td(style="border-bottom: 1px solid black;") !{weather.tempLowC}ºC
+                td(style="border-bottom: 1px solid black;") !{weather.tempLowF}ºF
+            tr
+                td(style="border-bottom: 1px solid black;") Feels like
+                td(style="border-bottom: 1px solid black;") !{weather.feelsLikeC}ºC
+                td(style="border-bottom: 1px solid black;") !{weather.feelsLikeF}ºF
+            tr
+                td(style="border-bottom: 1px solid black;") Humidity
+                td(style="border-bottom: 1px solid black;") !{weather.humidity}%
+                td(style="border-bottom: 1px solid black;")
+            tr
+                td(style="border-bottom: 1px solid black;") Pressure
+                td(style="border-bottom: 1px solid black;") !{weather.pressure}mB
+                td(style="border-bottom: 1px solid black;")
