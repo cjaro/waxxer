@@ -4,37 +4,41 @@ block content
 
     div(class="container")
         h1= title
-        h2 Weather in !{weather.name}, !{weather.country} (!{weather.latitude}, !{weather.longitude}) as of !{weather.currentTime}
-        img(src=`http://openweathermap.org/img/wn/${weather.iconCode}.png`)
+        h2 Weather in !{wx.location.name}, !{wx.location.state} (!{wx.location.county}, !{wx.location.country}) as of !{wx.currentTime}
 
-        p Current weather condition: !{weather.condition} (!{weather.conditionDescription})
+        h3
+            a(href=`https://www.google.com/maps/place/${wx.location.name},+${wx.location.state}/@${wx.location.latitude},${wx.location.longitude},12z/`) (Map ↗︎)
+
+        img(src=`http://openweathermap.org/img/wn/${wx.conditions.iconCode}.png`)
+
+        p Current wx condition: !{wx.conditions.condition} (!{wx.conditions.conditionDescription})
 
         table(style="width:50%;")
             tr
                 td(style="border-bottom: 1px solid black;") Sunrise/Sunset
-                td(style="border-bottom: 1px solid black;") !{weather.sunrise}
-                td(style="border-bottom: 1px solid black;") !{weather.sunset}
+                td(style="border-bottom: 1px solid black;") !{wx.sunrise}
+                td(style="border-bottom: 1px solid black;") !{wx.sunset}
             tr
                 td(style="border-bottom: 1px solid black;") Current Temp
-                td(style="border-bottom: 1px solid black;") !{weather.currentTempC}ºC
-                td(style="border-bottom: 1px solid black;") !{weather.currentTempF}ºF
+                td(style="border-bottom: 1px solid black;") !{wx.temps.currentTempC}ºC
+                td(style="border-bottom: 1px solid black;") !{wx.temps.currentTempF}ºF
             tr
                 td(style="border-bottom: 1px solid black;") High
-                td(style="border-bottom: 1px solid black;") !{weather.tempHighC}ºC
-                td(style="border-bottom: 1px solid black;") !{weather.tempHighF}ºF
+                td(style="border-bottom: 1px solid black;") !{wx.temps.tempHighC}ºC
+                td(style="border-bottom: 1px solid black;") !{wx.temps.tempHighF}ºF
             tr
                 td(style="border-bottom: 1px solid black;") Low
-                td(style="border-bottom: 1px solid black;") !{weather.tempLowC}ºC
-                td(style="border-bottom: 1px solid black;") !{weather.tempLowF}ºF
+                td(style="border-bottom: 1px solid black;") !{wx.temps.tempLowC}ºC
+                td(style="border-bottom: 1px solid black;") !{wx.temps.tempLowF}ºF
             tr
                 td(style="border-bottom: 1px solid black;") Feels like
-                td(style="border-bottom: 1px solid black;") !{weather.feelsLikeC}ºC
-                td(style="border-bottom: 1px solid black;") !{weather.feelsLikeF}ºF
+                td(style="border-bottom: 1px solid black;") !{wx.temps.feelsLikeC}ºC
+                td(style="border-bottom: 1px solid black;") !{wx.temps.feelsLikeF}ºF
             tr
                 td(style="border-bottom: 1px solid black;") Humidity
-                td(style="border-bottom: 1px solid black;") !{weather.humidity}%
+                td(style="border-bottom: 1px solid black;") !{wx.humidity}%
                 td(style="border-bottom: 1px solid black;")
             tr
                 td(style="border-bottom: 1px solid black;") Pressure
-                td(style="border-bottom: 1px solid black;") !{weather.pressure}mB
+                td(style="border-bottom: 1px solid black;") !{wx.pressure}mB
                 td(style="border-bottom: 1px solid black;")
