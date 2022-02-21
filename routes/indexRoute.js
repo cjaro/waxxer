@@ -2,6 +2,11 @@ const express = require('express');
 const axios = require("axios");
 const router = express.Router();
 
+const addQuery = (req, res, next) => {
+  req.query.place = req.body.placename;
+  next();
+}
+
 router.get("/", async (req, res) => {
   res.render("index", {
     title: "☀️ 🌧 Query the weather, wherever you're heading ❄️ 🌩",
@@ -13,26 +18,19 @@ router.post('/weather', async function (req, res) {
   const baseUrl = process.env.OPENWEATHERMAP_BASE_URL;
 
   const geoCodeUrl = constructGeoCodeUrl(req.body.placename);
-  const geoCodeData = await queryAPI(geoCodeUrl);
+  const geoCodeApiData = await queryAPI(geoCodeUrl);
+  const stateAndCountyInfo = getStateAndCounty(geoCodeApiData);
 
-  const geoCodeState = geoCodeData.results[0].address_components[2].short_name;
-  const geocodeCounty = geoCodeData.results[0].address_components[1].long_name;
-  const geoCodeLat = geoCodeData.results[0].geometry.location.lat;
-  const geoCodeLng = geoCodeData.results[0].geometry.location.lng;
-
-  res.latitude = geoCodeLat;
-  res.longitude = geoCodeLng;
-
-  let openWeatherReqUrl = `${baseUrl}?lat=${geoCodeLat}&lon=${geoCodeLng}&appid=${openWeatherMapApiKey}`;
+  const lat = geoCodeApiData.results[0].geometry.location.lat;
+  const long = geoCodeApiData.results[0].geometry.location.lng;
 
   try {
-    console.log(`Fetching the weather for ${geoCodeLat}, ${geoCodeLng}`);
-
+    // could call queryApi() here but need to render pug view
     axios
-      .get(openWeatherReqUrl)
+      .get(`${baseUrl}?lat=${lat}&lon=${long}&appid=${openWeatherMapApiKey}`)
       .then(result => {
         console.log(result.data);
-        let formattedWeather = formatWeatherData(result.data, geoCodeState, geocodeCounty);
+        let formattedWeather = formatWeatherData(result.data, stateAndCountyInfo);
 
         res.render("weather", {
           title: "☀️ 🌧 Weather! ❄️ 🌩",
@@ -48,42 +46,38 @@ router.post('/weather', async function (req, res) {
 });
 
 
-function formatWeatherData(incomingJson, state, county) {
+function formatWeatherData(weatherInfo, stateAndCountyInfo) {
   let weatherArray = {
-    "location": {},
-    "conditions": {},
-    "temps": {}
+    "location": {
+      "name": weatherInfo.name,
+      "state": stateAndCountyInfo.stateAbbr,
+      "stateFull": stateAndCountyInfo.stateLongName,
+      "county": stateAndCountyInfo.county,
+      "country": weatherInfo.sys.country,
+      "latitude": weatherInfo.coord.lat,
+      "longitude": weatherInfo.coord.lon
+    },
+    "conditions": {
+      "openWeatherMapId": weatherInfo.weather[0].id,
+      "condition": weatherInfo.weather[0].main,
+      "conditionDescription": weatherInfo.weather[0].description,
+      "iconCode": weatherInfo.weather[0].icon
+    },
+    "temps": {
+      "currentTempC": (weatherInfo.main.temp - 273.15).toFixed(1),
+      "currentTempF": ((weatherInfo.main.temp - 273.15) * 9/5 + 32).toFixed(1),
+      "tempHighC": (weatherInfo.main.temp_max - 273.15).toFixed(1),
+      "tempHighF": ((weatherInfo.main.temp_max - 273.15) * 9/5 + 32).toFixed(1),
+      "tempLowC": (weatherInfo.main.temp_min - 273.15).toFixed(1),
+      "tempLowF": ((weatherInfo.main.temp_min - 273.15) * 9/5 + 32).toFixed(1),
+      "feelsLikeC": (weatherInfo.main.feels_like - 273.15).toFixed(1),
+      "feelsLikeF": ((weatherInfo.main.feels_like - 273.15) * 9/5 + 32).toFixed(1)
+    },
+    "humidity": weatherInfo.main.humidity,
+    "pressure": weatherInfo.main.pressure,
+    "windSpeed": weatherInfo.wind.speed,
+    "cloudCover": weatherInfo.clouds.all
   };
-
-  weatherArray["location"]["name"] = incomingJson.name;
-  weatherArray["location"]["state"] = state;
-  weatherArray["location"]["county"] = county;
-  weatherArray["location"]["country"] = incomingJson.sys.country;
-  weatherArray["location"]["latitude"] = incomingJson.coord.lat;
-  weatherArray["location"]["longitude"] = incomingJson.coord.lon;
-
-  weatherArray["conditions"]["openWeatherMapId"] = incomingJson.weather[0].id;
-  weatherArray["conditions"]["condition"] = incomingJson.weather[0].main;
-  weatherArray["conditions"]["conditionDescription"] = incomingJson.weather[0].description;
-  weatherArray["conditions"]["iconCode"] = incomingJson.weather[0].icon;
-
-  weatherArray["temps"]["currentTempC"] = (incomingJson.main.temp - 273.15).toFixed(1);
-  weatherArray["temps"]["currentTempF"] = ((incomingJson.main.temp - 273.15) * 9/5 + 32).toFixed(1);
-  weatherArray["temps"]["tempHighC"] = (incomingJson.main.temp_max - 273.15).toFixed(1);
-  weatherArray["temps"]["tempHighF"] = ((incomingJson.main.temp_max - 273.15) * 9/5 + 32).toFixed(1);
-  weatherArray["temps"]["tempLowC"] = (incomingJson.main.temp_min - 273.15).toFixed(1);
-  weatherArray["temps"]["tempLowF"] = ((incomingJson.main.temp_min - 273.15) * 9/5 + 32).toFixed(1);
-  weatherArray["temps"]["feelsLikeC"] = (incomingJson.main.feels_like - 273.15).toFixed(1);
-  weatherArray["temps"]["feelsLikeF"] = ((incomingJson.main.feels_like - 273.15) * 9/5 + 32).toFixed(1);
-
-  weatherArray["currentTime"] = new Date(incomingJson.dt * 1000).toLocaleTimeString("en-US");
-  weatherArray["sunrise"] = new Date(incomingJson.sys.sunrise * 1000).toLocaleTimeString("en-US");
-  weatherArray["sunset"] = new Date(incomingJson.sys.sunset * 1000).toLocaleTimeString("en-US");
-
-  weatherArray["humidity"] = incomingJson.main.humidity;
-  weatherArray["pressure"] = incomingJson.main.pressure;
-  weatherArray["windSpeed"] = incomingJson.wind.speed;
-  weatherArray["cloudCover"] = incomingJson.clouds.all;
 
   console.log(weatherArray);
 
@@ -96,9 +90,24 @@ function recommendWax(tempCelsius, humidity, condition, conditionDescription) {
   // cobble together a wax recommendation, given temperature, humidity, snowfall, and general conditions
 }
 
+// state and county info is not always located under the same index in the JSON that's returned from the Google API
+// sometimes "administrative_area_level_X" is [0], sometimes [1], etc
+// I mean this is a terrible nested way to do it, but it's what I've got and it works so ¯\_(ツ)_/¯
+function getStateAndCounty(geoCodeData) {
+  let stateAndCounty = {};
+  for (let i = 0; i < geoCodeData.results[0].address_components.length; i++) {
+    if (geoCodeData.results[0].address_components[i].types[0] === "administrative_area_level_1") {
+      stateAndCounty.stateAbbr = geoCodeData.results[0].address_components[i].short_name;
+      stateAndCounty.stateLongName = geoCodeData.results[0].address_components[i].long_name;
+    }
+    if (geoCodeData.results[0].address_components[i].types[0] === "administrative_area_level_2") {
+      stateAndCounty.county = geoCodeData.results[0].address_components[i].long_name;
+    }
+  }
+  return stateAndCounty;
+}
+
 function constructGeoCodeUrl(placeName) {
-  const geoCodeUrl = `${process.env.GEOCODE_BASE_URL}?address=${placeName}&key=${process.env.GEOCODE_API_KEY}`;
-  console.log(geoCodeUrl);
   return `${process.env.GEOCODE_BASE_URL}?address=${placeName}&key=${process.env.GEOCODE_API_KEY}`;
 }
 
