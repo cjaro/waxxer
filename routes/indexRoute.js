@@ -2,11 +2,6 @@ const express = require('express');
 const axios = require("axios");
 const router = express.Router();
 
-const addQuery = (req, res, next) => {
-  req.query.place = req.body.placename;
-  next();
-}
-
 router.get("/", async (req, res) => {
   res.render("index", {
     title: "☀️ 🌧 Query the weather, wherever you're heading ❄️ 🌩",
@@ -44,7 +39,6 @@ router.post('/weather', async function (req, res) {
     res.send(error.toString())
   }
 });
-
 
 function formatWeatherData(weatherInfo, stateAndCountyInfo) {
   let weatherArray = {
@@ -86,13 +80,9 @@ function formatWeatherData(weatherInfo, stateAndCountyInfo) {
 
 function changeWeatherCode(iconCode) {}
 
-function recommendWax(tempCelsius, humidity, condition, conditionDescription) {
-  // cobble together a wax recommendation, given temperature, humidity, snowfall, and general conditions
-}
+function recommendWax(tempCelsius, humidity, condition, conditionDescription) {}
 
-// state and county info is not always located under the same index in the JSON that's returned from the Google API
-// sometimes "administrative_area_level_X" is [0], sometimes [1], etc
-// I mean this is a terrible nested way to do it, but it's what I've got and it works so ¯\_(ツ)_/¯
+// state/county info not always in the same index in the Google API response
 function getStateAndCounty(geoCodeData) {
   let stateAndCounty = {};
   for (let i = 0; i < geoCodeData.results[0].address_components.length; i++) {
@@ -118,11 +108,9 @@ async function queryAPI(url){
     .then((response) => {
       if (response.data) {
         apiResponseData = response.data;
-        console.log(apiResponseData);
       }
     })
     .catch((err) => {
-      console.error('Error:', err.response.data.errors);
       apiResponseData = err.response.data;
     });
   return apiResponseData;
