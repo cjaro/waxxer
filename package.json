@@ -16,7 +16,7 @@
     "pug": "^2.0.0"
   },
   "scripts": {
-    "start": "nodemon src/app.js",
+    "start": "node src/app.js",
     "test": "test"
   },
   "keywords": [
