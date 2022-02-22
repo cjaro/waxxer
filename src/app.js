@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/", indexRouter);
 
-let PORT = 5000;
+let PORT = process.env.PORT || 3000;
 
 app.listen(PORT);
 console.log(`🚀 App is listening on http://localhost:${PORT} 🚀`);
