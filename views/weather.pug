@@ -13,6 +13,9 @@ block content
 
         p Current weather condition: !{wx.conditions.condition} (!{wx.conditions.conditionDescription})
 
+        p !{wx.waxColor}
+
+
         table(style="width:50%;")
             tr
                 td(style="border-bottom: 1px solid black;") Sunrise/Sunset
@@ -20,27 +23,31 @@ block content
                 td(style="border-bottom: 1px solid black;") !{wx.sunset}
             tr
                 td(style="border-bottom: 1px solid black;") Current Temp
-                td(style="border-bottom: 1px solid black;") !{wx.temps.currentTempC}ºC
-                td(style="border-bottom: 1px solid black;") !{wx.temps.currentTempF}ºF
+                td(style="border-bottom: 1px solid black;") !{wx.temps.currentTempC}&deg;C
+                td(style="border-bottom: 1px solid black;") !{wx.temps.currentTempF}&deg;F
             tr
                 td(style="border-bottom: 1px solid black;") High
-                td(style="border-bottom: 1px solid black;") !{wx.temps.tempHighC}ºC
-                td(style="border-bottom: 1px solid black;") !{wx.temps.tempHighF}ºF
+                td(style="border-bottom: 1px solid black;") !{wx.temps.tempHighC}&deg;C
+                td(style="border-bottom: 1px solid black;") !{wx.temps.tempHighF}&deg;F
             tr
                 td(style="border-bottom: 1px solid black;") Low
-                td(style="border-bottom: 1px solid black;") !{wx.temps.tempLowC}ºC
-                td(style="border-bottom: 1px solid black;") !{wx.temps.tempLowF}ºF
+                td(style="border-bottom: 1px solid black;") !{wx.temps.tempLowC}&deg;C
+                td(style="border-bottom: 1px solid black;") !{wx.temps.tempLowF}&deg;F
             tr
                 td(style="border-bottom: 1px solid black;") Feels like
-                td(style="border-bottom: 1px solid black;") !{wx.temps.feelsLikeC}ºC
-                td(style="border-bottom: 1px solid black;") !{wx.temps.feelsLikeF}ºF
+                td(style="border-bottom: 1px solid black;") !{wx.temps.feelsLikeC}&deg;C
+                td(style="border-bottom: 1px solid black;") !{wx.temps.feelsLikeF}&deg;F
+            tr
+                td(style="border-bottom: 1px solid black;") Wind
+                td(style="border-bottom: 1px solid black;") !{wx.conditions.windSpeed} m/s
+                td(style="border-bottom: 1px solid black;") !{wx.conditions.windDirection}&deg;
             tr
                 td(style="border-bottom: 1px solid black;") Humidity
-                td(style="border-bottom: 1px solid black;") !{wx.humidity}%
+                td(style="border-bottom: 1px solid black;") !{wx.conditions.humidity}%
                 td(style="border-bottom: 1px solid black;")
             tr
                 td(style="border-bottom: 1px solid black;") Pressure
-                td(style="border-bottom: 1px solid black;") !{wx.pressure}mB
+                td(style="border-bottom: 1px solid black;") !{wx.conditions.pressure} hPa
                 td(style="border-bottom: 1px solid black;")
 
         hr

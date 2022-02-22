@@ -27,6 +27,8 @@ router.post('/weather', async function (req, res) {
         console.log(result.data);
         let formattedWeather = formatWeatherData(result.data, stateAndCountyInfo);
 
+        console.log(formattedWeather);
+
         res.render("weather", {
           title: "☀️ 🌧 Weather! ❄️ 🌩",
           wx: formattedWeather,
@@ -41,7 +43,7 @@ router.post('/weather', async function (req, res) {
 });
 
 function formatWeatherData(weatherInfo, stateAndCountyInfo) {
-  let weatherArray = {
+  return {
     "location": {
       "name": weatherInfo.name,
       "state": stateAndCountyInfo.stateAbbr,
@@ -55,7 +57,12 @@ function formatWeatherData(weatherInfo, stateAndCountyInfo) {
       "openWeatherMapId": weatherInfo.weather[0].id,
       "condition": weatherInfo.weather[0].main,
       "conditionDescription": weatherInfo.weather[0].description,
-      "iconCode": weatherInfo.weather[0].icon
+      "iconCode": weatherInfo.weather[0].icon,
+      "humidity": weatherInfo.main.humidity,
+      "pressure": weatherInfo.main.pressure,
+      "windSpeed": weatherInfo.wind.speed,
+      "windDirection": weatherInfo.wind.deg,
+      "cloudCover": weatherInfo.clouds.all,
     },
     "temps": {
       "currentTempC": (weatherInfo.main.temp - 273.15).toFixed(1),
@@ -67,20 +74,36 @@ function formatWeatherData(weatherInfo, stateAndCountyInfo) {
       "feelsLikeC": (weatherInfo.main.feels_like - 273.15).toFixed(1),
       "feelsLikeF": ((weatherInfo.main.feels_like - 273.15) * 9/5 + 32).toFixed(1)
     },
-    "humidity": weatherInfo.main.humidity,
-    "pressure": weatherInfo.main.pressure,
-    "windSpeed": weatherInfo.wind.speed,
-    "cloudCover": weatherInfo.clouds.all
+    "sunrise": new Date(weatherInfo.sys.sunrise * 1000).toLocaleTimeString("en-US"),
+    "sunset": new Date(weatherInfo.sys.sunset * 1000).toLocaleTimeString("en-US"),
+    "currentTime": new Date(weatherInfo.dt * 1000).toLocaleTimeString("en-US"),
+    "waxColor": recommendWax((weatherInfo.main.temp - 273.15).toFixed(1))
   };
-
-  console.log(weatherArray);
-
-  return weatherArray;
 }
 
 function changeWeatherCode(iconCode) {}
 
-function recommendWax(tempCelsius, humidity, condition, conditionDescription) {}
+function recommendWax(tempCelsius) {
+
+  if (tempCelsius >= 10.56) {
+    return "Grab your water skis! At this point, nordic skis won't cut it.";
+  }
+  if (tempCelsius >= 4.44 && tempCelsius <= 10) {
+    return "Use red wax. It's warm - stay hydrated!.";
+  }
+  if (tempCelsius >= 0.56 && tempCelsius <= 3.89) {
+    return "Use violet wax! It's on the warmer side, but if it's cloudy or has been snowing it's probably fine.";
+  }
+  if (tempCelsius >= -3.33 && tempCelsius <= 0) {
+    return "Use blue wax! It's probably near-perfect conditions out there. Have fun!";
+  }
+  if (tempCelsius >= -12.22 && tempCelsius <= -3.89) {
+    return "Use green wax! It's a beautiful day for a ski! The conditions are likely beautiful! Happy trails!";
+  }
+  if (tempCelsius <= -12.78) {
+    return "Use polar wax. It's very cold - bundle up and watch out for frostbite!";
+  }
+}
 
 // state/county info not always in the same index in the Google API response
 function getStateAndCounty(geoCodeData) {
