@@ -1,42 +1,35 @@
-const express = require('express');
 const axios = require("axios");
+const express = require('express');
 const router = express.Router();
+
+const openWeatherMapApiKey = process.env.OPENWEATHERMAP_API_KEY;
+const weatherApiUrl = process.env.OPENWEATHERMAP_BASE_URL;
 
 router.get("/", async (req, res) => {
   res.render("index", {
-    title: "☀️ 🌧 Query the weather, wherever you're heading ❄️ 🌩",
+    title: "☀️ 🌧 Query the weather ❄️ 🌩",
   });
 })
 
 router.post('/weather', async function (req, res) {
-  const openWeatherMapApiKey = process.env.OPENWEATHER_API_KEY;
-  const baseUrl = process.env.OPENWEATHERMAP_BASE_URL;
-
-  const geoCodeUrl = constructGeoCodeUrl(req.body.placename);
-  const geoCodeApiData = await queryAPI(geoCodeUrl);
-  const stateAndCountyInfo = getStateAndCounty(geoCodeApiData);
-
-  const lat = geoCodeApiData.results[0].geometry.location.lat;
-  const long = geoCodeApiData.results[0].geometry.location.lng;
-
   try {
-    // could call queryApi() here but need to render pug view
-    axios
-      .get(`${baseUrl}?lat=${lat}&lon=${long}&appid=${openWeatherMapApiKey}`)
-      .then(result => {
-        console.log(result.data);
-        let formattedWeather = formatWeatherData(result.data, stateAndCountyInfo);
+    const geoCodeUrl = constructGeoCodeUrl(req.body.placename);
+    const geoCodeApiData = await queryAPI(geoCodeUrl);
+    const forecast = await queryAPI(`${weatherApiUrl}/forecast?lat=${lat}&lon=${long}&appid=${openWeatherMapApiKey}`);
+    const stateAndCountyInfo = getStateAndCounty(geoCodeApiData);
 
-        console.log(formattedWeather);
+    const lat = geoCodeApiData.results[0].geometry.location.lat;
+    const long = geoCodeApiData.results[0].geometry.location.lng;
+    const formattedAddress = geoCodeApiData.results[0].formatted_address;
 
-        res.render("weather", {
-          title: "☀️ 🌧 Weather! ❄️ 🌩",
-          wx: formattedWeather,
-        });
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    const currentConditions = await queryAPI(`${weatherApiUrl}/weather?lat=${lat}&lon=${long}&appid=${openWeatherMapApiKey}`);
+    const formattedWeather = formatWeatherData(currentConditions, stateAndCountyInfo);
+
+    res.render("weather", {
+      title: `☀️ 🌧 Weather for ${formattedAddress} ❄️ 🌩`,
+      wx: formattedWeather,
+      fa: JSON.stringify(forecast.list)
+    });
   } catch (error) {
     res.send(error.toString())
   }
@@ -81,27 +74,31 @@ function formatWeatherData(weatherInfo, stateAndCountyInfo) {
   };
 }
 
+function formatForecastData(incomingForecast) {}
+
 function changeWeatherCode(iconCode) {}
 
+// Wax recommendation based on all of these factors (temp, humidity, snowfall... how???)
+// peer/user feedback to teach a recommendation ML algorithm? buzzwords buzzwords buzzwords...
+// aggregate data, not predictions. regression? R or Python could handle this
 function recommendWax(tempCelsius) {
-
   if (tempCelsius >= 10.56) {
-    return "Grab your water skis! At this point, nordic skis won't cut it.";
+    return "Use your water skis!";
   }
-  if (tempCelsius >= 4.44 && tempCelsius <= 10) {
-    return "Use red wax. It's warm - stay hydrated!.";
+  if (tempCelsius >= 4.00 && tempCelsius <= 10) {
+    return "Use red wax! It's warm - stay hydrated!";
   }
-  if (tempCelsius >= 0.56 && tempCelsius <= 3.89) {
+  if (tempCelsius >= 0.10 && tempCelsius <= 3.99) {
     return "Use violet wax! It's on the warmer side, but if it's cloudy or has been snowing it's probably fine.";
   }
   if (tempCelsius >= -3.33 && tempCelsius <= 0) {
     return "Use blue wax! It's probably near-perfect conditions out there. Have fun!";
   }
-  if (tempCelsius >= -12.22 && tempCelsius <= -3.89) {
+  if (tempCelsius >= -12.22 && tempCelsius <= -3.34) {
     return "Use green wax! It's a beautiful day for a ski! The conditions are likely beautiful! Happy trails!";
   }
-  if (tempCelsius <= -12.78) {
-    return "Use polar wax. It's very cold - bundle up and watch out for frostbite!";
+  if (tempCelsius <= -12.23) {
+    return "Use polar wax! It's very cold - bundle up and watch out for frostbite!";
   }
 }
 
