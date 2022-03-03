@@ -132,13 +132,13 @@ function recommendWax(tempCelsius) {
     return "Use red wax! It's warm - stay hydrated!";
   }
   if (tempCelsius >= 0.10 && tempCelsius <= 3.99) {
-    return "Use violet wax! It's on the warmer side, but if it's cloudy or has been snowing it's probably fine.";
+    return "Use violet wax! It's on the warmer side, but it's probably fine.";
   }
   if (tempCelsius >= -3.33 && tempCelsius <= 0) {
     return "Use blue wax! It's probably near-perfect conditions out there. Have fun!";
   }
   if (tempCelsius >= -12.22 && tempCelsius <= -3.34) {
-    return "Use green wax! It's a beautiful day for a ski! The conditions are likely beautiful! Happy trails!";
+    return "Use green wax! It's a beautiful day for a ski - happy trails!";
   }
   if (tempCelsius <= -12.23) {
     return "Use polar wax! It's very cold - bundle up and watch out for frostbite!";
