@@ -15,7 +15,6 @@ router.post('/weather', async function (req, res) {
   try {
     const geoCodeUrl = constructGeoCodeUrl(req.body.placename);
     const geoCodeApiData = await queryAPI(geoCodeUrl);
-    const forecast = await queryAPI(`${weatherApiUrl}/forecast?lat=${lat}&lon=${long}&appid=${openWeatherMapApiKey}`);
     const stateAndCountyInfo = getStateAndCounty(geoCodeApiData);
 
     const lat = geoCodeApiData.results[0].geometry.location.lat;
@@ -23,12 +22,17 @@ router.post('/weather', async function (req, res) {
     const formattedAddress = geoCodeApiData.results[0].formatted_address;
 
     const currentConditions = await queryAPI(`${weatherApiUrl}/weather?lat=${lat}&lon=${long}&appid=${openWeatherMapApiKey}`);
+    const getForecast = await queryAPI(`${weatherApiUrl}/forecast?lat=${lat}&lon=${long}&appid=${openWeatherMapApiKey}`);
+
+    const forecast = buildForecastObject(getForecast.list);
+    console.log(forecast);
+
     const formattedWeather = formatWeatherData(currentConditions, stateAndCountyInfo);
 
     res.render("weather", {
       title: `☀️ 🌧 Weather for ${formattedAddress} ❄️ 🌩`,
       wx: formattedWeather,
-      fa: JSON.stringify(forecast.list)
+      fa: forecast.toString()
     });
   } catch (error) {
     res.send(error.toString())
@@ -74,8 +78,47 @@ function formatWeatherData(weatherInfo, stateAndCountyInfo) {
   };
 }
 
-function formatForecastData(incomingForecast) {}
+function formatForecastData(incomingForecast) {
+  return {
+    "date": new Date(incomingForecast.dt * 1000).toLocaleString(),
+    "dateText": incomingForecast.dt_txt,
+    "main": {
+      "tempF": ((incomingForecast.main.temp - 273.15) * 9/5 + 32).toFixed(1),
+      "tempC": (incomingForecast.main.temp - 273.15).toFixed(1),
+      "feels_like": incomingForecast.main.feels_like,
+      "humidity": incomingForecast.main.humidity,
+    },
+    "weather": [
+      {
+        "id": incomingForecast.weather[0].id,
+        "main": incomingForecast.weather[0].main,
+        "description": incomingForecast.weather[0].description,
+        "icon": incomingForecast.weather[0].icon
+      }
+    ],
+    "clouds": incomingForecast.clouds.all,
+    "wind": {
+      "speed": incomingForecast.wind.speed,
+      "degrees": incomingForecast.wind.deg,
+      "gust": incomingForecast.wind.gust
+    }
+  }
+}
 
+function buildForecastObject(forecast) {
+  let fullForecast = [];
+
+  for(let i = 0; i < forecast.length; i++) {
+    let newForecastObject = formatForecastData(forecast[i]);
+    fullForecast.push(newForecastObject);
+  }
+  return fullForecast
+}
+
+// for any given weather/icon set, you have these properties:
+// { "id": 804, "main": "Clouds", "description": "overcast clouds", "icon": "04d" }
+// so I want to assign the condition a new icon stitched together with the id & icon
+// e.g., "Clouds" = "80404d" & corresponding icon => public/assets/icons/80404d.png
 function changeWeatherCode(iconCode) {}
 
 // Wax recommendation based on all of these factors (temp, humidity, snowfall... how???)

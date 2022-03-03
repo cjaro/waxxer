@@ -9,6 +9,9 @@ block content
         h3
             a(href=`https://www.google.com/maps/place/${wx.location.name},+${wx.location.state}/@${wx.location.latitude},${wx.location.longitude},12z/`) Map ↗
 
+            a(href="/") Back ←
+
+
         img(src=`http://openweathermap.org/img/wn/${wx.conditions.iconCode}.png`)
 
         p Current weather condition: !{wx.conditions.condition} (!{wx.conditions.conditionDescription})
@@ -56,7 +59,13 @@ block content
 
         p Forecast: !{fa}
 
+
+        //table(style='width:100%')
+        //    tr
+        //        th(style="border: 1px solid black;") object?
+        //    for each_forecast in fa
+        //        tr
+        //            td(style="border: 1px solid black;")= each_forecast
+
         hr
 
-        h3
-            a(href="/") Check out more weather!
