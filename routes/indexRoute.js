@@ -39,6 +39,7 @@ router.post('/weather', async function (req, res) {
   }
 });
 
+
 function formatWeatherData(weatherInfo, stateAndCountyInfo) {
   return {
     "location": {
@@ -58,7 +59,7 @@ function formatWeatherData(weatherInfo, stateAndCountyInfo) {
       "humidity": weatherInfo.main.humidity,
       "pressure": weatherInfo.main.pressure,
       "windSpeed": weatherInfo.wind.speed,
-      "windDirection": weatherInfo.wind.deg,
+      "windDirection": interpretWindDegrees(weatherInfo.wind.deg),
       "cloudCover": weatherInfo.clouds.all,
     },
     "temps": {
@@ -77,6 +78,7 @@ function formatWeatherData(weatherInfo, stateAndCountyInfo) {
     "waxColor": recommendWax((weatherInfo.main.temp - 273.15).toFixed(1))
   };
 }
+
 
 function formatForecastData(incomingForecast) {
   return {
@@ -99,11 +101,12 @@ function formatForecastData(incomingForecast) {
     "clouds": incomingForecast.clouds.all,
     "wind": {
       "speed": incomingForecast.wind.speed,
-      "degrees": incomingForecast.wind.deg,
+      "degrees": interpretWindDegrees(incomingForecast.wind.deg),
       "gust": incomingForecast.wind.gust
     }
   }
 }
+
 
 function buildForecastObject(forecast) {
   let fullForecast = [];
@@ -115,11 +118,52 @@ function buildForecastObject(forecast) {
   return fullForecast
 }
 
+
 // for any given weather/icon set, you have these properties:
 // { "id": 804, "main": "Clouds", "description": "overcast clouds", "icon": "04d" }
 // so I want to assign the condition a new icon stitched together with the id & icon
 // e.g., "Clouds" = "80404d" & corresponding icon => public/assets/icons/80404d.png
 function changeWeatherCode(iconCode) {}
+
+
+function interpretWindDegrees(degrees) {
+  // http://snowfence.umn.edu/Components/winddirectionanddegrees.htm
+  switch (degrees) {
+    case (348.75 < degrees < 360 && 0 < degrees < 11.25):
+      return "N"
+    case (11.25 < degrees > 33.75):
+      return "NNE"
+    case (33.75 - 56.25):
+      return "NE"
+    case (56.25 - 78.75):
+      return "ENE"
+    case (78.75 - 101.25):
+      return "E"
+    case (101.25 - 123.75):
+      return "ESE"
+    case (123.75 - 146.25):
+      return "SE"
+    case (146.25 - 168.75):
+      return "SSE"
+    case (168.75 - 191.25):
+      return "S"
+    case (191.25 - 213.75):
+      return "SSW"
+    case (213.75 - 236.25):
+      return "SW"
+    case (236.25 - 258.75):
+      return "WSW"
+    case (258.75 - 281.25):
+      return "W"
+    case (281.25 - 303.75):
+      return "WNW"
+    case (303.75 - 326.25):
+      return "NW"
+    case (326.25 - 348.75):
+      return "NNW"
+  }
+}
+
 
 // Wax recommendation based on all of these factors (temp, humidity, snowfall... how???)
 // peer/user feedback to teach a recommendation ML algorithm? buzzwords buzzwords buzzwords...
@@ -145,6 +189,7 @@ function recommendWax(tempCelsius) {
   }
 }
 
+
 // state/county info not always in the same index in the Google API response
 function getStateAndCounty(geoCodeData) {
   let stateAndCounty = {};
@@ -160,9 +205,11 @@ function getStateAndCounty(geoCodeData) {
   return stateAndCounty;
 }
 
+
 function constructGeoCodeUrl(placeName) {
   return `${process.env.GEOCODE_BASE_URL}?address=${placeName}&key=${process.env.GEOCODE_API_KEY}`;
 }
+
 
 async function queryAPI(url){
   let apiResponseData;
@@ -178,5 +225,6 @@ async function queryAPI(url){
     });
   return apiResponseData;
 }
+
 
 module.exports = router;
