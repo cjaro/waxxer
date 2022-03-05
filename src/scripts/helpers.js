@@ -129,22 +129,22 @@ module.exports = {
   // aggregate data, not predictions. regression? R or Python could handle this
   recommendWax: function(tempCelsius) {
     if (tempCelsius >= 10.56) {
-      return "Use your water skis!";
+      return ["magenta", "Use water skis lmao ✌️."];
     }
     if (tempCelsius >= 4.00 && tempCelsius <= 10) {
-      return "Use red wax! It's warm - stay hydrated!";
+      return ["red", "Use red wax. ❤️️"];
     }
     if (tempCelsius >= 0.10 && tempCelsius <= 3.99) {
-      return "Use violet wax! It's on the warmer side, but it's probably fine.";
+      return ["violet", "Use violet wax. 💜"];
     }
     if (tempCelsius >= -3.33 && tempCelsius <= 0) {
-      return "Use blue wax! It's probably near-perfect conditions out there. Have fun!";
+      return ["blue", "Use blue wax. 💙"];
     }
     if (tempCelsius >= -12.22 && tempCelsius <= -3.34) {
-      return "Use green wax! It's a beautiful day for a ski - happy trails!";
+      return ["green", "Use green wax. 💚"];
     }
     if (tempCelsius <= -12.23) {
-      return "Use polar wax! It's very cold - bundle up and watch out for frostbite!";
+      return ["aquamarine", "Use polar wax. ❄️"];
     }
   },
 
