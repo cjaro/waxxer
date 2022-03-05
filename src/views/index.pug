@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  div(class="container")
+    h1= title
+
+    hr
+
+    div(class="get-weather-form row g-3 align-items-center")
+      form(action='/weather', method='POST')
+        p(class="form-label" )
+          | Query the weather:
+          input(type='text', name='placename', placeholder='Enter city & state (e.g., Mora, MN)', class="form-control")
+        input(type='submit', class="btn btn-success" value='Show me the Weather!')
+
+    hr
+
+    div
+      p Waxxer is a helpful calculator for the cross-country skier trying to pick the right ski wax while
+        | considering variables like temperature, humidity, and snow type.
+      p This project is a work-in-progress, so for now, you'll be able to query the weather by location and
+        | see current conditions there + the forecast for a few days in advance; generally speaking, this is
+        | enough information to get a high-level conclusion on how to prep your skis, but future iterations
+        | of this project will hopefully include historical data on both weather and ski races like the Birkie,
+        | Vasaloppet USA, and more!

@@ -7,17 +7,13 @@ block content
         h2 Weather in !{wx.location.name}, !{wx.location.state} (!{wx.location.county}, !{wx.location.country}) as of !{wx.currentTime}
 
         h3
-            a(href=`https://www.google.com/maps/place/${wx.location.name},+${wx.location.state}/@${wx.location.latitude},${wx.location.longitude},12z/`) Map ↗
-
+            a(href=`https://www.google.com/maps/place/${wx.location.name},${wx.location.state}/@${wx.location.latitude},${wx.location.longitude},12z/`) Map ↗
+        h3
             a(href="/") Back ←
-
 
         img(src=`http://openweathermap.org/img/wn/${wx.conditions.iconCode}.png`)
 
-        p Current weather condition: !{wx.conditions.condition} (!{wx.conditions.conditionDescription})
-
-        p !{wx.waxColor}
-
+        h4 Current weather condition: !{wx.conditions.condition} (!{wx.conditions.conditionDescription}). !{wx.waxColor}
 
         table(style="width:50%;")
             tr
@@ -43,7 +39,7 @@ block content
             tr
                 td(style="border-bottom: 1px solid black;") Wind
                 td(style="border-bottom: 1px solid black;") !{wx.conditions.windSpeed} m/s
-                td(style="border-bottom: 1px solid black;") !{wx.conditions.windDirection}&deg;
+                td(style="border-bottom: 1px solid black;") !{wx.conditions.windDirection}
             tr
                 td(style="border-bottom: 1px solid black;") Humidity
                 td(style="border-bottom: 1px solid black;") !{wx.conditions.humidity}%
@@ -55,17 +51,22 @@ block content
 
         hr
 
-        h3 Forecast for now lol
+        h3 5-Day Forecast (every 3 hrs)
 
-        p Forecast: !{fa}
-
-
-        //table(style='width:100%')
-        //    tr
-        //        th(style="border: 1px solid black;") object?
-        //    for each_forecast in fa
-        //        tr
-        //            td(style="border: 1px solid black;")= each_forecast
+        table(style='width:100%')
+            tr
+                th(style="border: 1px solid black;") date/time
+                th(style="border: 1px solid black;") tempF
+                th(style="border: 1px solid black;") tempC
+                th(style="border: 1px solid black;") humidity
+                th(style="border: 1px solid black;") wind
+            for weather in fa
+                tr
+                    td(style="border: 1px solid black;") !{weather.date} !{weather.time}
+                    td(style="border: 1px solid black;") !{weather.main.tempF}
+                    td(style="border: 1px solid black;") !{weather.main.tempC}
+                    td(style="border: 1px solid black;") !{weather.main.humidity}
+                    td(style="border: 1px solid black;") !{weather.wind.speed} !{weather.wind.direction}
 
         hr
 
