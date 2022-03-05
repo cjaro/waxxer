@@ -12,9 +12,9 @@ block content
         img(src=`http://openweathermap.org/img/wn/${wx.conditions.iconCode}.png`)
 
         h4 Weather conditions: !{wx.conditions.condition} (!{wx.conditions.conditionDescription}).
-        p Wax recommendation: #[span(style=`color: ${wx.waxColor[0]}`) !{wx.waxColor[1]}]
+        p(style="font-size:16px;font-weight:bold;") Wax recommendation: #[span(style=`color: ${wx.waxColor[0]}`) !{wx.waxColor[1]}]
 
-        table(style="width:100%;")
+        table(style="width:100%; font-size:18px;")
             tr(style="border-bottom: 1px solid black;")
                 th Current
                 td !{wx.temps.currentTempF}F / !{wx.temps.currentTempC}C
@@ -47,7 +47,7 @@ block content
 
         h3 5-Day Forecast (every 3 hrs)
 
-        table(style='width:100%')
+        table(style='width:100%;font-size:18px;')
             tr
                 th(style="border: 1px solid black;") datetime
                 th(style="border: 1px solid black;") Temp
