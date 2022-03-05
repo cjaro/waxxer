@@ -1,0 +1,61 @@
+extends layout
+
+block content
+
+    div(class="container")
+        h1= title
+        h2 Weather in #[a(href=`${wx.mapUrl}`) !{wx.location.name}, !{wx.location.state}] (!{wx.location.county}, !{wx.location.country}) as of !{wx.currentTime}
+
+        h3
+            a(href="/") ← Back
+
+        img(src=`http://openweathermap.org/img/wn/${wx.conditions.iconCode}.png`)
+
+        h4 Weather conditions: !{wx.conditions.condition} (!{wx.conditions.conditionDescription}).
+        p Wax recommendation: #[span(style=`color: ${wx.waxColor[0]}`) !{wx.waxColor[1]}]
+
+        table(style="width:100%;")
+            tr(style="border-bottom: 1px solid black;")
+                th Current
+                td !{wx.temps.currentTempF}F / !{wx.temps.currentTempC}C
+            tr(style="border-bottom: 1px solid black;")
+                th High
+                td !{wx.temps.tempHighF}F/ !{wx.temps.tempHighC}C
+            tr(style="border-bottom: 1px solid black;")
+                th Low
+                td !{wx.temps.tempLowF}F / !{wx.temps.tempLowC}C
+            tr(style="border-bottom: 1px solid black;")
+                th Feels like
+                td !{wx.temps.feelsLikeF}F / !{wx.temps.feelsLikeC}C
+            tr(style="border-bottom: 1px solid black;")
+                th Wind
+                td !{wx.conditions.windSpeed} m/s !{wx.conditions.windDirection}
+            tr(style="border-bottom: 1px solid black;")
+                th Humidity
+                td !{wx.conditions.humidity}%
+            tr(style="border-bottom: 1px solid black;")
+                th Pressure
+                td !{wx.conditions.pressure} hPa
+            tr(style="border-bottom: 1px solid black;")
+                th Sunrise
+                td !{wx.sunrise}
+            tr(style="border-bottom: 1px solid black;")
+                th Sunset
+                td !{wx.sunset}
+
+        hr
+
+        h3 5-Day Forecast (every 3 hrs)
+
+        table(style='width:100%')
+            tr
+                th(style="border: 1px solid black;") datetime
+                th(style="border: 1px solid black;") Temp
+                th(style="border: 1px solid black;") Humidity
+                th(style="border: 1px solid black;") Wind
+            for weather in fa
+                tr
+                    td(style="border: 1px solid black;") !{weather.date} !{weather.time}
+                    td(style="border: 1px solid black;") !{weather.main.tempF}F / !{weather.main.tempC}C
+                    td(style="border: 1px solid black;") !{weather.main.humidity}%
+                    td(style="border: 1px solid black;") !{weather.wind.speed} !{weather.wind.direction}

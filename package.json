@@ -10,13 +10,14 @@
     "eslint": "^5.16.0",
     "express": "^4.17.2",
     "github-fork-ribbon-css": "^0.2.1",
+    "mocha": "^9.2.1",
     "npm": "^6.13.4",
     "pg": "^8.7.3",
     "prettier": "^2.5.1",
     "pug": "^2.0.0"
   },
   "scripts": {
-    "start": "node src/app.js",
+    "start": "nodemon src/app.js",
     "test": "test"
   },
   "keywords": [
