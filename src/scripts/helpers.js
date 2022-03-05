@@ -82,7 +82,9 @@ module.exports = {
   // { "id": 804, "main": "Clouds", "description": "overcast clouds", "icon": "04d" }
   // so I want to assign the condition a new icon stitched together with the id & icon
   // e.g., "Clouds" = "80404d" & corresponding icon => static/assets/icons/80404d.png
-  changeWeatherCode: function(iconCode) {},
+  changeWeatherCode: function(id, iconCode) {
+    return `${id+iconCode}.png`;
+  },
 
   // http://snowfence.umn.edu/Components/winddirectionanddegrees.htm
   // Looks horrific but someone else did the math: https://stackoverflow.com/questions/6665997/
@@ -162,8 +164,14 @@ module.exports = {
     return stateAndCounty;
   },
 
-  constructGeoCodeUrl: function(placeName) {
-    return `${process.env.GEOCODE_BASE_URL}?address=${placeName}&key=${process.env.GEOCODE_API_KEY}`;
+  // Hourly temperature (interpolate w/ avg), wind (denote mph)
+  // Past 24 hr snowfall/precip. (differentiate between rain, snow, freezing rain, etc )
+  isThereSnow: function(snowObject){
+    return snowObject["3h"];
+  },
+
+  constructGeoCodeUrl: function(placeName, geoCodeURl, geoCodeApiKey) {
+    return `${geoCodeURl}?address=${placeName}&key=${geoCodeApiKey}`;
   },
 
   constructMapUrl: function(location, latitude, longitude){
@@ -186,20 +194,38 @@ module.exports = {
     return apiResponseData;
   },
 
-  performAllTheCalls: async function(location, url, apiKey) {
+  latLong: function (coord) {
+    return [coord.lat, coord.lng];
+  },
+
+  returnLatLongStateCounty: async function(loc, geoCodeApiUrl, geoCodeApiKey) {
     try {
-      const geoCodeUrl = this.constructGeoCodeUrl(location);
+      const geoCodeUrl = this.constructGeoCodeUrl(loc, geoCodeApiUrl, geoCodeApiKey);
       const geoCodeApiData = await this.queryAPI(geoCodeUrl);
       const stateAndCountyInfo = this.getStateAndCounty(geoCodeApiData.results[0].address_components);
-      const lat = geoCodeApiData.results[0].geometry.location.lat;
-      const long = geoCodeApiData.results[0].geometry.location.lng;
-      const mapUrl = this.constructMapUrl(location, lat, long);
-      const currentConditions = await this.queryAPI(`${url}/weather?lat=${lat}&lon=${long}&appid=${apiKey}`);
-      const getForecast = await this.queryAPI(`${url}/forecast?lat=${lat}&lon=${long}&appid=${apiKey}`);
-      const forecast = this.buildForecastObject(getForecast.list);
-      const formattedWeather = this.formatWeatherData(currentConditions, stateAndCountyInfo, mapUrl);
+      const [latitude, longitude] = this.latLong(geoCodeApiData.results[0].geometry.location);
+      const mapUrl = this.constructMapUrl(loc, latitude, longitude);
 
-      return [formattedWeather, forecast];
+      return [
+        stateAndCountyInfo,
+        [latitude, longitude],
+        mapUrl
+      ];
+    } catch(e) {
+      console.error(e);
+    }
+  },
+
+  gatherCurrentAndForecast: async function(location, url, openWeatherApiKey, geoCodeApiUrl, geoCodeApiKey) {
+    try {
+      const r = await this.returnLatLongStateCounty(location, geoCodeApiUrl, geoCodeApiKey);
+      const getForecast = await this.queryAPI(`${url}/forecast?lat=${r[1][0]}&lon=${r[1][1]}&appid=${openWeatherApiKey}`);
+      const currentConditions = await this.queryAPI(`${url}/weather?lat=${r[1][0]}&lon=${r[1][1]}&appid=${openWeatherApiKey}`);
+
+      return [
+        this.formatWeatherData(currentConditions, r[0], r[2]),
+        this.buildForecastObject(getForecast.list)
+      ];
     } catch (e) {
       console.log(e);
     }
