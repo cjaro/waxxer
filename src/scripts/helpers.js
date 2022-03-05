@@ -71,7 +71,6 @@ module.exports = {
 
   buildForecastObject: function(forecast) {
     let fullForecast = [];
-
     for (let i = 0; i < forecast.length; i++) {
       let newForecastObject = this.formatForecastData(forecast[i]);
       fullForecast.push(newForecastObject);
@@ -173,9 +172,7 @@ module.exports = {
 
   queryAPI: async function(url) {
     const axios = require("axios");
-
     let apiResponseData;
-
     await axios
       .get(url)
       .then((response) => {
