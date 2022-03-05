@@ -4,10 +4,8 @@ block content
 
     div(class="container")
         h1= title
-        h2 Weather in !{wx.location.name}, !{wx.location.state} (!{wx.location.county}, !{wx.location.country}) as of !{wx.currentTime}
+        h2 Weather in #[a(href=`${wx.mapUrl}`) !{wx.location.name}, !{wx.location.state}] (!{wx.location.county}, !{wx.location.country}) as of !{wx.currentTime}
 
-        h3
-            a(href=`https://www.google.com/maps/place/${wx.location.name},${wx.location.state}/@${wx.location.latitude},${wx.location.longitude},12z/`) Map ↗
         h3
             a(href="/") Back ←
 

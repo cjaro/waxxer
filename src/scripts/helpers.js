@@ -1,5 +1,5 @@
 module.exports = {
-  formatWeatherData: function(weatherInfo, stateAndCountyInfo) {
+  formatWeatherData: function(weatherInfo, stateAndCountyInfo, mapUrl) {
     return {
       "location": {
         "name": weatherInfo.name,
@@ -34,6 +34,7 @@ module.exports = {
       "sunrise": new Date(weatherInfo.sys.sunrise * 1000).toLocaleTimeString("en-US"),
       "sunset": new Date(weatherInfo.sys.sunset * 1000).toLocaleTimeString("en-US"),
       "currentTime": new Date(weatherInfo.dt * 1000).toLocaleTimeString("en-US"),
+      "mapUrl": mapUrl,
       "waxColor": this.recommendWax((weatherInfo.main.temp - 273.15).toFixed(1))
     };
   },
@@ -166,6 +167,10 @@ module.exports = {
     return `${process.env.GEOCODE_BASE_URL}?address=${placeName}&key=${process.env.GEOCODE_API_KEY}`;
   },
 
+  constructMapUrl: function(location, latitude, longitude){
+    return `https://www.google.com/maps/place/${location}/@${latitude},${longitude},12z/`
+  },
+
   queryAPI: async function(url) {
     const axios = require("axios");
 
@@ -185,17 +190,17 @@ module.exports = {
   },
 
   performAllTheCalls: async function(location, url, apiKey) {
-    console.log("hit performAllTheCalls with", location, url, apiKey);
     try {
       const geoCodeUrl = this.constructGeoCodeUrl(location);
       const geoCodeApiData = await this.queryAPI(geoCodeUrl);
       const stateAndCountyInfo = this.getStateAndCounty(geoCodeApiData.results[0].address_components);
       const lat = geoCodeApiData.results[0].geometry.location.lat;
       const long = geoCodeApiData.results[0].geometry.location.lng;
+      const mapUrl = this.constructMapUrl(location, lat, long);
       const currentConditions = await this.queryAPI(`${url}/weather?lat=${lat}&lon=${long}&appid=${apiKey}`);
       const getForecast = await this.queryAPI(`${url}/forecast?lat=${lat}&lon=${long}&appid=${apiKey}`);
       const forecast = this.buildForecastObject(getForecast.list);
-      const formattedWeather = this.formatWeatherData(currentConditions, stateAndCountyInfo);
+      const formattedWeather = this.formatWeatherData(currentConditions, stateAndCountyInfo, mapUrl);
 
       return [formattedWeather, forecast];
     } catch (e) {

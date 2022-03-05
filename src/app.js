@@ -28,8 +28,6 @@ app.post('/weather', async function (req, res) {
   try {
     const weatherAndForecast = await helpers.performAllTheCalls(req.body.placename, weatherApiUrl, openWeatherMapApiKey);
 
-    console.log("weatherAndForecast", weatherAndForecast);
-
     res.render("weather", {
       title: `☀️ 🌧 ❄️ 🌩`,
       wx: weatherAndForecast[0],
