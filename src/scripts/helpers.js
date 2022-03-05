@@ -218,13 +218,13 @@ module.exports = {
 
   gatherCurrentAndForecast: async function(location, url, openWeatherApiKey, geoCodeApiUrl, geoCodeApiKey) {
     try {
-      const r = await this.returnLatLongStateCounty(location, geoCodeApiUrl, geoCodeApiKey);
-      const getForecast = await this.queryAPI(`${url}/forecast?lat=${r[1][0]}&lon=${r[1][1]}&appid=${openWeatherApiKey}`);
-      const currentConditions = await this.queryAPI(`${url}/weather?lat=${r[1][0]}&lon=${r[1][1]}&appid=${openWeatherApiKey}`);
+      const geo = await this.returnLatLongStateCounty(location, geoCodeApiUrl, geoCodeApiKey);
+      const forecast = await this.queryAPI(`${url}/forecast?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${openWeatherApiKey}`);
+      const weather = await this.queryAPI(`${url}/weather?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${openWeatherApiKey}`);
 
       return [
-        this.formatWeatherData(currentConditions, r[0], r[2]),
-        this.buildForecastObject(getForecast.list)
+        this.formatWeatherData(weather, geo[0], geo[2]),
+        this.buildForecastObject(forecast.list)
       ];
     } catch (e) {
       console.log(e);
