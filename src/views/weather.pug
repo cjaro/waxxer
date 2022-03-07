@@ -54,7 +54,7 @@ block content
                 th(style="border-bottom: 1px solid black;") datetime
                 th(style="border-bottom: 1px solid black;") Temp
                 th(style="border-bottom: 1px solid black;") Humidity
-                th(style="border-bottom: 1px solid black;") Wind (m/s dir)
+                th(style="border-bottom: 1px solid black;") Wind
                 th(style="border-bottom: 1px solid black;") Icon
                 th(style="border-bottom: 1px solid black;") Conditions
                 th(style="border-bottom: 1px solid black;") Snow?
@@ -63,7 +63,7 @@ block content
                     td(style="border-bottom: 1px solid black;") !{forecast.date} !{forecast.time}
                     td(style="border-bottom: 1px solid black;") !{forecast.main.tempF}F / !{forecast.main.tempC}C
                     td(style="border-bottom: 1px solid black;") !{forecast.main.humidity}%
-                    td(style="border-bottom: 1px solid black;") !{forecast.wind.speed} !{forecast.wind.direction}
+                    td(style="border-bottom: 1px solid black;") !{forecast.wind.speed} m/s !{forecast.wind.direction}
                     td(style="border-bottom: 1px solid black;")
                         img(src=`http://openweathermap.org/img/wn/${forecast.weather.iconCode}.png`)
                     td(style="border-bottom:1px solid black;") !{forecast.weather.main} (!{forecast.weather.description})
