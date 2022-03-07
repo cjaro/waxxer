@@ -5,7 +5,7 @@ const helpers = require(path.join(__dirname, "../scripts/helpers"));
 
 router.get("/", async (req, res) => {
   res.render("index", {
-    title: "☀️ 🌧 Query the weather, wherever you're heading ❄️ 🌩",
+    title: "❄️ waxxer ❄️",
   });
 })
 
@@ -26,7 +26,7 @@ router.post('/weather', async function (req, res) {
     );
 
     res.render("weather", {
-      title: `☀️ 🌧 ❄️ 🌩`,
+      title: `☀️ 🌧 waxxer ❄️ 🌩`,
       wx: weatherAndForecast[0],
       fa: weatherAndForecast[1]
     });
