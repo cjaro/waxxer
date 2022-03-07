@@ -12,9 +12,10 @@ module.exports = {
       },
       "conditions": {
         "openWeatherMapId": weatherInfo.weather[0].id,
+        "iconCode": weatherInfo.weather[0].icon,
+        "iconCode2": weatherInfo.weather[0].id + weatherInfo.weather[0].icon,
         "condition": weatherInfo.weather[0].main,
         "conditionDescription": weatherInfo.weather[0].description,
-        "iconCode": weatherInfo.weather[0].icon,
         "humidity": weatherInfo.main.humidity,
         "pressure": weatherInfo.main.pressure,
         "windSpeed": weatherInfo.wind.speed,
@@ -40,6 +41,11 @@ module.exports = {
   },
 
   formatForecastData: function(incomingForecast) {
+    let isSnow;
+    if (incomingForecast.snow) {
+      isSnow = this.isThereSnow(incomingForecast.snow);
+    }
+
     return {
       "date": new Date(incomingForecast.dt * 1000).toDateString(),
       "time": new Date(incomingForecast.dt * 1000).toLocaleTimeString("en-US"),
@@ -51,14 +57,14 @@ module.exports = {
         "feelsLikeF": ((incomingForecast.main.feels_like - 273.15) * (9/5) + 32).toFixed(1),
         "humidity": incomingForecast.main.humidity
       },
-      "weather": [
-        {
-          "id": incomingForecast.weather[0].id,
-          "main": incomingForecast.weather[0].main,
-          "description": incomingForecast.weather[0].description,
-          "icon": incomingForecast.weather[0].icon
-        }
-      ],
+      "weather": {
+        "id": incomingForecast.weather[0].id,
+        "main": incomingForecast.weather[0].main,
+        "description": incomingForecast.weather[0].description,
+        "iconCode": incomingForecast.weather[0].icon,
+        "iconCode2": incomingForecast.weather[0].id + incomingForecast.weather[0].icon
+      },
+      "snow": JSON.stringify(isSnow),
       "clouds": incomingForecast.clouds.all,
       "wind": {
         "speed": incomingForecast.wind.speed,
@@ -81,7 +87,7 @@ module.exports = {
   // for any given weather/icon set, you have these properties:
   // { "id": 804, "main": "Clouds", "description": "overcast clouds", "icon": "04d" }
   // so I want to assign the condition a new icon stitched together with the id & icon
-  // e.g., "Clouds" = "80404d" & corresponding icon => static/assets/icons/80404d.png
+  // e.g., "Clouds" = "80404d" & corresponding icon => public/assets/icons/80404d.png
   changeWeatherCode: function(id, iconCode) {
     return `${id+iconCode}.png`;
   },
@@ -164,10 +170,13 @@ module.exports = {
     return stateAndCounty;
   },
 
-  // Hourly temperature (interpolate w/ avg), wind (denote mph)
-  // Past 24 hr snowfall/precip. (differentiate between rain, snow, freezing rain, etc )
   isThereSnow: function(snowObject){
-    return snowObject["3h"];
+    let returnedSnowObject = {};
+
+    if(snowObject['1h']) { returnedSnowObject.snow1hr = snowObject['1h']; }
+    if (snowObject['3h']) { returnedSnowObject.snow3hr = snowObject['3h']; }
+
+    return returnedSnowObject;
   },
 
   constructGeoCodeUrl: function(placeName, geoCodeURl, geoCodeApiKey) {

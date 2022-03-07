@@ -3,48 +3,20 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
-const helpers = require(path.join(__dirname, "scripts/helpers"));
+
+const weather = require(path.join(__dirname, "/routes/weather"));
 
 require("dotenv").config();
 
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'pug');
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'static')));
-app.use('/favicon.ico', express.static('static/favicon.ico'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", async (req, res) => {
-  res.render("index", {
-    title: "Welcome to Waxxer!",
-  });
-})
-
-app.post('/weather', async function (req, res) {
-  const openWeatherMapApiKey = process.env.OPENWEATHERMAP_API_KEY;
-  const weatherApiUrl = process.env.OPENWEATHERMAP_BASE_URL;
-  const geoCodeUrl = process.env.GEOCODE_BASE_URL;
-  const geoCodeApiKey = process.env.GEOCODE_API_KEY;
-
-  try {
-    const weatherAndForecast = await helpers.gatherCurrentAndForecast(
-      req.body.placename,
-      weatherApiUrl,
-      openWeatherMapApiKey,
-      geoCodeUrl,
-      geoCodeApiKey
-    );
-
-    res.render("weather", {
-      title: `☀️ 🌧 ❄️ 🌩`,
-      wx: weatherAndForecast[0],
-      fa: weatherAndForecast[1]
-    });
-  } catch (error) {
-    res.send(error.toString())
-  }
-});
+app.use('/favicon.ico', express.static('favicon.ico'));
+app.use("/", weather);
 
 let PORT = process.env.PORT || 3000;
 
