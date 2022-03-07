@@ -41,9 +41,9 @@ module.exports = {
   },
 
   formatForecastData: function(incomingForecast) {
-    let isSnow;
+    let isSnow = "No snow forecasted.";
     if (incomingForecast.snow) {
-      isSnow = this.isThereSnow(incomingForecast.snow);
+      isSnow = JSON.stringify(this.isThereSnow(incomingForecast.snow));
     }
 
     return {
@@ -64,7 +64,7 @@ module.exports = {
         "iconCode": incomingForecast.weather[0].icon,
         "iconCode2": incomingForecast.weather[0].id + incomingForecast.weather[0].icon
       },
-      "snow": JSON.stringify(isSnow),
+      "snow": isSnow,
       "clouds": incomingForecast.clouds.all,
       "wind": {
         "speed": incomingForecast.wind.speed,
@@ -173,7 +173,7 @@ module.exports = {
   isThereSnow: function(snowObject){
     let returnedSnowObject = {};
 
-    if(snowObject['1h']) { returnedSnowObject.snow1hr = snowObject['1h']; }
+    if (snowObject['1h']) { returnedSnowObject.snow1hr = snowObject['1h']; }
     if (snowObject['3h']) { returnedSnowObject.snow3hr = snowObject['3h']; }
 
     return returnedSnowObject;
