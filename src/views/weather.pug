@@ -11,6 +11,8 @@ block content
 
         img(src=`http://openweathermap.org/img/wn/${wx.conditions.iconCode}.png`)
 
+        p !{wx.conditions.iconCode2}
+
         h4 Weather conditions: !{wx.conditions.condition} (!{wx.conditions.conditionDescription}).
         p(style="font-size:16px;font-weight:bold;") Wax recommendation: #[span(style=`color: ${wx.waxColor[0]}`) !{wx.waxColor[1]}]
 
@@ -47,15 +49,23 @@ block content
 
         h3 5-Day Forecast (every 3 hrs)
 
-        table(style='width:100%;font-size:18px;')
+        table(style='width:100%;font-size:18px;border: 1px solid black;')
             tr
-                th(style="border: 1px solid black;") datetime
-                th(style="border: 1px solid black;") Temp
-                th(style="border: 1px solid black;") Humidity
-                th(style="border: 1px solid black;") Wind
-            for weather in fa
+                th(style="border-bottom: 1px solid black;") datetime
+                th(style="border-bottom: 1px solid black;") Temp
+                th(style="border-bottom: 1px solid black;") Humidity
+                th(style="border-bottom: 1px solid black;") Wind
+                th(style="border-bottom: 1px solid black;") Icon
+                th(style="border-bottom: 1px solid black;") Conditions
+                th(style="border-bottom: 1px solid black;") Snow?
+            for forecast in fa
                 tr
-                    td(style="border: 1px solid black;") !{weather.date} !{weather.time}
-                    td(style="border: 1px solid black;") !{weather.main.tempF}F / !{weather.main.tempC}C
-                    td(style="border: 1px solid black;") !{weather.main.humidity}%
-                    td(style="border: 1px solid black;") !{weather.wind.speed} !{weather.wind.direction}
+                    td(style="border-bottom: 1px solid black;") !{forecast.date} !{forecast.time}
+                    td(style="border-bottom: 1px solid black;") !{forecast.main.tempF}F / !{forecast.main.tempC}C
+                    td(style="border-bottom: 1px solid black;") !{forecast.main.humidity}%
+                    td(style="border-bottom: 1px solid black;") !{forecast.wind.speed} m/s !{forecast.wind.direction}
+                    td(style="border-bottom: 1px solid black;")
+                        img(src=`http://openweathermap.org/img/wn/${forecast.weather.iconCode}.png`)
+                    td(style="border-bottom:1px solid black;") !{forecast.weather.main} (!{forecast.weather.description})
+                    td(style="border-bottom:1px solid black;") !{forecast.snow}
+
