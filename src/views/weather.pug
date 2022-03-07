@@ -51,21 +51,22 @@ block content
 
         table(style='width:100%;font-size:18px;border: 1px solid black;')
             tr
+                th(style="border-bottom: 1px solid black;")
                 th(style="border-bottom: 1px solid black;") datetime
                 th(style="border-bottom: 1px solid black;") Temp
                 th(style="border-bottom: 1px solid black;") Humidity
                 th(style="border-bottom: 1px solid black;") Wind
-                th(style="border-bottom: 1px solid black;") Icon
                 th(style="border-bottom: 1px solid black;") Conditions
                 th(style="border-bottom: 1px solid black;") Snow?
             for forecast in fa
                 tr
+                    td(style="border-bottom: 1px solid black;")
+                        img(src=`http://openweathermap.org/img/wn/${forecast.weather.iconCode}.png`)
                     td(style="border-bottom: 1px solid black;") !{forecast.date} !{forecast.time}
                     td(style="border-bottom: 1px solid black;") !{forecast.main.tempF}F / !{forecast.main.tempC}C
                     td(style="border-bottom: 1px solid black;") !{forecast.main.humidity}%
                     td(style="border-bottom: 1px solid black;") !{forecast.wind.speed} m/s !{forecast.wind.direction}
-                    td(style="border-bottom: 1px solid black;")
-                        img(src=`http://openweathermap.org/img/wn/${forecast.weather.iconCode}.png`)
+
                     td(style="border-bottom:1px solid black;") !{forecast.weather.main} (!{forecast.weather.description})
                     td(style="border-bottom:1px solid black;") !{forecast.snow}
 
