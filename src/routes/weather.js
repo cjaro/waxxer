@@ -4,6 +4,7 @@ const router = express.Router();
 const helpers = require(path.join(__dirname, "../scripts/helpers"));
 
 router.get("/", async (req, res) => {
+  console.log("Hello!");
   res.render("index", {
     title: "❄️ waxxer ❄️",
   });
