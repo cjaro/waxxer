@@ -48,7 +48,7 @@ module.exports = {
 
     return {
       "date": new Date(incomingForecast.dt * 1000).toDateString(),
-      "time": new Date(incomingForecast.dt * 1000).toLocaleTimeString("en-US"),
+      "time": new Date(incomingForecast.dt * 1000).toTimeString(),
       "dateText": incomingForecast.dt_txt,
       "main": {
         "tempF": ((incomingForecast.main.temp - 273.15) * (9/5) + 32).toFixed(1),
@@ -205,6 +205,25 @@ module.exports = {
     return [coord.lat, coord.lng];
   },
 
+  // https://stackoverflow.com/questions/46802448/
+  groupByDay(forecastObject){
+    const groups = forecastObject.reduce((groups, forecast) => {
+      const fdate = forecast.date;
+      if(!groups[fdate]) {
+        groups[fdate] = [];
+      }
+      groups[fdate].push(forecast);
+      return groups;
+    }, {});
+
+    return Object.keys(groups).map((date) => {
+      return {
+        date,
+        forecasts: groups[date]
+      };
+    });
+  },
+
   returnLatLongStateCounty: async function(loc, geoCodeApiUrl, geoCodeApiKey) {
     try {
       const geoCodeUrl = this.constructGeoCodeUrl(loc, geoCodeApiUrl, geoCodeApiKey);
@@ -229,9 +248,13 @@ module.exports = {
       const forecast = await this.queryAPI(`${url}/forecast?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${openWeatherApiKey}`);
       const weather = await this.queryAPI(`${url}/weather?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${openWeatherApiKey}`);
 
+      const forecastDataObject = this.buildForecastObject(forecast.list);
+      console.log(forecastDataObject);
+      const groupForecastByDate = this.groupByDay(forecastDataObject);
+
       return [
         this.formatWeatherData(weather, geo[0], geo[2], geo[3]),
-        this.buildForecastObject(forecast.list)
+        groupForecastByDate
       ];
     } catch (e) {
       console.log(e);

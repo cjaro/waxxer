@@ -1,7 +1,8 @@
 require("dotenv").config();
 const assert = require("assert");
 
-const { constructGeoCodeUrl, interpretWindDegrees } = require("../../../src/scripts/helpers");
+const { constructGeoCodeUrl, interpretWindDegrees, groupByDay } = require("../../../src/scripts/helpers");
+const { minneapolisFiveDayForecast } = import("../../fixtures/minneapolis5DayForecast.json");
 
 describe("testHelpers", () => {
 
@@ -27,6 +28,12 @@ describe("testHelpers", () => {
     }
 
     assert.deepEqual(degrees, testDirections);
-  })
+  });
+
+
+  it("shouldGroupForecastByDate", () => {
+    const groupData = groupByDay(minneapolisFiveDayForecast);
+    groupData.forEach(element => console.log(element))
+  });
 
 });
