@@ -230,7 +230,7 @@ module.exports = {
       const weather = await this.queryAPI(`${url}/weather?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${openWeatherApiKey}`);
 
       return [
-        this.formatWeatherData(weather, geo[0], geo[2]),
+        this.formatWeatherData(weather, geo[0], geo[2], geo[3]),
         this.buildForecastObject(forecast.list)
       ];
     } catch (e) {

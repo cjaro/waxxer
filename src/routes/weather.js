@@ -5,8 +5,8 @@ const helpers = require(path.join(__dirname, "../scripts/helpers"));
 
 router.get("/", async (req, res) => {
   console.log("Hello!");
-  res.render("index", {
-    title: "❄️ waxxer ❄️",
+  res.render("pages/index", {
+    title: "waxxer",
   });
 })
 
@@ -26,8 +26,8 @@ router.post('/weather', async function (req, res) {
       geoCodeApiKey
     );
 
-    res.render("weather", {
-      title: `☀️ 🌧 waxxer ❄️ 🌩`,
+    res.render("pages/weather", {
+      title: `waxxer`,
       wx: weatherAndForecast[0],
       fa: weatherAndForecast[1]
     });
