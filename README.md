@@ -6,7 +6,7 @@ Say hello to Waxxer! While talking with my partner/ski buddy this winter, I had 
 
 As of 2022, Waxxer has entered construction mode and I'm working on updating it to use [OpenWeatherMap](openweathermap.org/), as well as modernizing the entire application as well. There are lots of ideas floating around my head, so Waxxer has plenty of growing to do.
 
-[Waxxer ↗︎](www.waxxer.io)
+[Waxxer ↗︎](http://www.waxxer.io)
 
 ## Getting Started
 
