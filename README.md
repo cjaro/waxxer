@@ -4,7 +4,7 @@ As a cross country skier, it can be frustrating and confusing to prepare your sk
 
 Say hello to Waxxer! While talking with my partner/ski buddy this winter, I had the idea to create a wax-where-you-are type application to give the best, most accurate weather conditions for XC ski races using a weather (current conditions & forecasting) API.
 
-As of 2022, Waxxer has entered construction mode and I'm working on updating it to use [OpenWeatherMap](openweathermap.org/), as well as modernizing the entire application as well. There are lots of ideas floating around my head, so Waxxer has plenty of growing to do.
+As of 2022, Waxxer has entered construction model; there are lots of ideas floating around my head, so Waxxer has plenty of growing to do.
 
 [Waxxer ↗︎](http://www.waxxer.io)
 
