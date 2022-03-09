@@ -132,8 +132,6 @@ module.exports = {
     }
   },
 
-  // Wax recommendation based on all of these factors (temp, humidity, snowfall... how???)
-  // aggregate data, not predictions. regression? R or Python could handle this
   recommendWax: function(tempCelsius) {
     if (tempCelsius >= 10.56) {
       return ["magenta", "Use water skis lmao ✌️."];
@@ -232,7 +230,7 @@ module.exports = {
       const weather = await this.queryAPI(`${url}/weather?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${openWeatherApiKey}`);
 
       return [
-        this.formatWeatherData(weather, geo[0], geo[2]),
+        this.formatWeatherData(weather, geo[0], geo[2], geo[3]),
         this.buildForecastObject(forecast.list)
       ];
     } catch (e) {

@@ -4,8 +4,9 @@ const router = express.Router();
 const helpers = require(path.join(__dirname, "../scripts/helpers"));
 
 router.get("/", async (req, res) => {
-  res.render("index", {
-    title: "❄️ waxxer ❄️",
+  console.log("Hello!");
+  res.render("pages/index", {
+    title: "waxxer",
   });
 })
 
@@ -25,8 +26,8 @@ router.post('/weather', async function (req, res) {
       geoCodeApiKey
     );
 
-    res.render("weather", {
-      title: `☀️ 🌧 waxxer ❄️ 🌩`,
+    res.render("pages/weather", {
+      title: `waxxer`,
       wx: weatherAndForecast[0],
       fa: weatherAndForecast[1]
     });
