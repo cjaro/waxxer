@@ -1,0 +1,1082 @@
+[
+  {
+    "date":"Wed Mar 09 2022",
+    "time":"15:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-09 21:00:00",
+    "main":{
+      "tempF":"18.4",
+      "tempC":"-7.6",
+      "feelsLikeC":"-14.6",
+      "feelsLikeF":"5.8",
+      "humidity":50
+    },
+    "weather":{
+      "id":801,
+      "main":"Clouds",
+      "description":"few clouds",
+      "iconCode":"02d",
+      "iconCode2":"80102d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":20,
+    "wind":{
+      "speed":5.7,
+      "degrees":300,
+      "direction":"WNW",
+      "gust":8.05
+    }
+  },
+  {
+    "date":"Wed Mar 09 2022",
+    "time":"18:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-10 00:00:00",
+    "main":{
+      "tempF":"16.6",
+      "tempC":"-8.5",
+      "feelsLikeC":"-15.5",
+      "feelsLikeF":"4.1",
+      "humidity":58
+    },
+    "weather":{
+      "id":802,
+      "main":"Clouds",
+      "description":"scattered clouds",
+      "iconCode":"03d",
+      "iconCode2":"80203d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":47,
+    "wind":{
+      "speed":4.85,
+      "degrees":295,
+      "direction":"WNW",
+      "gust":8.09
+    }
+  },
+  {
+    "date":"Wed Mar 09 2022",
+    "time":"21:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-10 03:00:00",
+    "main":{
+      "tempF":"13.2",
+      "tempC":"-10.4",
+      "feelsLikeC":"-16.9",
+      "feelsLikeF":"1.6",
+      "humidity":68
+    },
+    "weather":{
+      "id":803,
+      "main":"Clouds",
+      "description":"broken clouds",
+      "iconCode":"04n",
+      "iconCode2":"80304n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":56,
+    "wind":{
+      "speed":3.8,
+      "degrees":286,
+      "direction":"WNW",
+      "gust":8.73
+    }
+  },
+  {
+    "date":"Thu Mar 10 2022",
+    "time":"00:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-10 06:00:00",
+    "main":{
+      "tempF":"8.9",
+      "tempC":"-12.8",
+      "feelsLikeC":"-18.5",
+      "feelsLikeF":"-1.3",
+      "humidity":80
+    },
+    "weather":{
+      "id":803,
+      "main":"Clouds",
+      "description":"broken clouds",
+      "iconCode":"04n",
+      "iconCode2":"80304n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":52,
+    "wind":{
+      "speed":2.69,
+      "degrees":292,
+      "direction":"WNW",
+      "gust":6.63
+    }
+  },
+  {
+    "date":"Thu Mar 10 2022",
+    "time":"03:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-10 09:00:00",
+    "main":{
+      "tempF":"7.0",
+      "tempC":"-13.9",
+      "feelsLikeC":"-19.7",
+      "feelsLikeF":"-3.5",
+      "humidity":85
+    },
+    "weather":{
+      "id":800,
+      "main":"Clear",
+      "description":"clear sky",
+      "iconCode":"01n",
+      "iconCode2":"80001n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":8,
+    "wind":{
+      "speed":2.68,
+      "degrees":269,
+      "direction":"W",
+      "gust":5.39
+    }
+  },
+  {
+    "date":"Thu Mar 10 2022",
+    "time":"06:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-10 12:00:00",
+    "main":{
+      "tempF":"6.1",
+      "tempC":"-14.4",
+      "feelsLikeC":"-20.7",
+      "feelsLikeF":"-5.3",
+      "humidity":82
+    },
+    "weather":{
+      "id":802,
+      "main":"Clouds",
+      "description":"scattered clouds",
+      "iconCode":"03n",
+      "iconCode2":"80203n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":44,
+    "wind":{
+      "speed":2.95,
+      "degrees":294,
+      "direction":"WNW",
+      "gust":6.72
+    }
+  },
+  {
+    "date":"Thu Mar 10 2022",
+    "time":"09:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-10 15:00:00",
+    "main":{
+      "tempF":"8.6",
+      "tempC":"-13.0",
+      "feelsLikeC":"-17.9",
+      "feelsLikeF":"-0.3",
+      "humidity":63
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04d",
+      "iconCode2":"80404d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":100,
+    "wind":{
+      "speed":2.21,
+      "degrees":283,
+      "direction":"WNW",
+      "gust":4.47
+    }
+  },
+  {
+    "date":"Thu Mar 10 2022",
+    "time":"12:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-10 18:00:00",
+    "main":{
+      "tempF":"16.5",
+      "tempC":"-8.6",
+      "feelsLikeC":"-13.4",
+      "feelsLikeF":"7.8",
+      "humidity":61
+    },
+    "weather":{
+      "id":803,
+      "main":"Clouds",
+      "description":"broken clouds",
+      "iconCode":"04d",
+      "iconCode2":"80304d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":64,
+    "wind":{
+      "speed":2.66,
+      "degrees":258,
+      "direction":"WSW",
+      "gust":4.92
+    }
+  },
+  {
+    "date":"Thu Mar 10 2022",
+    "time":"15:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-10 21:00:00",
+    "main":{
+      "tempF":"22.0",
+      "tempC":"-5.5",
+      "feelsLikeC":"-11.0",
+      "feelsLikeF":"12.2",
+      "humidity":52
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04d",
+      "iconCode2":"80404d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":95,
+    "wind":{
+      "speed":3.9,
+      "degrees":258,
+      "direction":"WSW",
+      "gust":8.26
+    }
+  },
+  {
+    "date":"Thu Mar 10 2022",
+    "time":"18:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-11 00:00:00",
+    "main":{
+      "tempF":"20.1",
+      "tempC":"-6.6",
+      "feelsLikeC":"-9.7",
+      "feelsLikeF":"14.5",
+      "humidity":63
+    },
+    "weather":{
+      "id":803,
+      "main":"Clouds",
+      "description":"broken clouds",
+      "iconCode":"04d",
+      "iconCode2":"80304d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":62,
+    "wind":{
+      "speed":1.71,
+      "degrees":241,
+      "direction":"WSW",
+      "gust":5.36
+    }
+  },
+  {
+    "date":"Thu Mar 10 2022",
+    "time":"21:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-11 03:00:00",
+    "main":{
+      "tempF":"19.0",
+      "tempC":"-7.2",
+      "feelsLikeC":"-12.6",
+      "feelsLikeF":"9.2",
+      "humidity":66
+    },
+    "weather":{
+      "id":800,
+      "main":"Clear",
+      "description":"clear sky",
+      "iconCode":"01n",
+      "iconCode2":"80001n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":0,
+    "wind":{
+      "speed":3.48,
+      "degrees":181,
+      "direction":"S",
+      "gust":10.82
+    }
+  },
+  {
+    "date":"Fri Mar 11 2022",
+    "time":"00:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-11 06:00:00",
+    "main":{
+      "tempF":"20.6",
+      "tempC":"-6.3",
+      "feelsLikeC":"-12.7",
+      "feelsLikeF":"9.2",
+      "humidity":59
+    },
+    "weather":{
+      "id":801,
+      "main":"Clouds",
+      "description":"few clouds",
+      "iconCode":"02n",
+      "iconCode2":"80102n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":21,
+    "wind":{
+      "speed":4.74,
+      "degrees":191,
+      "direction":"S",
+      "gust":15.33
+    }
+  },
+  {
+    "date":"Fri Mar 11 2022",
+    "time":"03:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-11 09:00:00",
+    "main":{
+      "tempF":"23.6",
+      "tempC":"-4.7",
+      "feelsLikeC":"-11.6",
+      "feelsLikeF":"11.2",
+      "humidity":52
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04n",
+      "iconCode2":"80404n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":98,
+    "wind":{
+      "speed":6.28,
+      "degrees":235,
+      "direction":"SW",
+      "gust":14.35
+    }
+  },
+  {
+    "date":"Fri Mar 11 2022",
+    "time":"06:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-11 12:00:00",
+    "main":{
+      "tempF":"12.3",
+      "tempC":"-10.9",
+      "feelsLikeC":"-17.9",
+      "feelsLikeF":"-0.3",
+      "humidity":75
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04n",
+      "iconCode2":"80404n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":99,
+    "wind":{
+      "speed":6.75,
+      "degrees":295,
+      "direction":"WNW",
+      "gust":13.79
+    }
+  },
+  {
+    "date":"Fri Mar 11 2022",
+    "time":"09:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-11 15:00:00",
+    "main":{
+      "tempF":"7.5",
+      "tempC":"-13.6",
+      "feelsLikeC":"-20.6",
+      "feelsLikeF":"-5.1",
+      "humidity":69
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04d",
+      "iconCode2":"80404d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":88,
+    "wind":{
+      "speed":6.84,
+      "degrees":297,
+      "direction":"WNW",
+      "gust":12.2
+    }
+  },
+  {
+    "date":"Fri Mar 11 2022",
+    "time":"12:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-11 18:00:00",
+    "main":{
+      "tempF":"10.1",
+      "tempC":"-12.2",
+      "feelsLikeC":"-19.2",
+      "feelsLikeF":"-2.5",
+      "humidity":61
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04d",
+      "iconCode2":"80404d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":92,
+    "wind":{
+      "speed":6.82,
+      "degrees":300,
+      "direction":"WNW",
+      "gust":9.92
+    }
+  },
+  {
+    "date":"Fri Mar 11 2022",
+    "time":"15:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-11 21:00:00",
+    "main":{
+      "tempF":"11.3",
+      "tempC":"-11.5",
+      "feelsLikeC":"-18.5",
+      "feelsLikeF":"-1.3",
+      "humidity":59
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04d",
+      "iconCode2":"80404d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":100,
+    "wind":{
+      "speed":6.58,
+      "degrees":308,
+      "direction":"NW",
+      "gust":9.48
+    }
+  },
+  {
+    "date":"Fri Mar 11 2022",
+    "time":"18:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-12 00:00:00",
+    "main":{
+      "tempF":"8.3",
+      "tempC":"-13.2",
+      "feelsLikeC":"-20.2",
+      "feelsLikeF":"-4.3",
+      "humidity":69
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04d",
+      "iconCode2":"80404d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":100,
+    "wind":{
+      "speed":5.72,
+      "degrees":299,
+      "direction":"WNW",
+      "gust":9.45
+    }
+  },
+  {
+    "date":"Fri Mar 11 2022",
+    "time":"21:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-12 03:00:00",
+    "main":{
+      "tempF":"4.0",
+      "tempC":"-15.6",
+      "feelsLikeC":"-22.6",
+      "feelsLikeF":"-8.6",
+      "humidity":74
+    },
+    "weather":{
+      "id":803,
+      "main":"Clouds",
+      "description":"broken clouds",
+      "iconCode":"04n",
+      "iconCode2":"80304n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":78,
+    "wind":{
+      "speed":5.22,
+      "degrees":303,
+      "direction":"WNW",
+      "gust":9.76
+    }
+  },
+  {
+    "date":"Sat Mar 12 2022",
+    "time":"00:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-12 06:00:00",
+    "main":{
+      "tempF":"0.2",
+      "tempC":"-17.6",
+      "feelsLikeC":"-24.6",
+      "feelsLikeF":"-12.4",
+      "humidity":74
+    },
+    "weather":{
+      "id":803,
+      "main":"Clouds",
+      "description":"broken clouds",
+      "iconCode":"04n",
+      "iconCode2":"80304n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":70,
+    "wind":{
+      "speed":4.62,
+      "degrees":314,
+      "direction":"NW",
+      "gust":8.35
+    }
+  },
+  {
+    "date":"Sat Mar 12 2022",
+    "time":"03:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-12 09:00:00",
+    "main":{
+      "tempF":"-2.1",
+      "tempC":"-18.9",
+      "feelsLikeC":"-25.9",
+      "feelsLikeF":"-14.7",
+      "humidity":76
+    },
+    "weather":{
+      "id":800,
+      "main":"Clear",
+      "description":"clear sky",
+      "iconCode":"01n",
+      "iconCode2":"80001n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":10,
+    "wind":{
+      "speed":3.77,
+      "degrees":313,
+      "direction":"NW",
+      "gust":7.03
+    }
+  },
+  {
+    "date":"Sat Mar 12 2022",
+    "time":"06:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-12 12:00:00",
+    "main":{
+      "tempF":"-3.0",
+      "tempC":"-19.5",
+      "feelsLikeC":"-26.5",
+      "feelsLikeF":"-15.6",
+      "humidity":76
+    },
+    "weather":{
+      "id":800,
+      "main":"Clear",
+      "description":"clear sky",
+      "iconCode":"01n",
+      "iconCode2":"80001n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":8,
+    "wind":{
+      "speed":2.77,
+      "degrees":303,
+      "direction":"WNW",
+      "gust":4.49
+    }
+  },
+  {
+    "date":"Sat Mar 12 2022",
+    "time":"09:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-12 15:00:00",
+    "main":{
+      "tempF":"1.5",
+      "tempC":"-16.9",
+      "feelsLikeC":"-21.7",
+      "feelsLikeF":"-7.1",
+      "humidity":62
+    },
+    "weather":{
+      "id":800,
+      "main":"Clear",
+      "description":"clear sky",
+      "iconCode":"01d",
+      "iconCode2":"80001d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":7,
+    "wind":{
+      "speed":1.78,
+      "degrees":280,
+      "direction":"W",
+      "gust":2.54
+    }
+  },
+  {
+    "date":"Sat Mar 12 2022",
+    "time":"12:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-12 18:00:00",
+    "main":{
+      "tempF":"11.1",
+      "tempC":"-11.6",
+      "feelsLikeC":"-16.6",
+      "feelsLikeF":"2.1",
+      "humidity":45
+    },
+    "weather":{
+      "id":800,
+      "main":"Clear",
+      "description":"clear sky",
+      "iconCode":"01d",
+      "iconCode2":"80001d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":10,
+    "wind":{
+      "speed":2.37,
+      "degrees":224,
+      "direction":"SW",
+      "gust":3.37
+    }
+  },
+  {
+    "date":"Sat Mar 12 2022",
+    "time":"15:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-12 21:00:00",
+    "main":{
+      "tempF":"18.5",
+      "tempC":"-7.5",
+      "feelsLikeC":"-13.1",
+      "feelsLikeF":"8.4",
+      "humidity":38
+    },
+    "weather":{
+      "id":802,
+      "main":"Clouds",
+      "description":"scattered clouds",
+      "iconCode":"03d",
+      "iconCode2":"80203d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":48,
+    "wind":{
+      "speed":3.58,
+      "degrees":201,
+      "direction":"SSW",
+      "gust":5.83
+    }
+  },
+  {
+    "date":"Sat Mar 12 2022",
+    "time":"18:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-13 00:00:00",
+    "main":{
+      "tempF":"21.6",
+      "tempC":"-5.8",
+      "feelsLikeC":"-11.0",
+      "feelsLikeF":"12.2",
+      "humidity":37
+    },
+    "weather":{
+      "id":803,
+      "main":"Clouds",
+      "description":"broken clouds",
+      "iconCode":"04d",
+      "iconCode2":"80304d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":73,
+    "wind":{
+      "speed":3.55,
+      "degrees":175,
+      "direction":"S",
+      "gust":10.82
+    }
+  },
+  {
+    "date":"Sat Mar 12 2022",
+    "time":"21:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-13 03:00:00",
+    "main":{
+      "tempF":"24.4",
+      "tempC":"-4.2",
+      "feelsLikeC":"-10.3",
+      "feelsLikeF":"13.5",
+      "humidity":35
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04n",
+      "iconCode2":"80404n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":100,
+    "wind":{
+      "speed":5.17,
+      "degrees":183,
+      "direction":"S",
+      "gust":15.35
+    }
+  },
+  {
+    "date":"Sun Mar 13 2022",
+    "time":"00:00:00 GMT-0600 (Central Standard Time)",
+    "dateText":"2022-03-13 06:00:00",
+    "main":{
+      "tempF":"26.1",
+      "tempC":"-3.3",
+      "feelsLikeC":"-9.4",
+      "feelsLikeF":"15.1",
+      "humidity":56
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04n",
+      "iconCode2":"80404n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":89,
+    "wind":{
+      "speed":5.59,
+      "degrees":204,
+      "direction":"SSW",
+      "gust":16.3
+    }
+  },
+  {
+    "date":"Sun Mar 13 2022",
+    "time":"04:00:00 GMT-0500 (Central Daylight Time)",
+    "dateText":"2022-03-13 09:00:00",
+    "main":{
+      "tempF":"25.4",
+      "tempC":"-3.6",
+      "feelsLikeC":"-8.4",
+      "feelsLikeF":"16.9",
+      "humidity":82
+    },
+    "weather":{
+      "id":802,
+      "main":"Clouds",
+      "description":"scattered clouds",
+      "iconCode":"03n",
+      "iconCode2":"80203n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":29,
+    "wind":{
+      "speed":3.53,
+      "degrees":221,
+      "direction":"SW",
+      "gust":11.94
+    }
+  },
+  {
+    "date":"Sun Mar 13 2022",
+    "time":"07:00:00 GMT-0500 (Central Daylight Time)",
+    "dateText":"2022-03-13 12:00:00",
+    "main":{
+      "tempF":"22.3",
+      "tempC":"-5.4",
+      "feelsLikeC":"-9.0",
+      "feelsLikeF":"15.8",
+      "humidity":92
+    },
+    "weather":{
+      "id":801,
+      "main":"Clouds",
+      "description":"few clouds",
+      "iconCode":"02n",
+      "iconCode2":"80102n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":21,
+    "wind":{
+      "speed":2.21,
+      "degrees":263,
+      "direction":"W",
+      "gust":6.02
+    }
+  },
+  {
+    "date":"Sun Mar 13 2022",
+    "time":"10:00:00 GMT-0500 (Central Daylight Time)",
+    "dateText":"2022-03-13 15:00:00",
+    "main":{
+      "tempF":"26.5",
+      "tempC":"-3.1",
+      "feelsLikeC":"-6.7",
+      "feelsLikeF":"20.0",
+      "humidity":76
+    },
+    "weather":{
+      "id":800,
+      "main":"Clear",
+      "description":"clear sky",
+      "iconCode":"01d",
+      "iconCode2":"80001d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":8,
+    "wind":{
+      "speed":2.52,
+      "degrees":323,
+      "direction":"NW",
+      "gust":5.39
+    }
+  },
+  {
+    "date":"Sun Mar 13 2022",
+    "time":"13:00:00 GMT-0500 (Central Daylight Time)",
+    "dateText":"2022-03-13 18:00:00",
+    "main":{
+      "tempF":"34.8",
+      "tempC":"1.6",
+      "feelsLikeC":"1.6",
+      "feelsLikeF":"34.8",
+      "humidity":65
+    },
+    "weather":{
+      "id":801,
+      "main":"Clouds",
+      "description":"few clouds",
+      "iconCode":"02d",
+      "iconCode2":"80102d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":11,
+    "wind":{
+      "speed":1.22,
+      "degrees":290,
+      "direction":"WNW",
+      "gust":1.81
+    }
+  },
+  {
+    "date":"Sun Mar 13 2022",
+    "time":"16:00:00 GMT-0500 (Central Daylight Time)",
+    "dateText":"2022-03-13 21:00:00",
+    "main":{
+      "tempF":"38.4",
+      "tempC":"3.6",
+      "feelsLikeC":"3.6",
+      "feelsLikeF":"38.4",
+      "humidity":58
+    },
+    "weather":{
+      "id":802,
+      "main":"Clouds",
+      "description":"scattered clouds",
+      "iconCode":"03d",
+      "iconCode2":"80203d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":25,
+    "wind":{
+      "speed":0.97,
+      "degrees":234,
+      "direction":"SW",
+      "gust":1.43
+    }
+  },
+  {
+    "date":"Sun Mar 13 2022",
+    "time":"19:00:00 GMT-0500 (Central Daylight Time)",
+    "dateText":"2022-03-14 00:00:00",
+    "main":{
+      "tempF":"34.5",
+      "tempC":"1.4",
+      "feelsLikeC":"-1.4",
+      "feelsLikeF":"29.4",
+      "humidity":68
+    },
+    "weather":{
+      "id":803,
+      "main":"Clouds",
+      "description":"broken clouds",
+      "iconCode":"04d",
+      "iconCode2":"80304d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":58,
+    "wind":{
+      "speed":2.57,
+      "degrees":83,
+      "direction":"E",
+      "gust":5.72
+    }
+  },
+  {
+    "date":"Sun Mar 13 2022",
+    "time":"22:00:00 GMT-0500 (Central Daylight Time)",
+    "dateText":"2022-03-14 03:00:00",
+    "main":{
+      "tempF":"32.9",
+      "tempC":"0.5",
+      "feelsLikeC":"-3.2",
+      "feelsLikeF":"26.2",
+      "humidity":81
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04n",
+      "iconCode2":"80404n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":100,
+    "wind":{
+      "speed":3.4,
+      "degrees":90,
+      "direction":"E",
+      "gust":9.07
+    }
+  },
+  {
+    "date":"Mon Mar 14 2022",
+    "time":"01:00:00 GMT-0500 (Central Daylight Time)",
+    "dateText":"2022-03-14 06:00:00",
+    "main":{
+      "tempF":"34.4",
+      "tempC":"1.3",
+      "feelsLikeC":"-2.8",
+      "feelsLikeF":"27.0",
+      "humidity":81
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04n",
+      "iconCode2":"80404n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":100,
+    "wind":{
+      "speed":4.19,
+      "degrees":116,
+      "direction":"ESE",
+      "gust":12.06
+    }
+  },
+  {
+    "date":"Mon Mar 14 2022",
+    "time":"04:00:00 GMT-0500 (Central Daylight Time)",
+    "dateText":"2022-03-14 09:00:00",
+    "main":{
+      "tempF":"36.6",
+      "tempC":"2.5",
+      "feelsLikeC":"-1.0",
+      "feelsLikeF":"30.1",
+      "humidity":90
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04n",
+      "iconCode2":"80404n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":100,
+    "wind":{
+      "speed":3.82,
+      "degrees":165,
+      "direction":"SSE",
+      "gust":12.32
+    }
+  },
+  {
+    "date":"Mon Mar 14 2022",
+    "time":"07:00:00 GMT-0500 (Central Daylight Time)",
+    "dateText":"2022-03-14 12:00:00",
+    "main":{
+      "tempF":"38.7",
+      "tempC":"3.7",
+      "feelsLikeC":"-0.3",
+      "feelsLikeF":"31.4",
+      "humidity":82
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04n",
+      "iconCode2":"80404n"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":100,
+    "wind":{
+      "speed":5.08,
+      "degrees":249,
+      "direction":"WSW",
+      "gust":12.59
+    }
+  },
+  {
+    "date":"Mon Mar 14 2022",
+    "time":"10:00:00 GMT-0500 (Central Daylight Time)",
+    "dateText":"2022-03-14 15:00:00",
+    "main":{
+      "tempF":"32.8",
+      "tempC":"0.5",
+      "feelsLikeC":"-4.6",
+      "feelsLikeF":"23.8",
+      "humidity":85
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04d",
+      "iconCode2":"80404d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":100,
+    "wind":{
+      "speed":5.42,
+      "degrees":303,
+      "direction":"WNW",
+      "gust":12.68
+    }
+  },
+  {
+    "date":"Mon Mar 14 2022",
+    "time":"13:00:00 GMT-0500 (Central Daylight Time)",
+    "dateText":"2022-03-14 18:00:00",
+    "main":{
+      "tempF":"35.0",
+      "tempC":"1.6",
+      "feelsLikeC":"-3.7",
+      "feelsLikeF":"25.3",
+      "humidity":71
+    },
+    "weather":{
+      "id":804,
+      "main":"Clouds",
+      "description":"overcast clouds",
+      "iconCode":"04d",
+      "iconCode2":"80404d"
+    },
+    "snow":"No snow forecasted.",
+    "clouds":100,
+    "wind":{
+      "speed":6.76,
+      "degrees":330,
+      "direction":"NNW",
+      "gust":11.98
+    }
+  }
+]
