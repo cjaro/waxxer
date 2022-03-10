@@ -35,6 +35,7 @@ module.exports = {
       "sunrise": new Date(weatherInfo.sys.sunrise * 1000).toLocaleTimeString("en-US"),
       "sunset": new Date(weatherInfo.sys.sunset * 1000).toLocaleTimeString("en-US"),
       "currentTime": new Date(weatherInfo.dt * 1000).toLocaleTimeString("en-US"),
+      "date": new Date(weatherInfo.dt * 1000),
       "mapUrl": mapUrl,
       "waxColor": this.recommendWax((weatherInfo.main.temp - 273.15).toFixed(1))
     };
@@ -249,7 +250,6 @@ module.exports = {
       const weather = await this.queryAPI(`${url}/weather?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${openWeatherApiKey}`);
 
       const forecastDataObject = this.buildForecastObject(forecast.list);
-      console.log(forecastDataObject);
       const groupForecastByDate = this.groupByDay(forecastDataObject);
 
       return [

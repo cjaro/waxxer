@@ -2,16 +2,26 @@
 <%- include('../partials/head') %>
 
 <div class="container">
-    <h1> <%= title %> </h1>
     <h2>Weather in <a href="<%= wx.mapUrl %>"> <%= wx.location.name %>, <%= wx.location.state %></a> (<%= wx.location.county %>, <%= wx.location.country %>)</h2>
+    <h3><%= wx.currentTime %></h3>
     <h3><a href="/">← Back</a></h3>
 
-    <img src="http://openweathermap.org/img/wn/<%= wx.conditions.iconCode %>@2x.png" alt="icon depicting <%= wx.conditions.conditionDescription %>">
-
-    <p><%=wx.conditions.iconCode2%></p>
-
-    <h4>Weather conditions: <%= wx.conditions.condition %> (<%= wx.conditions.conditionDescription %>).</h4>
-    <p style="font-size:16px;font-weight:bold;">Wax recommendation: <span style="color: <%= wx.waxColor[0] %>"> <%= wx.waxColor[1] %></span></p>
+    <div class="card" style="width: 18rem;">
+        <h5 class="card-title" style="text-align: center;font-size:18px;">Current weather conditions:</h5>
+        <img src="http://openweathermap.org/img/wn/<%= wx.conditions.iconCode %>@2x.png"
+             class="card-image-top"
+             alt="icon depicting <%= wx.conditions.conditionDescription %>">
+        <div class="card-body">
+            <h5> <%= wx.conditions.condition %> (<%= wx.conditions.conditionDescription %>)</h5>
+            <hr>
+            <p class="card-text" style="font-size:16px;">Wax recommendation:
+                <span style="color: <%= wx.waxColor[0] %>">
+                    <%= wx.waxColor[1] %>
+                </span>
+            </p>
+            <a href="#" class="btn btn-primary"> <%=wx.conditions.iconCode2%> </a>
+        </div>
+    </div>
 
     <div class="card col-md-12 current-conditions" style="font-size:18px;">
         <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
