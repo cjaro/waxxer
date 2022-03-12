@@ -172,8 +172,8 @@ module.exports = {
   isThereSnow: function(snowObject){
     let returnedSnowObject = {};
 
-    if (snowObject['1h']) { returnedSnowObject.snow1hr = snowObject['1h']; }
-    if (snowObject['3h']) { returnedSnowObject.snow3hr = snowObject['3h']; }
+    if (snowObject["1h"]) { returnedSnowObject.snow1hr = snowObject["1h"]; }
+    if (snowObject["3h"]) { returnedSnowObject.snow3hr = snowObject["3h"]; }
 
     return returnedSnowObject;
   },
