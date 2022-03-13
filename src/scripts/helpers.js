@@ -243,11 +243,16 @@ module.exports = {
     }
   },
 
-  gatherCurrentAndForecast: async function(location, url, openWeatherApiKey, geoCodeApiUrl, geoCodeApiKey) {
+  gatherCurrentAndForecast: async function(location) {
     try {
+      const appId = process.env.OPENWEATHERMAP_API_KEY;
+      const weatherApiUrl = process.env.OPENWEATHERMAP_BASE_URL;
+      const geoCodeApiUrl = process.env.GEOCODE_BASE_URL;
+      const geoCodeApiKey = process.env.GEOCODE_API_KEY;
+
       const geo = await this.returnLatLongStateCounty(location, geoCodeApiUrl, geoCodeApiKey);
-      const forecast = await this.queryAPI(`${url}/forecast?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${openWeatherApiKey}`);
-      const weather = await this.queryAPI(`${url}/weather?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${openWeatherApiKey}`);
+      const forecast = await this.queryAPI(`${weatherApiUrl}/forecast?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${appId}`);
+      const weather = await this.queryAPI(`${weatherApiUrl}/weather?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${appId}`);
 
       const forecastDataObject = this.buildForecastObject(forecast.list);
       const groupForecastByDate = this.groupByDay(forecastDataObject);
