@@ -16,11 +16,11 @@ module.exports = {
         "iconCode2": weatherInfo.weather[0].id + weatherInfo.weather[0].icon,
         "condition": weatherInfo.weather[0].main,
         "conditionDescription": weatherInfo.weather[0].description,
-        "humidity": weatherInfo.main.humidity,
-        "pressure": weatherInfo.main.pressure,
-        "windSpeed": weatherInfo.wind.speed,
+        "humidityPercentage": weatherInfo.main.humidity,
+        "pressureMillibars": weatherInfo.main.pressure,
+        "windSpeedMps": weatherInfo.wind.speed,
         "windDirection": this.interpretWindDegrees(weatherInfo.wind.deg),
-        "cloudCover": weatherInfo.clouds.all
+        "cloudCoverPercentage": weatherInfo.clouds.all
       },
       "temps": {
         "currentTempC": (weatherInfo.main.temp - 273.15).toFixed(1),
@@ -56,7 +56,7 @@ module.exports = {
         "tempC": (incomingForecast.main.temp - 273.15).toFixed(1),
         "feelsLikeC": (incomingForecast.main.feels_like - 273.15).toFixed(1),
         "feelsLikeF": ((incomingForecast.main.feels_like - 273.15) * (9/5) + 32).toFixed(1),
-        "humidity": incomingForecast.main.humidity
+        "humidityPercentage": incomingForecast.main.humidity
       },
       "weather": {
         "id": incomingForecast.weather[0].id,
@@ -68,7 +68,7 @@ module.exports = {
       "snow": isSnow,
       "clouds": incomingForecast.clouds.all,
       "wind": {
-        "speed": incomingForecast.wind.speed,
+        "speedMps": incomingForecast.wind.speed,
         "degrees": incomingForecast.wind.deg,
         "direction": this.interpretWindDegrees(incomingForecast.wind.deg),
         "gust": incomingForecast.wind.gust

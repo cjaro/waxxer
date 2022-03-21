@@ -1,14 +1,8 @@
 <%- include("../partials/header") %>
 <%- include("../partials/head") %>
 
-<div class="container">
-    <div class="get-weather-form form-floating mb-3 align-items-center">
-        <form action="/weather" method="POST">
-            <label for="queryTheWeatherForm" class="form-label" style="font-size:18px">Query the weather (e.g., Mora, MN):</label>
-            <input type="text" name="placename" id="queryTheWeatherForm" placeholder="Enter city & state" class="form-control form-control-lg">
-            <input type="submit" class="btn btn-lg btn-success" value="Get Weather →">
-        </form>
-    </div>
+<div class="container" style="max-width: 1200px; margin: 0 auto; align-content: center;">
+    <%- include("../partials/search.ejs")%>
     <div>
         <p style="font-size:18px">
             Waxxer is a helpful calculator for the cross-country skier trying to pick the right ski wax while

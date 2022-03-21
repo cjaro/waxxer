@@ -13,11 +13,8 @@ router.get("/", async (req, res) => {
 router.post("/weather", async function (req, res) {
   console.log(`Working at weather route, querying weather in ${req.body.placename}`);
 
-
   try {
-    const weatherAndForecast = await helpers.gatherCurrentAndForecast(
-      req.body.placename
-    );
+    const weatherAndForecast = await helpers.gatherCurrentAndForecast(req.body.placename);
 
     res.render("pages/weather", {
       title: "waxxer",
