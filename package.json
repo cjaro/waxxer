@@ -12,13 +12,14 @@
     "express": "^4.17.2",
     "gojs": "^2.2.19",
     "mocha": "^9.2.1",
+    "nodemon": "^2.0.16",
     "npm": "^6.13.4",
     "pg": "^8.7.3",
     "prettier": "^2.5.1"
   },
   "scripts": {
     "start": "nodemon src/app.js",
-    "test": "test"
+    "test": "./node_modules/mocha/bin/mocha test/**/test*.js --reporter spec"
   },
   "keywords": [
     "cross country skiing",

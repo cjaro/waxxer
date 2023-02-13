@@ -169,7 +169,7 @@ module.exports = {
     return stateAndCounty;
   },
 
-  isThereSnow: function(snowObject) {
+  isThereSnow: function(snowObject){
     let returnedSnowObject = {};
 
     if (snowObject["1h"]) { returnedSnowObject.snow1hr = snowObject["1h"]; }
@@ -248,12 +248,12 @@ module.exports = {
       const geo = await this.returnLatLongStateCounty(location, geoCodeApiUrl, geoCodeApiKey);
       const forecast = await this.queryAPI(`${weatherApiUrl}/forecast?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${appId}`);
       const weather = await this.queryAPI(`${weatherApiUrl}/weather?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${appId}`);
-      
+
       const forecastDataObject = this.buildForecastObject(forecast.list);
       const groupForecastByDate = this.groupByDay(forecastDataObject);
-      
+
       return [
-        this.formatWeatherData(weather, geo[0], geo[2], geo[3]), 
+        this.formatWeatherData(weather, geo[0], geo[2], geo[3]),
         groupForecastByDate
       ];
     } catch (e) {
