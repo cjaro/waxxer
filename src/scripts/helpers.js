@@ -169,7 +169,7 @@ module.exports = {
     return stateAndCounty;
   },
 
-  isThereSnow: function(snowObject){
+  isThereSnow: function(snowObject) {
     let returnedSnowObject = {};
 
     if (snowObject["1h"]) { returnedSnowObject.snow1hr = snowObject["1h"]; }
@@ -216,12 +216,8 @@ module.exports = {
       groups[fdate].push(forecast);
       return groups;
     }, {});
-
     return Object.keys(groups).map((date) => {
-      return {
-        date,
-        forecasts: groups[date]
-      };
+      return {date, forecasts: groups[date]};
     });
   },
 
@@ -229,15 +225,14 @@ module.exports = {
     try {
       const geoCodeUrl = this.constructGeoCodeUrl(loc, geoCodeApiUrl, geoCodeApiKey);
       const geoCodeApiData = await this.queryAPI(geoCodeUrl);
-      const stateAndCountyInfo = this.getStateAndCounty(geoCodeApiData.results[0].address_components);
-      const [latitude, longitude] = this.latLong(geoCodeApiData.results[0].geometry.location);
-      const mapUrl = this.constructMapUrl(loc, latitude, longitude);
+      // console.log(geoCodeApiData);
+      if (geoCodeApiData.results[0]) {
+        const stateAndCountyInfo = this.getStateAndCounty(geoCodeApiData.results[0].address_components);
+        const [latitude, longitude] = this.latLong(geoCodeApiData.results[0].geometry.location);
+        const mapUrl = this.constructMapUrl(loc, latitude, longitude);
+        return [stateAndCountyInfo, [latitude, longitude], mapUrl];
+      }
 
-      return [
-        stateAndCountyInfo,
-        [latitude, longitude],
-        mapUrl
-      ];
     } catch(e) {
       console.error(e);
     }
@@ -253,12 +248,12 @@ module.exports = {
       const geo = await this.returnLatLongStateCounty(location, geoCodeApiUrl, geoCodeApiKey);
       const forecast = await this.queryAPI(`${weatherApiUrl}/forecast?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${appId}`);
       const weather = await this.queryAPI(`${weatherApiUrl}/weather?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${appId}`);
-
+      
       const forecastDataObject = this.buildForecastObject(forecast.list);
       const groupForecastByDate = this.groupByDay(forecastDataObject);
-
+      
       return [
-        this.formatWeatherData(weather, geo[0], geo[2], geo[3]),
+        this.formatWeatherData(weather, geo[0], geo[2], geo[3]), 
         groupForecastByDate
       ];
     } catch (e) {
