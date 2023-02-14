@@ -1,19 +1,20 @@
 <%- include('../partials/header') %>
 <%- include('../partials/head') %>
 
-<div class="container">
+<div class="container" style="max-width: 1200px">
     <h2>Weather in <a href="<%= wx.mapUrl %>"> <%= wx.location.name %>, <%= wx.location.state %></a> (<%= wx.location.county %>, <%= wx.location.country %>)</h2>
     <h3><%= wx.currentTime %></h3>
     <h3><a href="/">← Back</a></h3>
 
-    <div class="card" style="width: 18rem;background-color: #ddd; border: 3px solid <%= wx.waxColor[0] %>">
+    <div class="card" style="border: 3px solid <%= wx.waxColor[0] %>">
         <h5 class="card-title" style="text-align: center;font-size:18px;">Current weather conditions:</h5>
         <img src="http://openweathermap.org/img/wn/<%= wx.conditions.iconCode %>@2x.png"
              class="card-image-top"
              alt="icon depicting <%= wx.conditions.conditionDescription %>"
-        style="width: 100%">
-        <div class="card-body">
-            <h5> <%= wx.conditions.condition %> (<%= wx.conditions.conditionDescription %>)</h5>
+             style="max-width: 125px; background-color:#58D3F7; border-radius:15px; margin: 0 auto;">
+        <div class="card-body" style="text-align: center;">
+            <p class="card-text" style="font-size:16px;"><%= wx.temps.currentTempF %>F / <%= wx.temps.currentTempC %>C</p>
+            <p class="card-text" style="font-size:16px;"> <%= wx.conditions.condition %> (<%= wx.conditions.conditionDescription %>)</p>
             <hr>
             <p class="card-text" style="font-size:16px;margin: 0 auto; text-align: center;">Wax recommendation:<br>
                 <a href="#" class="btn" style="background-color: <%= wx.waxColor[0] %>">
@@ -24,10 +25,7 @@
     </div>
 
     <div class="card col-md-12 current-conditions" style="font-size:18px;">
-        <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
-            <p class="col-md-6 card-title">Current Temps</p>
-            <p class="col-md-6 card-text"><%= wx.temps.currentTempF %>F / <%= wx.temps.currentTempC %>C</p>
-        </div>
+
         <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
             <p class="col-md-6 card-title">High</p>
             <p class="col-md-6 card-text"><%= wx.temps.tempHighF %>F/ <%= wx.temps.tempHighC %>C</p>
@@ -71,12 +69,14 @@
                     <h3><%= forecast.date %></h3>
                     <div style="display: flex;">
                         <% forecast.forecasts.forEach((hourly)=> { %>
-                        <div class="card" style="background-color: #ddd;">
+                        <div class="card" style="background-color: #f4f3f3;">
                             <div class="card-body">
                                 <h5 class="card-title"><%= hourly.date %></h5>
                                 <h5 class="card-title"><%= hourly.time %></h5>
                                 <p class="card-text">
-                                    <img src="http://openweathermap.org/img/wn/<%= hourly.weather.iconCode %>.png" alt="icon showing <%= hourly.weather.description %>">
+                                    <img src="http://openweathermap.org/img/wn/<%= hourly.weather.iconCode %>.png"
+                                         alt="icon showing <%= hourly.weather.description %>"
+                                         style="background-color:#58D3F7;border-radius:15px;margin: 0 auto;">
                                 </p>
                                 <p class="card-text">Conditions: <%= hourly.weather.main %> (<%= hourly.weather.description %>)</p>
                                 <p class="card-text">Temp: <%= hourly.main.tempF %>F / <%= hourly.main.tempC %>C</p>
