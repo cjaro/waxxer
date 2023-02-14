@@ -1,7 +1,4 @@
 .DS_Store
-.gitignore
-node_modules/
-package-lock.json
 .idea/
 .vscode/
 
@@ -84,4 +81,3 @@ typings/
 
 #DynamoDB Local files
 .dynamodb/
-package-lock.json
