@@ -52,6 +52,10 @@
             <p class="col-md-6 card-text"><%= wx.sunrise %></p>
         </div>
         <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
+            <p class="col-md-6 card-title">Sunset</p>
+            <p class="col-md-6 card-text"><%= wx.sunset %></p>
+        </div>
+        <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
             <p class="col-md-6 card-title">Snow</p>
             <p class="col-md-6 card-text"><%= wx.conditions.snow.snow3hr ? wx.conditions.snow.snow1hr : wx.conditions.snow %> %></p>
         </div>
@@ -98,3 +102,4 @@
 </div>
 
 <%- include('../partials/footer') %>
+</div>
