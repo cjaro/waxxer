@@ -37,7 +37,7 @@
         </div>
         <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
             <p class="col-md-6 card-title">Wind</p>
-            <p class="col-md-6 card-text"><%= wx.conditions.windSpeed %> m/s <%= wx.conditions.windDirection %></p>
+            <p class="col-md-6 card-text"><%= wx.conditions.windSpeedMps %> m/s <%= wx.conditions.windDirection %></p>
         </div>
         <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
             <p class="col-md-6 card-title">Humidity</p>
@@ -45,49 +45,15 @@
         </div>
         <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
             <p class="col-md-6 card-title">Pressure</p>
-            <p class="col-md-6 card-text"><%= wx.conditions.pressure %> hPa</p>
+            <p class="col-md-6 card-text"><%= wx.conditions.pressureMb %> mb</p>
         </div>
         <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
             <p class="col-md-6 card-title">Sunrise</p>
             <p class="col-md-6 card-text"><%= wx.sunrise %></p>
         </div>
-        <div class="card col-md-6 current-conditions" style="font-size:18px;">
-            <div class="card-body conditions-card" style="display:flex;flex-direction: row; justify-content: space-between">
-                <p class="col-md-6 card-title">Current Temps</p>
-                <p class="col-md-6 card-text"><%= wx.temps.currentTempF ;%>F / <%= wx.temps.currentTempC ;%>C</p>
-            </div>
-            <div class="card-body conditions-card" style="display:flex;flex-direction: row; justify-content: space-between">
-                <p class="col-md-6 card-title">High</p>
-                <p class="col-md-6 card-text"><%= wx.temps.tempHighF ;%>F / <%= wx.temps.tempHighC ;%>C</p>
-            </div>
-            <div class="card-body conditions-card" style="display:flex;flex-direction: row; justify-content: space-between">
-                <p class="col-md-6 card-title">Low</p>
-                <p class="col-md-6 card-text"><%= wx.temps.tempLowF ;%>F / <%= wx.temps.tempLowC ;%>C</p>
-            </div>
-            <div class="card-body conditions-card" style="display:flex;flex-direction: row; justify-content: space-between">
-                <p class="col-md-6 card-title">Feels like</p>
-                <p class="col-md-6 card-text"><%= wx.temps.feelsLikeF ;%>F / <%= wx.temps.feelsLikeC ;%>C</p>
-            </div>
-            <div class="card-body conditions-card" style="display:flex;flex-direction: row; justify-content: space-between">
-                <p class="col-md-6 card-title">Wind</p>
-                <p class="col-md-6 card-text"><%= wx.conditions.windSpeedMps ;%> m/s <%= wx.conditions.windDirection ;%></p>
-            </div>
-            <div class="card-body conditions-card" style="display:flex;flex-direction: row; justify-content: space-between">
-                <p class="col-md-6 card-title">Humidity</p>
-                <p class="col-md-6 card-text"><%= wx.conditions.humidityPercentage ;%>%</p>
-            </div>
-            <div class="card-body conditions-card" style="display:flex;flex-direction: row; justify-content: space-between">
-                <p class="col-md-6 card-title">Pressure</p>
-                <p class="col-md-6 card-text"><%= wx.conditions.pressureMb ;%> hPa</p>
-            </div>
-            <div class="card-body conditions-card" style="display:flex;flex-direction: row; justify-content: space-between">
-                <p class="col-md-6 card-title">Sunrise</p>
-                <p class="col-md-6 card-text"><%= wx.sunrise ;%></p>
-            </div>
-            <div class="card-body conditions-card" style="display:flex;flex-direction: row; justify-content: space-between">
-                <p class="col-md-6 card-title">Sunset</p>
-                <p class="col-md-6 card-text"><%= wx.sunset ;%> </p>
-            </div>
+        <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
+            <p class="col-md-6 card-title">Snow</p>
+            <p class="col-md-6 card-text"><%= wx.conditions.snow.snow3hr ? wx.conditions.snow.snow1hr : wx.conditions.snow %> %></p>
         </div>
     </div>
     <hr>
@@ -114,12 +80,19 @@
                                 <p class="card-text">Feels like: <%= hourly.main.feelsLikeF %>F / <%= hourly.main.feelsLikeF %>C</p>
                                 <p class="card-text">Humidity: <%= hourly.main.humidity %>%</p>
                                 <p class="card-text">Wind: <%= hourly.wind.speed %>m/s <%= hourly.wind.direction %></p>
-                               <p class="card-text">Snow: <%= hourly.snow.snow3hr ? hourly.snow.snow1hr : hourly.snow %></p>
+                                <% if (hourly.snow.snow3hr) { %>
+                                    <p class="card-text">Snow (next 3 hours): <%= hourly.snow.snow3hr %>mm
+                                <% } else if (hourly.snow.snow1hr) { %>
+                                    <p>Snow (next hour): <%= hourly.snow1hr %>mm</p>
+                                <% } else { %>
+                                    <p><%= hourly.snow %></p>
+                                <% } %>
                             </div>
                         </div>
+                        <% }); %>
                     </div>
-                <% }); %>
-            </div>
+                </div>
+            <% }); %>
         </div>
     </div>
 </div>

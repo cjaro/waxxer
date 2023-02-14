@@ -1,5 +1,10 @@
 module.exports = {
   formatWeatherData: function(weatherInfo, stateAndCountyInfo, mapUrl) {
+    let isCurrentSnow = "Not currently snowing.";
+    if (weatherInfo.snow) {
+      isCurrentSnow = this.isThereSnow(weatherInfo.snow);
+    }
+
     return {
       "location": {
         "name": weatherInfo.name,
@@ -20,7 +25,10 @@ module.exports = {
         "pressureMb": weatherInfo.main.pressure,
         "windSpeedMps": weatherInfo.wind.speed,
         "windDirection": this.interpretWindDegrees(weatherInfo.wind.deg),
-        "cloudCoverPercentage": weatherInfo.clouds.all
+        "cloudCoverPercentage": weatherInfo.clouds.all,
+        "visibility": weatherInfo.visibility,
+        "rainVolume": weatherInfo.rain,
+        "snow": isCurrentSnow,
       },
       "temps": {
         "currentTempC": (weatherInfo.main.temp - 273.15).toFixed(1),

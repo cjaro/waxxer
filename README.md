@@ -11,6 +11,8 @@ As of 2022, Waxxer has entered construction model; there are lots of ideas float
 ## Getting Started
 
 - Run `npm install` at the root of the project.
-- Copy `sample.env` and populate API keys.
+- Copy `sample.env` and populate API keys:
+  - [OpenWeatherMap](https://openweathermap.org/api): [Current weather](https://openweathermap.org/current) and [forecast](https://openweathermap.org/api/hourly-forecast)
+  - [Google GeoCode API](https://developers.google.com/maps/documentation/geocoding): [set up GCP project](https://developers.google.com/maps/documentation/geocoding/cloud-setup), [get API keys](https://developers.google.com/maps/documentation/geocoding/get-api-key)
 - Run `npm start` to spin up the npm web server
-- Head to [your browser](http://localhost:3000/) to view the application.
+- Head to http://localhost:3000/ to view the application.
