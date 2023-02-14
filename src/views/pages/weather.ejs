@@ -1,30 +1,55 @@
 <%- include('../partials/header') %>
 <%- include('../partials/head') %>
 
-<div class="container">
-    <h2>Weather in <%= wx.location.name ;%>, <%= wx.location.state ;%>
-      <a href="<%= wx.mapUrl ;%>" style="text-decoration:none;">
-        <p id="maplink">(Map ↗︎)</p>
-      </a>
-        (<%= wx.location.county ;%>, <%= wx.location.country ;%>)
-    </h2>
-    <h3><%= wx.currentTime ;%></h3>
+<div class="container" style="max-width: 1200px">
+    <h2>Weather in <a href="<%= wx.mapUrl %>"> <%= wx.location.name %>, <%= wx.location.state %></a> (<%= wx.location.county %>, <%= wx.location.country %>)</h2>
+    <h3><%= wx.currentTime %></h3>
     <h3><a href="/">← Back</a></h3>
-    <div class="current-conditions-outer col-md-12" style="display: flex; flex-direction: row;">
-        <div class="card col-md-6" style="width: 18rem;align-items:center;border:3px solid <%= wx.waxColor[0] %>">
-            <h5 class="card-title" style="text-align: center;font-size:18px;">Current weather conditions:</h5>
-            <img src="http://openweathermap.org/img/wn/<%= wx.conditions.iconCode ;%>@2x.png"
-                 class="card-image-top"
-                 alt="icon depicting <%= wx.conditions.conditionDescription ;%>"
-                 style="text-align:center;max-width: 100px;background-color:#58D3F7;border-radius:15px;">
-            <div class="card-body" style="text-align:center;">
-                <h5><%= wx.conditions.condition ;%> (<%= wx.conditions.conditionDescription ;%>)</h5>
-                <hr>
-                <p class="card-text" style="font-size:16px;">Wax recommendation:</p>
-                <a href="#" class="btn btn-lg" style="background-color: <%= wx.waxColor[0] %>">
-                    <span><%= wx.waxColor[1] ;%></span>
+    <div class="card" style="border: 3px solid <%= wx.waxColor[0] %>">
+        <h5 class="card-title" style="text-align: center;font-size:18px;">Current weather conditions:</h5>
+        <img src="http://openweathermap.org/img/wn/<%= wx.conditions.iconCode %>@2x.png"
+             class="card-image-top"
+             alt="icon depicting <%= wx.conditions.conditionDescription %>"
+             style="max-width: 125px; background-color:#58D3F7; border-radius:15px; margin: 0 auto;">
+        <div class="card-body" style="text-align: center;">
+            <p class="card-text" style="font-size:16px;"><%= wx.temps.currentTempF %>F / <%= wx.temps.currentTempC %>C</p>
+            <p class="card-text" style="font-size:16px;"> <%= wx.conditions.condition %> (<%= wx.conditions.conditionDescription %>)</p>
+            <hr>
+            <p class="card-text" style="font-size:16px;margin: 0 auto; text-align: center;">Wax recommendation:<br>
+                <a href="#" class="btn" style="background-color: <%= wx.waxColor[0] %>">
+                    <span><%= wx.waxColor[1] %></span>
                 </a>
-            </div>
+            </p>
+        </div>
+    </div>
+    <div class="card col-md-12 current-conditions" style="font-size:18px;">
+        <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
+            <p class="col-md-6 card-title">High</p>
+            <p class="col-md-6 card-text"><%= wx.temps.tempHighF %>F/ <%= wx.temps.tempHighC %>C</p>
+        </div>
+        <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
+            <p class="col-md-6 card-title">Low</p>
+            <p class="col-md-6 card-text"><%= wx.temps.tempLowF %>F / <%= wx.temps.tempLowC %>C</p>
+        </div>
+        <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
+            <p class="col-md-6 card-title">Feels like</p>
+            <p class="col-md-6 card-text"><%= wx.temps.feelsLikeF %>F / <%= wx.temps.feelsLikeC %>C</p>
+        </div>
+        <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
+            <p class="col-md-6 card-title">Wind</p>
+            <p class="col-md-6 card-text"><%= wx.conditions.windSpeed %> m/s <%= wx.conditions.windDirection %></p>
+        </div>
+        <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
+            <p class="col-md-6 card-title">Humidity</p>
+            <p class="col-md-6 card-text"><%= wx.conditions.humidity %>%</p>
+        </div>
+        <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
+            <p class="col-md-6 card-title">Pressure</p>
+            <p class="col-md-6 card-text"><%= wx.conditions.pressure %> hPa</p>
+        </div>
+        <div class="card-body conditions-card" style="display:flex;flex-direction: row;">
+            <p class="col-md-6 card-title">Sunrise</p>
+            <p class="col-md-6 card-text"><%= wx.sunrise %></p>
         </div>
         <div class="card col-md-6 current-conditions" style="font-size:18px;">
             <div class="card-body conditions-card" style="display:flex;flex-direction: row; justify-content: space-between">
@@ -70,30 +95,27 @@
         <h3>5-Day Forecast (WIP)</h3>
         <div class="row">
             <div class="col-md-12">
-                <% fa.forEach((forecast)=> { %>
-                    <div>
-                        <h3><%= forecast.date ;%></h3>
-                        <div style="display: flex;">
-                            <% forecast.forecasts.forEach((hourly)=> { %>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><%= hourly.date ;%></h5>
-                                        <h5 class="card-title"><%= hourly.time ;%></h5>
-                                        <p class="card-text">
-                                            <img src="http://openweathermap.org/img/wn/<%= hourly.weather.iconCode %>.png"
-                                                 style="background-color:#58D3F7;border-radius:15px;margin: 0 auto;"
-                                                 alt="icon showing <%= hourly.weather.description %>">
-                                        </p>
-                                        <p class="card-text">Conditions: <%= hourly.weather.main %> (<%= hourly.weather.description ;%>)</p>
-                                        <p class="card-text">Temp (F): <%= hourly.main.tempF ;%>F</p>
-                                        <p class="card-text">Temp (C): <%= hourly.main.tempC %>C</p>
-                                        <p class="card-text">Feels like: <%= hourly.main.feelsLikeF %>F / <%= hourly.main.feelsLikeC ;%>C</p>
-                                        <p class="card-text">Humidity: <%= hourly.main.humidityPercentage %>%</p>
-                                        <p class="card-text">Wind: <%= hourly.wind.speedMps %> m/s <%= hourly.wind.direction %></p>
-                                        <p class="card-text">Snow: <%= hourly.snow.snow3hr ? hourly.snow.snow1hr : hourly.snow %></p>
-                                    </div>
-                                </div>
-                            <% }); %>
+            <% fa.forEach((forecast)=> { %>
+                <div>
+                    <h3><%= forecast.date %></h3>
+                    <div style="display: flex;">
+                        <% forecast.forecasts.forEach((hourly)=> { %>
+                        <div class="card" style="background-color: #f4f3f3;">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= hourly.date %></h5>
+                                <h5 class="card-title"><%= hourly.time %></h5>
+                                <p class="card-text">
+                                    <img src="http://openweathermap.org/img/wn/<%= hourly.weather.iconCode %>.png"
+                                         alt="icon showing <%= hourly.weather.description %>"
+                                         style="background-color:#58D3F7;border-radius:15px;margin: 0 auto;">
+                                </p>
+                                <p class="card-text">Conditions: <%= hourly.weather.main %> (<%= hourly.weather.description %>)</p>
+                                <p class="card-text">Temp: <%= hourly.main.tempF %>F / <%= hourly.main.tempC %>C</p>
+                                <p class="card-text">Feels like: <%= hourly.main.feelsLikeF %>F / <%= hourly.main.feelsLikeF %>C</p>
+                                <p class="card-text">Humidity: <%= hourly.main.humidity %>%</p>
+                                <p class="card-text">Wind: <%= hourly.wind.speed %>m/s <%= hourly.wind.direction %></p>
+                               <p class="card-text">Snow: <%= hourly.snow.snow3hr ? hourly.snow.snow1hr : hourly.snow %></p>
+                            </div>
                         </div>
                     </div>
                 <% }); %>
