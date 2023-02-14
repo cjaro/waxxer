@@ -8,3 +8,27 @@
 .conditions-card p {
     font-size: 16px;
 }
+
+.wax-red {
+    color: #ED1A2D;
+}
+
+.wax-violet {
+    color: #a35fff;
+}
+
+.wax-green {
+    color: #0080BF;
+}
+
+.wax-blue {
+    color: #009A66;
+}
+
+.wax-polar {
+    color: #FFFFFF;
+}
+
+#maplink {
+  text-decoration: none;
+}

@@ -1,14 +1,14 @@
-const express = require('express');
+const express = require("express");
 const path = require("path");
 const router = express.Router();
 const helpers = require(path.join(__dirname, "../scripts/helpers"));
 
 router.get("/", async (req, res) => {
-  console.log("Hello!");
+  console.log("GET weather");
   res.render("pages/index", {
-    title: "waxxer",
+    title: "waxxer"
   });
-})
+});
 
 router.post('/weather', async function (req, res) {
   console.log(`Working at weather route, querying weather in ${req.body.placename}`);
@@ -18,22 +18,22 @@ router.post('/weather', async function (req, res) {
   const geoCodeApiKey = process.env.GEOCODE_API_KEY;
 
   try {
-    const weatherAndForecast = await helpers.gatherCurrentAndForecast(
-      req.body.placename,
-      weatherApiUrl,
-      openWeatherMapApiKey,
-      geoCodeUrl,
-      geoCodeApiKey
-    );
+      const weatherAndForecast = await helpers.gatherCurrentAndForecast(
+        req.body.placename,
+        weatherApiUrl,
+        openWeatherMapApiKey,
+        geoCodeUrl,
+        geoCodeApiKey
+      );
 
-    res.render("pages/weather", {
-      title: `waxxer`,
-      wx: weatherAndForecast[0],
-      fa: weatherAndForecast[1]
-    });
-  } catch (error) {
-    res.send(error.toString())
-  }
+      res.render("pages/weather", {
+        title: `waxxer`,
+        wx: weatherAndForecast[0],
+        fa: weatherAndForecast[1]
+      });
+    } catch (error) {
+      res.send(error.toString());
+    }
 });
 
 module.exports = router;

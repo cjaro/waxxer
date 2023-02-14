@@ -1,4 +1,3 @@
-require("dotenv").config();
 const assert = require("assert");
 
 const { constructGeoCodeUrl, interpretWindDegrees, groupByDay } = require("../../../src/scripts/helpers");
@@ -13,7 +12,9 @@ describe("testHelpers", () => {
 
   it("shouldConstructGeoCodeUrl", () => {
     const url = constructGeoCodeUrl("Duluth, MN");
-    assert.equal(url, `${process.env.GEOCODE_BASE_URL}?address=Duluth, MN&key=${process.env.GEOCODE_API_KEY}`);
+    let baseUrl = process.env.GEOCODE_BASE_URL;
+    let apiKey = process.env.GEOCODE_API_KEY;
+    assert.equal(url, `${baseUrl}?address=Duluth, MN&key=${apiKey}`);
   });
 
   it("shouldTestWindDegrees", () => {
@@ -35,5 +36,12 @@ describe("testHelpers", () => {
     const groupData = groupByDay(minneapolisFiveDayForecast);
     groupData.forEach(element => console.log(element))
   });
+
+  it("should construct map url", () => {
+    const testUrl = `https://api.openweathermap.org/data/2.5/weather?lat=47.7504469&lon=-90.3342727&appid=${process.env.OPENWEATHERMAP_API_KEY}`
+    let constructQueryUrl = constructQueryUrl("weather", 47.7504469, -90.3342727)
+
+    assert.deepEqual(testUrl, constructQueryUrl);
+  })
 
 });

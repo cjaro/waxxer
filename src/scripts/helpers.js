@@ -17,10 +17,10 @@ module.exports = {
         "condition": weatherInfo.weather[0].main,
         "conditionDescription": weatherInfo.weather[0].description,
         "humidity": weatherInfo.main.humidity,
-        "pressure": weatherInfo.main.pressure,
-        "windSpeed": weatherInfo.wind.speed,
+        "pressureMb": weatherInfo.main.pressure,
+        "windSpeedMps": weatherInfo.wind.speed,
         "windDirection": this.interpretWindDegrees(weatherInfo.wind.deg),
-        "cloudCover": weatherInfo.clouds.all
+        "cloudCoverPercentage": weatherInfo.clouds.all
       },
       "temps": {
         "currentTempC": (weatherInfo.main.temp - 273.15).toFixed(1),
@@ -56,7 +56,7 @@ module.exports = {
         "tempC": (incomingForecast.main.temp - 273.15).toFixed(1),
         "feelsLikeC": (incomingForecast.main.feels_like - 273.15).toFixed(1),
         "feelsLikeF": ((incomingForecast.main.feels_like - 273.15) * (9/5) + 32).toFixed(1),
-        "humidity": incomingForecast.main.humidity
+        "humidityPercentage": incomingForecast.main.humidity
       },
       "weather": {
         "id": incomingForecast.weather[0].id,
@@ -68,7 +68,7 @@ module.exports = {
       "snow": isSnow,
       "clouds": incomingForecast.clouds.all,
       "wind": {
-        "speed": incomingForecast.wind.speed,
+        "speedMps": incomingForecast.wind.speed,
         "degrees": incomingForecast.wind.deg,
         "direction": this.interpretWindDegrees(incomingForecast.wind.deg),
         "gust": incomingForecast.wind.gust
@@ -135,7 +135,7 @@ module.exports = {
 
   recommendWax: function(tempCelsius) {
     if (tempCelsius >= 10.56) {
-      return ["magenta", "Use water skis lmao ✌️."];
+      return ["gold", "Use water skis lmao ✌️."];
     }
     if (tempCelsius >= 4.00 && tempCelsius <= 10) {
       return ["red", "Use red wax. ❤️️"];
@@ -172,8 +172,8 @@ module.exports = {
   isThereSnow: function(snowObject){
     let returnedSnowObject = {};
 
-    if (snowObject['1h']) { returnedSnowObject.snow1hr = snowObject['1h']; }
-    if (snowObject['3h']) { returnedSnowObject.snow3hr = snowObject['3h']; }
+    if (snowObject["1h"]) { returnedSnowObject.snow1hr = snowObject["1h"]; }
+    if (snowObject["3h"]) { returnedSnowObject.snow3hr = snowObject["3h"]; }
 
     return returnedSnowObject;
   },
@@ -216,12 +216,8 @@ module.exports = {
       groups[fdate].push(forecast);
       return groups;
     }, {});
-
     return Object.keys(groups).map((date) => {
-      return {
-        date,
-        forecasts: groups[date]
-      };
+      return {date, forecasts: groups[date]};
     });
   },
 
@@ -232,12 +228,7 @@ module.exports = {
       const stateAndCountyInfo = this.getStateAndCounty(geoCodeApiData.results[0].address_components);
       const [latitude, longitude] = this.latLong(geoCodeApiData.results[0].geometry.location);
       const mapUrl = this.constructMapUrl(loc, latitude, longitude);
-
-      return [
-        stateAndCountyInfo,
-        [latitude, longitude],
-        mapUrl
-      ];
+      return [stateAndCountyInfo, [latitude, longitude], mapUrl];
     } catch(e) {
       console.error(e);
     }
