@@ -44,7 +44,7 @@ module.exports = {
   formatForecastData: function(incomingForecast) {
     let isSnow = "No snow forecasted.";
     if (incomingForecast.snow) {
-      isSnow = JSON.stringify(this.isThereSnow(incomingForecast.snow));
+      isSnow = this.isThereSnow(incomingForecast.snow);
     }
 
     return {
@@ -248,7 +248,6 @@ module.exports = {
       const geo = await this.returnLatLongStateCounty(location, geoCodeApiUrl, geoCodeApiKey);
       const forecast = await this.queryAPI(`${url}/forecast?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${openWeatherApiKey}`);
       const weather = await this.queryAPI(`${url}/weather?lat=${geo[1][0]}&lon=${geo[1][1]}&appid=${openWeatherApiKey}`);
-
       const forecastDataObject = this.buildForecastObject(forecast.list);
       const groupForecastByDate = this.groupByDay(forecastDataObject);
 

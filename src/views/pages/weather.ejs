@@ -6,20 +6,20 @@
     <h3><%= wx.currentTime %></h3>
     <h3><a href="/">← Back</a></h3>
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem;background-color: #ddd; border: 3px solid <%= wx.waxColor[0] %>">
         <h5 class="card-title" style="text-align: center;font-size:18px;">Current weather conditions:</h5>
         <img src="http://openweathermap.org/img/wn/<%= wx.conditions.iconCode %>@2x.png"
              class="card-image-top"
-             alt="icon depicting <%= wx.conditions.conditionDescription %>">
+             alt="icon depicting <%= wx.conditions.conditionDescription %>"
+        style="width: 100%">
         <div class="card-body">
             <h5> <%= wx.conditions.condition %> (<%= wx.conditions.conditionDescription %>)</h5>
             <hr>
-            <p class="card-text" style="font-size:16px;">Wax recommendation:
-                <span style="color: <%= wx.waxColor[0] %>">
-                    <%= wx.waxColor[1] %>
-                </span>
+            <p class="card-text" style="font-size:16px;margin: 0 auto; text-align: center;">Wax recommendation:<br>
+                <a href="#" class="btn" style="background-color: <%= wx.waxColor[0] %>">
+                    <span><%= wx.waxColor[1] %></span>
+                </a>
             </p>
-            <a href="#" class="btn btn-primary"> <%=wx.conditions.iconCode2%> </a>
         </div>
     </div>
 
@@ -71,7 +71,7 @@
                     <h3><%= forecast.date %></h3>
                     <div style="display: flex;">
                         <% forecast.forecasts.forEach((hourly)=> { %>
-                        <div class="card">
+                        <div class="card" style="background-color: #ddd;">
                             <div class="card-body">
                                 <h5 class="card-title"><%= hourly.date %></h5>
                                 <h5 class="card-title"><%= hourly.time %></h5>
@@ -83,7 +83,7 @@
                                 <p class="card-text">Feels like: <%= hourly.main.feelsLikeF %>F / <%= hourly.main.feelsLikeF %>C</p>
                                 <p class="card-text">Humidity: <%= hourly.main.humidity %>%</p>
                                 <p class="card-text">Wind: <%= hourly.wind.speed %>m/s <%= hourly.wind.direction %></p>
-                                <p class="card-text">Snow: <%= hourly.snow.snow3hr ? hourly.snow.snow3hr : hourly.snow %></p>
+                                <p class="card-text">Snow: <%= hourly.snow.snow3hr ? hourly.snow : 0 %>mm</p>
                             </div>
                         </div>
                         <% }) %>
