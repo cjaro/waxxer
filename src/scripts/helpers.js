@@ -44,7 +44,7 @@ module.exports = {
   formatForecastData: function(incomingForecast) {
     let isSnow = "No snow forecasted.";
     if (incomingForecast.snow) {
-      isSnow = JSON.stringify(this.isThereSnow(incomingForecast.snow));
+      isSnow = this.isThereSnow(incomingForecast.snow);
     }
 
     return {
@@ -135,7 +135,7 @@ module.exports = {
 
   recommendWax: function(tempCelsius) {
     if (tempCelsius >= 10.56) {
-      return ["magenta", "Use water skis lmao ✌️."];
+      return ["gold", "Use water skis lmao ✌️."];
     }
     if (tempCelsius >= 4.00 && tempCelsius <= 10) {
       return ["red", "Use red wax. ❤️️"];

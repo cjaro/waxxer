@@ -1,7 +1,32 @@
-<div class="get-weather-form form-floating mb-3 align-items-center">
-    <form action="/weather" method="POST">
+<div class="get-weather-form form-floating mb-3 align-items-center" style="margin: 15px auto; align-content: center">
+    <form action="/weather" method="POST" class="needs-validation" novalidate>
         <label for="queryTheWeatherForm" class="form-label" style="font-size:18px">Query the weather (e.g., Mora, MN):</label>
-        <input type="text" name="placename" id="queryTheWeatherForm" placeholder="Enter city & state" class="form-control form-control-lg">
-        <input type="submit" class="btn btn-lg btn-success" value="Get Weather →">
+        <input type="text"
+               name="placename"
+               id="queryTheWeatherForm"
+               style="width:50%;"
+               placeholder="Enter city & state"
+               class="form-control form-control-lg"
+               required>
+        <div class="invalid-feedback">Please provide a valid location (City, State).</div>
+        <input type="submit" class="btn btn-lg btn-success" value="Get Weather →" style="margin: 15px 0;">
     </form>
 </div>
+
+<script>
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      const forms = document.getElementsByClassName('needs-validation');
+      const validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+</script>

@@ -11,40 +11,29 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/weather", async function (req, res) {
-  console.log(`POST weather; querying weather in ${req.body.placename}`);
-  const geoCodeApiUrl = process.env.GEOCODE_BASE_URL;
+  console.log(`POST weather; querying weather in ${req.body.placename.toUpperCase()}`);
+  const openWeatherMapApiKey = process.env.OPENWEATHERMAP_API_KEY;
+  const weatherApiUrl = process.env.OPENWEATHERMAP_BASE_URL;
+  const geoCodeUrl = process.env.GEOCODE_BASE_URL;
   const geoCodeApiKey = process.env.GEOCODE_API_KEY;
 
   try {
-    const geoCodeUrl = helpers.constructGeoCodeUrl(req.body.placename, geoCodeApiUrl, geoCodeApiKey);
-    const geoCodeApiData = await helpers.queryAPI(geoCodeUrl);
-    const stateAndCountyInfo = helpers.getStateAndCounty(geoCodeApiData.results[0].address_components);
-    const lat = geoCodeApiData.results[0].geometry.location.lat;
-    const long = geoCodeApiData.results[0].geometry.location.lng;
-    
-    const mapUrl = helpers.constructMapUrl(req.body.placename, lat, long);
-    const weatherUrl = helpers.constructWeatherApiQueryUrl('weather', lat, long);
-    const forecastUrl = helpers.constructWeatherApiQueryUrl('forecast', lat, long);
+      const weatherAndForecast = await helpers.gatherCurrentAndForecast(
+        req.body.placename,
+        weatherApiUrl,
+        openWeatherMapApiKey,
+        geoCodeUrl,
+        geoCodeApiKey
+      );
 
-    const queryWeather = await helpers.queryAPI(weatherUrl);
-    const weather = helpers.formatWeatherData(queryWeather, stateAndCountyInfo, mapUrl);
-
-    const queryForecast = await helpers.queryAPI(forecastUrl);
-    const forecastObject = helpers.buildForecastObject(queryForecast.list);
-    const forecast = helpers.groupByDay(forecastObject);
-
-    try {
       res.render("pages/weather", {
-        title: "waxxer",
-        wx: weather,
-        fa: forecast
+        title: `waxxer`,
+        wx: weatherAndForecast[0],
+        fa: weatherAndForecast[1]
       });
     } catch (error) {
       res.send(error.toString());
     }
-  } catch (e) {
-    res.send(e.toString());
-  }
 });
 
 module.exports = router;
